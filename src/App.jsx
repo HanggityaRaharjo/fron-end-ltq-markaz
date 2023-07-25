@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home } from "./pages/index";
+import { Home, Kontak } from "./pages/index";
 import { FormBiodataSiswa } from "./pages/peserta";
 import LandingPageMaster from "./pages/LandingPageMaster";
 import TentangKami from "./pages/TentangKami";
-import Kontak from "./pages/kontak";
+
 import Faq from "./pages/Faq";
 
 const router = createBrowserRouter([
