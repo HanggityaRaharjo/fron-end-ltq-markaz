@@ -2,13 +2,14 @@ import React from "react";
 import Layout from "../layouts/Layout";
 import { Link } from "react-router-dom";
 import logo from "../../public/ltq-logo.png";
+import ChartComponent from "../components/ChartComponent";
 
 const Home = () => {
   return (
     <Layout>
       <section className="min-h-screen ">
         {/* jumbotron */}
-        <div className="h-56 rounded-2xl relative overflow-hidden shadow-lg flex items-center">
+        <div className="h-56 rounded-2xl relative overflow-hidden shadow-lg flex items-center mb-5">
           <div className="w-64 h-64 rounded-full bg-gradient-to-tr from-[#169859] to-[#007dc4] absolute -right-32 shadow-[#1698597a] -top-32 shadow-lg"></div>
           <div className="w-72 h-72 rounded-full bg-gradient-to-br from-[#169859] to-[#007dc4] absolute -left-32 shadow-[#1698597a] -bottom-32 shadow-lg"></div>
 
@@ -36,94 +37,72 @@ const Home = () => {
           </div>
         </div>
         {/* content */}
-        {/* information */}
-        <div className="mt-10 grid grid-cols-2">
-          <div className="">
-            <h2 className="text-xl font-bold mb-5">Yayasan Markaz Alquran</h2>
-            <p className="text-justify">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              temporibus commodi possimus velit? Vero ipsam eveniet ipsa alias
-              nulla quia, aliquam neque, modi eligendi doloribus aliquid?
-              Provident reiciendis iure labore amet facilis, eveniet officia
-              magnam quaerat porro quasi ipsa id doloremque molestiae
-              voluptatibus unde. Quidem aut error accusantium cumque ullam?
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <h2 className="text-xl font-bold mb-5">
-                  Lorem ipsum dolor sit amet.
-                </h2>
-                <p className="text-justify">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Aliquid ut temporibus tempora velit libero harum, ipsum
-                  corporis ullam officia! A nulla accusamus qui vero?
-                  Consequuntur iure omnis, cumque nihil porro maiores tempore
-                  debitis, incidunt nam, tenetur facilis mollitia sequi quaerat?
-                </p>
-              </div>
-              <div>
-                <h2 className="text-xl font-bold mb-5">
-                  Lorem ipsum dolor sit amet.
-                </h2>
-                <p className="text-justify">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Aliquid ut temporibus tempora velit libero harum, ipsum
-                  corporis ullam officia! A nulla accusamus qui vero?
-                  Consequuntur iure omnis, cumque nihil porro maiores tempore
-                  debitis, incidunt nam, tenetur facilis mollitia sequi quaerat?
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex  justify-center items-center">
-            <img src={logo} alt="" className="w-[400px]" />
-          </div>
-        </div>
-        {/* berrita */}
-        <div className="mt-20 flex justify-center">
-          <div>
-            <h1 className="text-[32px] text-center">Berita Terkini</h1>
-            <div className="flex items-center gap-2">
-              <div className="w-20 bg-gray-300 h-[2px]" />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                />
-              </svg>
-              <div className="w-20 bg-gray-300 h-[2px]" />
-            </div>
-          </div>
-        </div>
 
-        {/* card berita */}
-        <div className="mt-10">
-          <div className="grid grid-cols-3 gap-5">
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
+        {/* Grafik */}
+        <div className=" bg-white flex rounded-lg gap-10 shadow-lg p-5 mb-5">
+          <div className="w-8/12 bg-[#f2fff9] rounded-lg p-2">
+            <ChartComponent />
+          </div>
+          <div className="w-4/12">
+            <h1 className="text-center text-2xl font-semibold mb-5">
+              Nilai Semester
+            </h1>
+            <ul className="list-disc">
+              <li>
+                <div className="font-semibold flex">
+                  <p className="w-40">Nilai Kumulatif</p>
+                  <p>: 3.56</p>
+                </div>
+              </li>
+              <li>
+                <div className="font-semibold flex">
+                  <p className="w-40">Nilai Semester Ini</p>
+                  <p>: 3.56</p>
+                </div>
+              </li>
+              <li>
+                <div className="font-semibold flex">
+                  <p className="w-40">Jumlah Program</p>
+                  <p>: 4</p>
+                </div>
+              </li>
+              <li>
+                <div className="font-semibold flex">
+                  <p className="w-40">Mengulang Program</p>
+                  <p>: Tidak ada</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* End Grafik */}
+
+        <div className="grid grid-cols-4 gap-5 mb-5">
+          <div className="h-32 bg-[#f3fffd] rounded-lg shadow-lg flex justify-center items-center relative">
+            <span className="text-2xl font-bold">4</span>
+            <div className="absolute top-0 left-0 bg-[#51c9b5] rounded-lg text-white px-2 py-1">
+              Jumlah Program
             </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
+          </div>
+
+          <div className="h-32 bg-[#fcf6f3] rounded-lg shadow-lg flex justify-center items-center relative">
+            <span className="text-2xl font-bold">4</span>
+            <div className="absolute top-0 left-0 bg-[#eeb89d] rounded-lg text-white px-2 py-1">
+              Jumlah Program
             </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
+          </div>
+
+          <div className="h-32 bg-[#f0f6f5] rounded-lg shadow-lg flex justify-center items-center relative">
+            <span className="text-2xl font-bold">4</span>
+            <div className="absolute top-0 left-0 bg-[#63e6d0] rounded-lg text-white px-2 py-1">
+              Jumlah Program
             </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
+          </div>
+
+          <div className="h-32 bg-[#fff8ee] rounded-lg shadow-lg flex justify-center items-center relative">
+            <span className="text-2xl font-bold">4</span>
+            <div className="absolute top-0 left-0 bg-[#e4b296] rounded-lg text-white px-2 py-1">
+              Jumlah Program
             </div>
           </div>
         </div>

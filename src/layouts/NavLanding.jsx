@@ -98,9 +98,12 @@ function NavLanding() {
                 </div>
               </div>
               <div className="relative hidden lg:flex justify-between gap-2">
-                <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                <Link
+                  to={"/home"}
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
                   <span>Login</span>
-                </button>
+                </Link>
                 <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
                   <span>Register</span>
                 </button>
