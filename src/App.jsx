@@ -5,6 +5,7 @@ import LandingPageMaster from "./pages/LandingPageMaster";
 import TentangKami from "./pages/TentangKami";
 
 import Faq from "./pages/Faq";
+import TestingComponent from "./test/TestingComponent";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/peserta-baru/biodata-siswa",
     element: <FormBiodataSiswa />,
+  },
+  {
+    path: "/testing-component",
+    element: <TestingComponent />,
   },
 ]);
 
