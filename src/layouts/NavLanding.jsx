@@ -8,8 +8,10 @@ function dropdownMenu() {
 }
 
 function NavLanding() {
+  const [pathName, setPathName] = useState(window.location.pathname);
   const [dropdownShow, setDropdownShow] = useState(false);
   const [navbarStatus, setNavbarStatus] = useState(false);
+  console.log(pathName);
 
   return (
     <>
@@ -18,91 +20,82 @@ function NavLanding() {
           <div className="flex items-center h-full px-5 bg-white bg-opacity-70 backdrop-blur-sm shadow-lg rounded-full justify-between relative ">
             <div className="flex  justify-between items-center gap-2 w-full p-2">
               <div className="">
-                <div>
-                  <img src={logo} alt="" className="h-[30px] lg:hidden" />
-                </div>
-                <ul className="hidden lg:flex justify-between gap-5 ">
-                  <li>
-                    <Link to={"/"}>Beranda</Link>
-                  </li>
-                  <li
-                    onClick={() => setNavbarStatus(!navbarStatus)}
-                    className="relative "
+                <div className="flex items-center gap-5 font-semibold">
+                  <Link
+                    to={"/"}
+                    className={`${
+                      pathName == "/" ? "text-[#169859] bg-[#effff7]" : ""
+                    } px-3 py-1 rounded-full`}
                   >
-                    <Link to={""} className="flex items-center gap-2">
-                      Cabang
+                    Beranda
+                  </Link>
+                  <div className="group relative cursor-pointer">
+                    <div className="flex items-center gap-2">
+                      <span>cabang</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        strokeWidth={1.5}
                         stroke="currentColor"
-                        class="w-5 h-5"
+                        className="w-4 h-4 group-hover:rotate-180 transition duration-150"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                         />
                       </svg>
-                    </Link>
-
-                    <ul
-                      className={`${
-                        navbarStatus ? "block" : "hidden"
-                      } mt-40 h-auto bg-gray-200 w-[40vh]`}
-                    >
-                      <li className="py-2 relative">
-                        <a href="" className="flex items-center gap-2">
-                          Program
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-5 h-5"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                            />
-                          </svg>
-                        </a>
-                        <ul className="absolute left-20 hidden">
-                          <li>
-                            <Link to={""}>program 1</Link>
-                          </li>
-                          <li>
-                            <a href="">program 2</a>
-                          </li>
-                          <li>
-                            <a href="">program 3</a>
-                          </li>
-                          <li>
-                            <a href="">program 4</a>
-                          </li>
-                          <li>
-                            <a href="">program 5</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className=" py-2">
-                        <a href="">Informasi</a>
-                      </li>
-                      <li className=" py-2">
-                        <a href="">FAQ</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="">Tentang</a>
-                  </li>
-                  <li>
-                    <a href="">Kontak</a>
-                  </li>
-                </ul>
+                    </div>
+                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-150">
+                      <span className="px-4 py-2">Nama Cabang</span>
+                      <span className="px-4 py-2">Nama Cabang</span>
+                      <span className="px-4 py-2">Nama Cabang</span>
+                    </div>
+                  </div>
+                  <Link
+                    to={"/tentang"}
+                    className={`${
+                      pathName == "/tentang"
+                        ? "text-[#169859] bg-[#effff7]"
+                        : ""
+                    } px-3 py-1 rounded-full`}
+                  >
+                    Tentang
+                  </Link>
+                  <Link
+                    to={"/kontak"}
+                    className={`${
+                      pathName == "/kontak" ? "text-[#169859] bg-[#effff7]" : ""
+                    } px-3 py-1 rounded-full`}
+                  >
+                    Kontak
+                  </Link>
+                  <Link
+                    to={"/faq"}
+                    className={`${
+                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
+                    } px-3 py-1 rounded-full`}
+                  >
+                    FAQ
+                  </Link>
+                  <Link
+                    to={"/faq"}
+                    className={`${
+                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
+                    } px-3 py-1 rounded-full`}
+                  >
+                    Informasi
+                  </Link>
+                  <Link
+                    to={"/faq"}
+                    className={`${
+                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
+                    } px-3 py-1 rounded-full`}
+                  >
+                    Program
+                  </Link>
+                </div>
               </div>
               <div className="relative hidden lg:flex justify-between gap-2">
                 <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">

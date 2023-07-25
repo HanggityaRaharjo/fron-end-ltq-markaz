@@ -2,6 +2,7 @@ import React from "react";
 import NavLanding from "../layouts/NavLanding";
 import logo from "../../public/ltq-logo.png";
 import Footer from "../layouts/Footer";
+import LayoutColumn from "../layouts/LayoutColumn";
 
 function Card(props) {
   return (
@@ -15,9 +16,7 @@ function Card(props) {
 
 function LandingPageMaster() {
   return (
-    <>
-      <NavLanding />
-
+    <LayoutColumn>
       <section className="pt-32 flex justify-center bg-[#cafee6] rounded-bl-full">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2">
@@ -68,10 +67,10 @@ function LandingPageMaster() {
         <div className="flex justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="flex justify-center items-center">
-              <div className="h-[400px] w-[350px] bg-slate-200"></div>
+              <div className="h-[400px] w-[400px] bg-slate-200"></div>
             </div>
             <div className="flex justify-center sm:p-5">
-              <div className="lg:w-1/2">
+              <div className="">
                 <h1 className="text-xl font-bold mb-2">
                   Lorem ipsum dolor sit amet consectetur.
                 </h1>
@@ -209,14 +208,12 @@ function LandingPageMaster() {
           </div>
         </div>
         <div className="flex justify-center ">
-          <button className="bg-[#169859] p-2 w-40 rounded-full">
+          <button className="bg-[#169859] text-[#f3faf6] p-2 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
             <span>Daftar Sekarang</span>
           </button>
         </div>
       </section>
-
-      <Footer />
-    </>
+    </LayoutColumn>
   );
 }
 
