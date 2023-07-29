@@ -6,6 +6,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   const handleRegister = () => {
     axios
@@ -46,6 +47,7 @@ function Register() {
         }
       )
       .then(function (response) {
+        setToken(response.data.access_token);
         console.log(response);
       })
       .catch(function (error) {
@@ -53,19 +55,17 @@ function Register() {
       });
     console.log(username);
   };
+  console.log(token);
 
   const handleCekLogin = () => {
-    const accessToken =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2x0cW1hcmthei4wMDB3ZWJob3N0YXBwLmNvbS9hcGkvbG9naW4iLCJpYXQiOjE2OTA2NDkzMDUsImV4cCI6NjE2OTA2NDkyNDUsIm5iZiI6MTY5MDY0OTMwNSwianRpIjoieXN0QnZjVFNrcU5oVnBleCIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.iNg6y1UcOaY9zYoiTJ-Mquh3LYdUUkbjRmRB803A6kw";
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
+    const accessToken = token; // Ganti dengan token yang ingin Anda periksa
 
     axios
-      .get("https://ltqmarkaz.000webhostapp.com/api/me", config)
+      .post("https://ltqmarkaz.000webhostapp.com/api/me", null, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((response) => {
         console.log(response.data); // Tangani respons di sini
       })
