@@ -3,13 +3,27 @@ import NavLanding from "../layouts/NavLanding";
 import logo from "../../public/ltq-logo.png";
 import Footer from "../layouts/Footer";
 import LayoutColumn from "../layouts/LayoutColumn";
+import yayasan from "../assets/yayasan.jpg";
 
 function Card(props) {
   return (
-    <div className="w-[200px]">
+    <div className="w-[300px]">
       <h1 className="text-lg font-semibold">{props.title}</h1>
-      <div className="h-[200px] w-[200px] bg-gray-200"></div>
-      <p className="w-[200px]">{props.label}</p>
+      <div className="h-[200px] w-full bg-gray-200">
+        <img src={props.image} alt="" />
+      </div>
+      <p className="w-full">{props.label}</p>
+    </div>
+  );
+}
+
+function CardBerita(props) {
+  return (
+    <div className="group h-[250px] w-[400px] bg-gray-200 relative flex items-end overflow-hidden cursor-pointer">
+      <img src={props.image} alt="" className="h-full w-full" />
+      <div className="absolute w-full bg-white bg-opacity-50 backdrop-blur-sm py-5 translate-y-24 group-hover:block group-hover:translate-y-0 transition">
+        <h1 className="text-[16px] font-medium px-2">{props.title}</h1>
+      </div>
     </div>
   );
 }
@@ -129,7 +143,7 @@ function LandingPageMaster() {
         <div className="flex justify-center">
           <div>
             <h1 className="text-[20px] font-semibold">Berita Terkini</h1>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <div className="bg-gray-300 h-[2px] w-[40px]" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -153,26 +167,22 @@ function LandingPageMaster() {
       </section>
 
       <section className="">
-        <div className="mt-10 px-52">
+        <div className="mt-10 px-5 flex justify-center">
           <div className="grid grid-cols-1 gap-5 items-center md:grid-cols-2 lg:grid-cols-3">
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
-            <div className=" h-40 bg-gray-200 relative flex items-end">
-              <h2 className="bottom-0">Lorem ipsum dolor sit amet.</h2>
-            </div>
+            <CardBerita
+              title={"berita terkini tentang yayasan"}
+              image={yayasan}
+            />
+            <CardBerita
+              title={"Lorem ipsum dolor sit amet consectetur."}
+              image={yayasan}
+            />
+            <CardBerita
+              title={
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi!"
+              }
+              image={yayasan}
+            />
           </div>
         </div>
       </section>
@@ -186,12 +196,13 @@ function LandingPageMaster() {
         </div>
         {/* card */}
         <div className="flex justify-center py-10">
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <Card
               title={"orem ipsum dolor sit"}
               label={
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit   Quisquam, ratione!"
               }
+              image={yayasan}
             />
             <Card
               title={"orem oienc cknkvht"}

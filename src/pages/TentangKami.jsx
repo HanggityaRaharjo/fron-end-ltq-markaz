@@ -1,18 +1,20 @@
 import React from "react";
-import NavLanding from "../layouts/NavLanding";
-import Footer from "../layouts/Footer";
 import LayoutColumn from "../layouts/LayoutColumn";
+import markaz from "../assets/MARKAZ.png";
+import founder from "../assets/founder/founder.jpg";
 
 function TentangKami() {
   return (
     <>
       <LayoutColumn>
-        <section className="pt-20">
+        <section className="pt-20 mb-20">
           <div className="flex justify-center items-center">
             <div className="container">
               <div className="grid grid-cols-1 md:grid-cols-2 items-center ">
                 <div className="flex justify-center md:hidden">
-                  <div className="w-[500px] h-[500px] bg-gray-300"></div>
+                  <div className="w-[400px] h-[400px]">
+                    <img src={markaz} alt="" />
+                  </div>
                 </div>
                 <div className="flex justify-center">
                   <div className="w-[500px]">
@@ -30,7 +32,9 @@ function TentangKami() {
                   </div>
                 </div>
                 <div className="hidden md:flex justify-center pt-10">
-                  <div className="w-[500px] h-[500px] bg-gray-300"></div>
+                  <div className="w-[400px] h-[400px]">
+                    <img src={markaz} alt="" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -43,10 +47,28 @@ function TentangKami() {
                   The <span className="absolute top-10">Founder</span>
                 </h1>
                 <div className="grid grid-cols-2 lg:grid-cols-4">
-                  <div className="h-[250px] w-[250px] bg-gray-300"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-400"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-300"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-400"></div>
+                  <div className="h-[250px] w-[250px] ">
+                    <img src={founder} alt="" className="h-full" />
+                  </div>
+                  <div className="h-[250px] w-[250px] bg-[#cafee6]">
+                    <div className="flex items-center h-full p-5">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Animi, et?
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-[250px] w-[250px] ">
+                    <img src={founder} alt="" className="h-full" />
+                  </div>
+                  <div className="h-[250px] w-[250px] bg-[#f6e7c5]">
+                    <div className="flex items-center h-full p-5">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Animi, et?
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -56,10 +78,28 @@ function TentangKami() {
                   Our <span className="absolute top-10 right-1">Founder</span>
                 </h1>
                 <div className="grid grid-cols-2 lg:grid-cols-4">
-                  <div className="h-[250px] w-[250px] bg-gray-300"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-400"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-300"></div>
-                  <div className="h-[250px] w-[250px] bg-gray-400"></div>
+                  <div className="h-[250px] w-[250px] bg-[#f6e7c5]">
+                    <div className="flex items-center h-full p-5">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Animi, et?
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-[250px] w-[250px] bg-gray-400">
+                    <img src={founder} alt="" className="h-full" />
+                  </div>
+                  <div className="h-[250px] w-[250px] bg-[#cafee6]">
+                    <div className="flex items-center h-full p-5">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Animi, et?
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-[250px] w-[250px] bg-gray-400">
+                    <img src={founder} alt="" className="h-full" />
+                  </div>
                 </div>
               </div>
             </div>

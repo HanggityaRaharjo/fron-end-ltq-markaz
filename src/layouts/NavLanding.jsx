@@ -19,7 +19,7 @@ function NavLanding() {
         <div className="max-w-7xl  w-full h-20 py-2 transition-all duration-150 ">
           <div className="flex items-center h-full px-5 bg-white bg-opacity-70 backdrop-blur-sm shadow-lg rounded-full justify-between relative ">
             <div className="flex  justify-between items-center gap-2 w-full p-2">
-              <div className="">
+              <div className="hidden md:block">
                 <div className="flex items-center gap-5 font-semibold">
                   <Link
                     to={"/"}
@@ -110,12 +110,22 @@ function NavLanding() {
                 </div>
               </div>
               <div className="relative hidden lg:flex justify-between gap-2">
-                <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                  <span>Login</span>
-                </button>
-                <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                  <span>Register</span>
-                </button>
+                <Link
+                  to="/login"
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
+                  <span>
+                    <span>Login</span>
+                  </span>
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
+                  <span>
+                    <span>Register</span>
+                  </span>
+                </Link>
               </div>
               <button className="lg:hidden">
                 <a href="">

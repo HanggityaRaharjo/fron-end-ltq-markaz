@@ -1,9 +1,43 @@
-import React from "react";
-import logo from "../../assets/MARKAZ.png";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutAutentication from "../../layouts/LayoutAutentication";
+import { login } from "../../services/auth.services";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    const loginData = {
+      username: username,
+      password: password,
+    };
+
+    try {
+      const response = await fetch(
+        "https://ltqmarkaz.000webhostapp.com/api/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Login gagal");
+      }
+
+      const data = await response.json();
+      console.log("Respon dari server:", data);
+      // Lakukan aksi lain setelah login berhasil, misalnya menyimpan token atau mengarahkan ke halaman lain
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error.message);
+      // Lakukan penanganan kesalahan lainnya
+    }
+  };
+
   return (
     <>
       <LayoutAutentication>
@@ -24,17 +58,22 @@ function Login() {
                 <h1>Password</h1>
                 <input type="password" className="w-full h-9 bg-slate-100" />
               </div>
+              <div className="p-2">
+                <p className="text-xs">
+                  Apakah sudah punya akun?{" "}
+                  <Link to={"/register"} className="text-blue-500 pl-2">
+                    Buat Akun
+                  </Link>
+                </p>
+              </div>
               <div className="flex justify-end gap-2 mt-5">
-                <button className="p-2 w-24 bg-[#169859] text-white rounded-full ">
-                  <span>
-                    <Link to="/home">Login</Link>
-                  </span>
-                </button>
-                <button className="p-2 w-24 bg-[#169859] text-white rounded-full ">
-                  <span>
-                    <Link to="/register">Register</Link>
-                  </span>
-                </button>
+                <Link
+                  onClick={handleLogin}
+                  to=""
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
+                  <span>Login</span>
+                </Link>
               </div>
             </div>
           </div>
