@@ -8,7 +8,7 @@ const LayoutColumn = ({ children }) => {
     <>
       <NavLanding />
       <div className="flex justify-center font-poppins">
-        <main className="max-w-[1366px]">{children}</main>
+        <main className="max-w-[1366px] ">{children}</main>
       </div>
       <StickyNavigation />
       <Footer />
