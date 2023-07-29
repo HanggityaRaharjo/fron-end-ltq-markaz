@@ -126,6 +126,7 @@ function NavLanding() {
                     <span>Register</span>
                   </span>
                 </Link>
+                <Link
                   to={"/home"}
                   className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
                 >
