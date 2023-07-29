@@ -15,11 +15,11 @@ function NavLanding() {
 
   return (
     <>
-      <nav className="fixed  w-full flex justify-center z-[999]">
-        <div className="max-w-7xl  w-full h-20 py-2 transition-all duration-150">
+      <nav className="fixed  w-full flex justify-center z-[999] ">
+        <div className="max-w-7xl  w-full h-20 py-2 transition-all duration-150 ">
           <div className="flex items-center h-full px-5 bg-white bg-opacity-70 backdrop-blur-sm shadow-lg rounded-full justify-between relative ">
             <div className="flex  justify-between items-center gap-2 w-full p-2">
-              <div className="">
+              <div className="hidden md:block">
                 <div className="flex items-center gap-5 font-semibold">
                   <Link
                     to={"/"}
@@ -47,10 +47,22 @@ function NavLanding() {
                         />
                       </svg>
                     </div>
-                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-150">
-                      <span className="px-4 py-2">Nama Cabang</span>
-                      <span className="px-4 py-2">Nama Cabang</span>
-                      <span className="px-4 py-2">Nama Cabang</span>
+                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-60 transition-all duration-150">
+                      <span className="px-4 py-2 hover:bg-gray-100">
+                        <Link to="/ltqmqi">LTQ MQI</Link>
+                      </span>
+                      <span className="px-4 py-2 hover:bg-gray-100">
+                        <Link to="/mdmqi">MDMQI</Link>
+                      </span>
+                      <span className="px-4 py-2 hover:bg-gray-100">
+                        <Link to="/qsc">QSC</Link>
+                      </span>
+                      <span className="px-4 py-2 hover:bg-gray-100">
+                        <Link to="/mulazamah">Mulazamah Akhwat</Link>
+                      </span>
+                      <span className="px-4 py-2 hover:bg-gray-100">
+                        <Link to="/santri">Santri Nusantara</Link>
+                      </span>
                     </div>
                   </div>
                   <Link
@@ -99,6 +111,21 @@ function NavLanding() {
               </div>
               <div className="relative hidden lg:flex justify-between gap-2">
                 <Link
+                  to="/login"
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
+                  <span>
+                    <span>Login</span>
+                  </span>
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
+                  <span>
+                    <span>Register</span>
+                  </span>
+                </Link>
                   to={"/home"}
                   className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
                 >

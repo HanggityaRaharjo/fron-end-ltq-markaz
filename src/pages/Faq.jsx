@@ -6,7 +6,7 @@ import LayoutColumn from "../layouts/LayoutColumn";
 const Faq = () => {
   return (
     <LayoutColumn>
-      <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+      <section className="relative z-20 overflow-hidden  pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -78,7 +78,7 @@ const Faq = () => {
               x2="602.827"
               y2="-418.681"
               gradientUnits="userSpaceOnUse"
-            >
+              >
               <stop stop-color="#3056D3" stop-opacity="0.36" />
               <stop offset="1" stop-color="#F5F2FD" stop-opacity="0" />
               <stop offset="1" stop-color="#F5F2FD" stop-opacity="0.096144" />
