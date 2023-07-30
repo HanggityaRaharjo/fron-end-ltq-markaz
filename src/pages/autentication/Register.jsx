@@ -57,21 +57,30 @@ function Register() {
   };
   console.log(token);
 
-  const handleCekLogin = () => {
-    const accessToken = token; // Ganti dengan token yang ingin Anda periksa
+  const checkTokenValidity = async () => {
+    // const token = "Bearer YOUR_ACCESS_TOKEN"; // Ganti YOUR_ACCESS_TOKEN dengan token yang ingin Anda periksa.
+    const urlendpointbackend = "https://ltqmarkaz.000webhostapp.com/api/me"; // URLendpointbackend untuk memeriksa token di sisi server Anda.
 
-    axios
-      .post("https://ltqmarkaz.000webhostapp.com/api/me", null, {
+    try {
+      const response = await fetch(urlendpointbackend, {
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: token,
         },
-      })
-      .then((response) => {
-        console.log(response.data); // Tangani respons di sini
-      })
-      .catch((error) => {
-        console.error(error); // Tangani kesalahan di sini
       });
+
+      if (!response.ok) {
+        throw new Error("Network response w-as not ok");
+      }
+
+      const data = await response.json();
+      // Berhasil memeriksa token
+      console.log("Token valid!");
+      console.log("User data:", data); // Jika ada data balasan dari server, tampilkan di konsol.
+    } catch (error) {
+      // Terjadi error atau token tidak valid
+      console.error("Terjadi kesalahan: " + error.message);
+    }
   };
 
   return (
@@ -120,7 +129,7 @@ function Register() {
                 <span>Create</span>
               </button>
               <button
-                onClick={() => handleCekLogin()}
+                onClick={() => checkTokenValidity()}
                 className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
               >
                 <span>cek login</span>

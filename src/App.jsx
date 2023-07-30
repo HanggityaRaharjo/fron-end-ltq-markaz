@@ -18,6 +18,10 @@ import DaftarTalaqqi from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqi";
 import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBiodata";
 import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
 import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
+import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
+import Profile from "./pages/profil";
+import Profil from "./pages/profil";
+import FormCuti from "./pages/formCuti";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/daftartalaqqibiodata",
     element: <DaftarTalaqqiBiodata />,
+  },
+  {
+    path: "/daftartalaqqihari",
+    element: <DaftarTalaqqiHari />,
   },
 
   {
@@ -100,7 +108,15 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/peserta-baru/biodata-siswa",
+    path: "/profil",
+    element: <Profil />,
+  },
+  {
+    path: "/formcuti",
+    element: <FormCuti />,
+  },
+  {
+    path: "/peserta-baru",
     element: <FormBiodataSiswa />,
   },
 ]);
