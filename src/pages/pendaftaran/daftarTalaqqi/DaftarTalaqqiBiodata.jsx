@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LayoutTalaqqi from "./LayoutTalaqqi";
 
 function DaftarTalaqqiBiodata() {
@@ -37,7 +38,7 @@ function DaftarTalaqqiBiodata() {
               <FormInput title={"No SMS Alternatif"} />
             </div>
           </div>
-          {/* <div className="flex justify-end gap-5 mt-10 pr-5">
+          <div className="flex justify-end gap-5 mt-10 pr-5">
             <Link className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
               Submit
             </Link>
@@ -47,7 +48,7 @@ function DaftarTalaqqiBiodata() {
             >
               Cancel
             </button>
-          </div> */}
+          </div>
         </section>
       </LayoutTalaqqi>
     </>
