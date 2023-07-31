@@ -9,7 +9,6 @@ import LtqMqi from "./pages/cabang/LtqMqi";
 import Mdmqi from "./pages/cabang/Mdmqi";
 import Qsc from "./pages/cabang/Qsc";
 import SantriNusantara from "./pages/cabang/SantriNusantara";
-import RqAkhwat from "./pages/cabang/RqAkhwat";
 import MulazamahAkhwat from "./pages/cabang/MulazamahAkhwat";
 import Login from "./pages/autentication/Login";
 import Register from "./pages/autentication/Register";
@@ -19,9 +18,13 @@ import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBi
 import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
 import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
 import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
-import Profile from "./pages/profil";
 import Profil from "./pages/profil";
 import FormCuti from "./pages/formCuti";
+import SelectBranch from "./pages/autentication/pilihcabang";
+import SelectRole from "./pages/admin/checkboxRole";
+import Mukhoyyam from "./pages/cabang/mukhoyyam";
+import MarkazAlquranAkhwat from "./pages/cabang/markazAlquranAkhwat";
+import KajianTafsir from "./pages/cabang/kajianTafsir";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/pilihcabang",
+    element: <SelectBranch />,
   },
 
   // Daftar Tahsin
@@ -67,6 +74,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <LandingPageMaster />,
   },
+
+  // cabang
+
   {
     path: "/ltqmqi",
     element: <LtqMqi />,
@@ -88,9 +98,18 @@ const router = createBrowserRouter([
     element: <MulazamahAkhwat />,
   },
   {
-    path: "/rqakhwat",
-    element: <RqAkhwat />,
+    path: "/mukhoyyam",
+    element: <Mukhoyyam />,
   },
+  {
+    path: "/markazalquranakhwat",
+    element: <MarkazAlquranAkhwat />,
+  },
+  {
+    path: "/kajiantafsir",
+    element: <KajianTafsir />,
+  },
+
   {
     path: "/tentang",
     element: <TentangKami />,
@@ -102,6 +121,12 @@ const router = createBrowserRouter([
   {
     path: "/faq",
     element: <Faq />,
+  },
+
+  // Admin
+  {
+    path: "/selectrole",
+    element: <SelectRole />,
   },
   {
     path: "/home",

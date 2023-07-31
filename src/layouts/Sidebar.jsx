@@ -12,12 +12,12 @@ const Sidebar = ({ sidebarStatus }) => {
       }}
     >
       <Link to={"/"}>
-        <div className="h-20 w-full flex justify-center mb-5">
+        <div className="h-14 w-full flex justify-center mb-5 mt-2 ">
           <img src={logo} className="h-full " alt="" />
         </div>
       </Link>
       <div
-        className="flex flex-col gap-2 items-start pr-5 overflow-auto mr-5"
+        className="flex flex-col gap-2 items-start pl-5 overflow-auto mr-5"
         style={{ height: "calc(100vh - 100px)" }}
       >
         <DropdownDivider name="Home" />

@@ -1,16 +1,18 @@
 import React from "react";
 import LayoutColumn from "../../layouts/LayoutColumn";
-import santri from "../../assets/santri.png";
+import santri from "../../assets/logo/santri.png";
 import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
 
 function Card({ img, title, label }) {
   return (
-    <div className="flex justify-center border bg-white rounded-xl p-2 border-gray-200 hover:shadow-md">
-      <div className="w-10/12 lg:w-full">
-        <img src={img} alt="" />
+    <div className="flex justify-center p-5 bg-white shadow-lg">
+      <div className="w-full">
+        <div>
+          <img src={img} alt="" />
+        </div>
         <h1 className="text-[17px] py-2 font-semibold text-justify">{title}</h1>
-        <div className="">{label}</div>
+        <div className="text-justify">{label}</div>
       </div>
     </div>
   );

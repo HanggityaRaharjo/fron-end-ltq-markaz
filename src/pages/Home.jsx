@@ -21,7 +21,7 @@ const Home = () => {
                 Kamu belum terdaftar sebagai peserta
               </h1>
               <Link
-                to={"/peserta-baru/biodata-siswa"}
+                to={"/peserta-baru"}
                 className="bg-[#169859] text-[#f3faf6] p-2  rounded-full font-semibold hover:bg-opacity-70 transition duration-150 animate-pulse active:scale-95"
               >
                 Daftar Peserta disini

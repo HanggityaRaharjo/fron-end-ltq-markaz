@@ -1,6 +1,6 @@
 import React from "react";
 import LayoutColumn from "../layouts/LayoutColumn";
-import markaz from "../assets/MARKAZ.png";
+import markaz from "../assets/logo/MARKAZ.png";
 import founder from "../assets/founder/founder.jpg";
 
 function TentangKami() {

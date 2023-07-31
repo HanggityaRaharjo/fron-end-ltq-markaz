@@ -1,27 +1,26 @@
 import React from "react";
-import NavLanding from "../layouts/NavLanding";
 import logo from "../../public/ltq-logo.png";
-import Footer from "../layouts/Footer";
 import LayoutColumn from "../layouts/LayoutColumn";
 import yayasan from "../assets/yayasan.jpg";
+import markaz from "../assets/logo/MARKAZ.PNG";
 
 function Card(props) {
   return (
     <div className="w-[300px]">
       <h1 className="text-lg font-semibold">{props.title}</h1>
-      <div className="h-[200px] w-full bg-gray-200">
+      <div className="h-[200px] w-full bg-gray-200 mt-2">
         <img src={props.image} alt="" />
       </div>
-      <p className="w-full">{props.label}</p>
+      <p className="w-full pt-2 text-justify">{props.label}</p>
     </div>
   );
 }
 
 function CardBerita(props) {
   return (
-    <div className="group h-[250px] w-[400px] bg-gray-200 relative flex items-end overflow-hidden cursor-pointer">
+    <div className="group h-[200px] w-[350px] bg-gray-200 relative flex items-end overflow-hidden cursor-pointer shadow-md">
       <img src={props.image} alt="" className="h-full w-full" />
-      <div className="absolute w-full bg-white bg-opacity-50 backdrop-blur-sm py-5 translate-y-24 group-hover:block group-hover:translate-y-0 transition">
+      <div className="absolute w-full bg-white bg-opacity-40 h-[80px] flex backdrop-blur-sm py-5 translate-y-28 group-hover:block group-hover:translate-y-0 transition duration-300">
         <h1 className="text-[16px] font-medium px-2">{props.title}</h1>
       </div>
     </div>
@@ -81,7 +80,9 @@ function LandingPageMaster() {
         <div className="flex justify-center">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="flex justify-center items-center">
-              <div className="h-[400px] w-[400px] bg-slate-200"></div>
+              <div className="h-[400px] w-[400px]">
+                <img src={markaz} alt="" />
+              </div>
             </div>
             <div className="flex justify-center sm:p-5">
               <div className="">
