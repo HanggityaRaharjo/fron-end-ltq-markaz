@@ -11,7 +11,6 @@ function NavLanding() {
   const [pathName, setPathName] = useState(window.location.pathname);
   const [dropdownShow, setDropdownShow] = useState(false);
   const [navbarStatus, setNavbarStatus] = useState(false);
-  console.log(pathName);
 
   return (
     <>
@@ -91,50 +90,21 @@ function NavLanding() {
                   >
                     FAQ
                   </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Informasi
-                  </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Program
-                  </Link>
                 </div>
               </div>
               <div className="relative hidden lg:flex justify-between gap-2">
                 <Link
-                  to="/login"
-                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                >
-                  <span>
-                    <span>Login</span>
-                  </span>
-                </Link>
-                <Link
-                  to="/register"
-                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                >
-                  <span>
-                    <span>Register</span>
-                  </span>
-                </Link>
-                <Link
-                  to={"/home"}
+                  to={"/login"}
                   className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
                 >
                   <span>Login</span>
                 </Link>
-                <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                <Link
+                  to={"/register"}
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
                   <span>Register</span>
-                </button>
+                </Link>
               </div>
               <button className="lg:hidden">
                 <a href="">

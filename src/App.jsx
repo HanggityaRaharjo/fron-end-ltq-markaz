@@ -18,6 +18,10 @@ import DaftarTalaqqi from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqi";
 import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBiodata";
 import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
 import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
+import PlacementTest from "./pages/pendaftaran/placement-test";
+import PilihanGanda from "./pages/ujian/pilihan-ganda";
+import PilihanProgram from "./pages/pendaftaran/pilihan-program";
+import BiayaPendidikan from "./pages/pendaftaran/biaya-pendidikan";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +106,26 @@ const router = createBrowserRouter([
   {
     path: "/peserta-baru/biodata-siswa",
     element: <FormBiodataSiswa />,
+  },
+  {
+    path: "/peserta-baru/pilihan-program",
+    element: <PilihanProgram />,
+  },
+  {
+    path: "/peserta-baru/biaya-pendidikan",
+    element: <BiayaPendidikan />,
+  },
+  {
+    path: "/daftar-ulang/biaya-pendidikan",
+    element: <BiayaPendidikan />,
+  },
+  {
+    path: "/placement-test",
+    element: <PlacementTest />,
+  },
+  {
+    path: "/placement-test/pilihan-ganda",
+    element: <PilihanGanda />,
   },
 ]);
 

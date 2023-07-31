@@ -1,6 +1,6 @@
 import React from "react";
 import NavLanding from "../layouts/NavLanding";
-import logo from "../../public/ltq-logo.png";
+import logo from "../assets/MARKAZ.png";
 import Footer from "../layouts/Footer";
 import LayoutColumn from "../layouts/LayoutColumn";
 import yayasan from "../assets/yayasan.jpg";
@@ -21,6 +21,7 @@ function CardBerita(props) {
   return (
     <div className="group h-[250px] w-[400px] bg-gray-200 relative flex items-end overflow-hidden cursor-pointer">
       <img src={props.image} alt="" className="h-full w-full" />
+      asd
       <div className="absolute w-full bg-white bg-opacity-50 backdrop-blur-sm py-5 translate-y-24 group-hover:block group-hover:translate-y-0 transition">
         <h1 className="text-[16px] font-medium px-2">{props.title}</h1>
       </div>
@@ -46,12 +47,12 @@ function LandingPageMaster() {
               </div>
             </div>
             <div className="flex justify-center items-center">
-              <div className="w-3/4 ">
-                <div className="">
-                  <img src={logo} alt="" className="h-6 " />
+              <div className="w-3/4">
+                <div className="flex justify-center">
+                  <img src={logo} alt="" className="w-56  scale-150" />
                 </div>
-                <h1 className="text-[40px] font-bold py-5">MARKAZ LTQ</h1>
-                <p className="py-2 text-[20px] font-semibold">
+                <h1 className="text-[40px] font-bold py-1">MARKAZ LTQ</h1>
+                <p className="text-[20px] font-semibold">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
                 <p>
@@ -59,7 +60,7 @@ function LandingPageMaster() {
                   ipsum dolor sit amet. Lorem ipsum dolor, sit amet consectetur
                   adipisicing elit. Provident, voluptates?
                 </p>
-                <button className="my-10 bg-[#169859] h-12 w-32 rounded-full p-2 hover:bg-[#1aaf67]">
+                <button className=" bg-[#169859] h-12 w-32 rounded-full p-2 hover:bg-[#1aaf67]">
                   <span className="text-white">Bergabung</span>
                 </button>
               </div>

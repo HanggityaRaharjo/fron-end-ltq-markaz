@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = ({ sidebarStatus, HandleSidebar }) => {
   const [dropdownShow, setDropdownShow] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   return (
     <nav className="fixed  w-full flex justify-center z-[999]">

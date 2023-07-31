@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import LayoutAutentication from "../../layouts/LayoutAutentication";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -90,8 +91,9 @@ function Register() {
               <input
                 type="text"
                 name="username"
-                className="w-full h-9 bg-slate-100"
+                className="w-full h-10 bg-slate-100 p-2 rounded-lg"
                 onChange={(e) => setUsername(e.target.value)}
+                placeholder="type here"
               />
             </div>
             <div>
@@ -99,8 +101,9 @@ function Register() {
               <input
                 type="text"
                 name="email"
-                className="w-full h-9 bg-slate-100"
+                className="w-full h-10 bg-slate-100 p-2 rounded-lg"
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="type here"
               />
             </div>
             <div className="mt-2">
@@ -108,28 +111,23 @@ function Register() {
               <input
                 type="password"
                 name="password"
-                className="w-full h-9 bg-slate-100"
+                className="w-full h-10 bg-slate-100 p-2 rounded-lg"
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="type here"
               />
             </div>
+            <small>
+              Sudah punya akun ?{" "}
+              <Link to={"/login"} className="text-blue-500">
+                Masuk
+              </Link>
+            </small>
             <div className="flex justify-end gap-2 mt-5">
               <button
                 onClick={() => handleRegister()}
-                className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                className="bg-[#169859] text-[#f3faf6] p-2 w-full rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
               >
-                <span>Create</span>
-              </button>
-              <button
-                onClick={() => handleCekLogin()}
-                className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                <span>cek login</span>
-              </button>
-              <button
-                onClick={() => handleLogin()}
-                className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                <span>login</span>
+                Buat
               </button>
             </div>
           </div>

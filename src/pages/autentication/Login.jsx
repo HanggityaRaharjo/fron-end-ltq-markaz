@@ -52,11 +52,19 @@ function Login() {
             <div className="w-7/12">
               <div>
                 <h1>Username</h1>
-                <input type="text" className="w-full h-9 bg-slate-100" />
+                <input
+                  type="text"
+                  className="w-full h-10 p-2 rounded-lg bg-slate-100"
+                  placeholder="type here"
+                />
               </div>
               <div className="mt-2">
                 <h1>Password</h1>
-                <input type="password" className="w-full h-9 bg-slate-100" />
+                <input
+                  type="password"
+                  className="w-full h-10 p-2 rounded-lg bg-slate-100"
+                  placeholder="type here"
+                />
               </div>
               <div className="p-2">
                 <p className="text-xs">
@@ -68,11 +76,10 @@ function Login() {
               </div>
               <div className="flex justify-end gap-2 mt-5">
                 <Link
-                  onClick={handleLogin}
-                  to=""
-                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                  to={"/home"}
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-full rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
                 >
-                  <span>Login</span>
+                  Masuk
                 </Link>
               </div>
             </div>

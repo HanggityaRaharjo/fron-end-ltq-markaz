@@ -34,20 +34,17 @@ const FormBiodataSiswa = () => {
             </div>
 
             <div className="flex justify-end gap-5 mt-5">
-              {/* <button
-                type="submit"
+              <Link
+                to={"/peserta-baru/pilihan-program"}
                 className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
               >
-                Submit
-              </button> */}
-              <Link className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                Submit
+                Selanjutnya
               </Link>
               <button
                 type="submit"
                 className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
               >
-                Cancel
+                Batal
               </button>
             </div>
           </form>

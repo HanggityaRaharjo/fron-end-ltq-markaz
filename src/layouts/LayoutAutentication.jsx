@@ -3,9 +3,9 @@ import React from "react";
 const LayoutAutentication = ({ children }) => {
   return (
     <>
-      <section className="h-[99vh]">
+      <section className="font-poppins">
         <div className="grid grid-cols-2 h-full">
-          <div className="bg-gradient-to-r from-[#169859] to-[#2ec70f9c]">
+          <div className="bg-gradient-to-r min-h-screen from-[#169859] to-[#2ec70f9c]">
             <div className="flex justify-center items-center h-full">
               <div className="w-10/12 text-center">
                 {/* <img src={logo} alt="" /> */}
