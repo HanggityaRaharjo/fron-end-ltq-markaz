@@ -1,15 +1,16 @@
 import React from "react";
 import LayoutColumn from "../../layouts/LayoutColumn";
-import animasi from "../../assets/animasi1.svg";
 import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
-import ltq from "../../assets/LTQ.png";
+import ltq from "../../assets/logo/LTQ.png";
 
 function Card({ img, title, label }) {
   return (
-    <div className="flex justify-center">
-      <div className="w-10/12 lg:w-full">
-        <img src={img} alt="" />
+    <div className="flex justify-center p-5 bg-white shadow-lg">
+      <div className="w-full">
+        <div>
+          <img src={img} alt="" />
+        </div>
         <h1 className="text-[17px] py-2 font-semibold text-justify">{title}</h1>
         <div className="text-justify">{label}</div>
       </div>
@@ -110,7 +111,7 @@ const LtqMqi = () => {
           </div>
           <div>
             {/* card */}
-            <div className="flex justify-center pt-5 mb-10">
+            <div className="flex justify-center pt-5 mb-10 mx-5">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <Card
                   img={yayasan}

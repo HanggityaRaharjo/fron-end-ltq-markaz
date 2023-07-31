@@ -47,22 +47,54 @@ function NavLanding() {
                         />
                       </svg>
                     </div>
-                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-60 transition-all duration-150">
-                      <span className="px-4 py-2 hover:bg-gray-100">
-                        <Link to="/ltqmqi">LTQ MQI</Link>
-                      </span>
-                      <span className="px-4 py-2 hover:bg-gray-100">
-                        <Link to="/mdmqi">MDMQI</Link>
-                      </span>
-                      <span className="px-4 py-2 hover:bg-gray-100">
-                        <Link to="/qsc">QSC</Link>
-                      </span>
-                      <span className="px-4 py-2 hover:bg-gray-100">
-                        <Link to="/mulazamah">Mulazamah Akhwat</Link>
-                      </span>
-                      <span className="px-4 py-2 hover:bg-gray-100">
-                        <Link to="/santri">Santri Nusantara</Link>
-                      </span>
+                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-[400px] max-h-0 overflow-hidden group-hover:max-h-[400px] transition-all duration-150">
+                      <div className="grid grid-cols-1">
+                        <Link
+                          to="/ltqmqi"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>LTQ MQI</span>
+                        </Link>
+                        <Link
+                          to="/mdmqi"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>MDMQI</span>
+                        </Link>
+                        <Link to="/qsc" className="px-4 py-2 hover:bg-gray-100">
+                          <span>QSC</span>
+                        </Link>
+                        <Link
+                          to="/mulazamah"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>Mulazamah Akhwat</span>
+                        </Link>
+                        <Link
+                          to="/santri"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>Santri Nusantara</span>
+                        </Link>
+                        <Link
+                          to="/mukhoyyam"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>Mukhoyyam Alquan</span>
+                        </Link>
+                        <Link
+                          to="/kajiantafsir"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>Kajian Tafsir</span>
+                        </Link>
+                        <Link
+                          to="/markazalquranakhwat"
+                          className="px-4 py-2 hover:bg-gray-100"
+                        >
+                          <span>Markaz Alquran Akhwat</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                   <Link
@@ -90,22 +122,6 @@ function NavLanding() {
                     } px-3 py-1 rounded-full`}
                   >
                     FAQ
-                  </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Informasi
-                  </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Program
                   </Link>
                 </div>
               </div>

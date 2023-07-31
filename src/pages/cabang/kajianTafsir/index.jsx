@@ -1,9 +1,8 @@
 import React from "react";
-import LayoutColumn from "../../layouts/LayoutColumn";
-import education from "../../assets/education.svg";
-import yayasan from "../../assets/yayasan.jpg";
-import reading from "../../assets/Reading.svg";
-import qsc from "../../assets/logo/QSC.png";
+import LayoutColumn from "../../../layouts/LayoutColumn";
+import education from "../../../assets/education.svg";
+import yayasan from "../../../assets/yayasan.jpg";
+import kajiantafsir from "../../../assets/logo/KAJIANTAFSIR.png";
 
 function Card({ img, title, label }) {
   return (
@@ -19,22 +18,22 @@ function Card({ img, title, label }) {
   );
 }
 
-function Qsc() {
+function KajianTafsir() {
   return (
     <LayoutColumn>
-      <section className="pt-20 ">
+      <section className="pt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center py-20 bg-[#cafee6] rounded-bl-full">
           {/* gambar */}
           <div className="flex justify-center  md:hidden">
             <div className=" w-10/12 ">
-              <img src={qsc} alt="" />
+              <img src={kajiantafsir} alt="" />
             </div>
           </div>
 
           <div className="flex justify-center">
             <div className="w-10/12 md:10/12 pt-5">
               <h1 className="text-[32px] text-center font-semibold mb-5">
-                QSC
+                Kajian Tafsir
               </h1>
               <p className="text-[20px] font-semibold mb-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
@@ -48,70 +47,44 @@ function Qsc() {
             </div>
           </div>
           {/* gambar */}
-          <div className=" hidden justify-end md:block">
+          <div className="justify-center hidden md:block">
             <div className="flex justify-end">
               <div className="w-[500px]">
-                <img src={qsc} alt="" />
+                <img src={kajiantafsir} alt="" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-20 flex justify-center bg-[#cafee6] rounded-tr-full py-10">
-          <div className="grid grid-cols-1 lg:grid-flow-row-dense gap-2 md:w-10/12 lg:w-7/12">
+        <div className="mt-20 flex justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
             {/* image */}
             <div className="flex justify-center lg:justify-end">
               <div className="w-10/12 lg:w-[400px] flex justify-end">
                 <img src={education} alt="" className="h-full" />
               </div>
             </div>
-            <div className="w-full flex justify-center ">
-              <div className="flex justify-center lg:justify-start">
-                <div className="w-10/12 md:w-7/12 lg:w-6/12">
-                  <h1>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-                    mollitia?
-                  </h1>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Necessitatibus quaerat minus, assumenda, ipsa saepe, facere
-                    alias iusto voluptate debitis officiis eligendi. Odio,
-                    veritatis tenetur, perferendis voluptas sunt doloribus
-                    blanditiis exercitationem soluta error ut corrupti quia esse
-                    facere commodi eos delectus ex quis cupiditate reiciendis
-                    quam sed voluptates numquam consectetur. Minus.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-10/12 lg:w-[400px] flex justify-end">
-                <img src={education} alt="" className="h-full" />
-              </div>
-            </div>
-            <div className="w-full flex justify-center">
-              <div className="flex justify-center lg:justify-start">
-                <div className="w-10/12 md:w-7/12 lg:w-6/12">
-                  <h1>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-                    mollitia?
-                  </h1>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Necessitatibus quaerat minus, assumenda, ipsa saepe, facere
-                    alias iusto voluptate debitis officiis eligendi. Odio,
-                    veritatis tenetur, perferendis voluptas sunt doloribus
-                    blanditiis exercitationem soluta error ut corrupti quia esse
-                    facere commodi eos delectus ex quis cupiditate reiciendis
-                    quam sed voluptates numquam consectetur. Minus.
-                  </p>
-                </div>
+            <div className="flex justify-center lg:justify-start">
+              <div className="w-10/12 lg:w-8/12">
+                <h1>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
+                  mollitia?
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Necessitatibus quaerat minus, assumenda, ipsa saepe, facere
+                  alias iusto voluptate debitis officiis eligendi. Odio,
+                  veritatis tenetur, perferendis voluptas sunt doloribus
+                  blanditiis exercitationem soluta error ut corrupti quia esse
+                  facere commodi eos delectus ex quis cupiditate reiciendis quam
+                  sed voluptates numquam consectetur. Minus.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-20 ">
+        <div className="mt-20">
           <div className="flex justify-center">
             <div>
               <h1 className="text-center text-[20px] font-semibold">Program</h1>
@@ -138,7 +111,7 @@ function Qsc() {
           </div>
           <div>
             {/* card */}
-            <div className="flex justify-center pt-5 mb-10">
+            <div className="flex justify-center pt-5 mb-10 mx-5">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 <Card
                   img={yayasan}
@@ -177,4 +150,4 @@ function Qsc() {
   );
 }
 
-export default Qsc;
+export default KajianTafsir;
