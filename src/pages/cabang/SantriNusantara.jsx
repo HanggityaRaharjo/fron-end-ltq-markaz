@@ -1,6 +1,6 @@
 import React from "react";
 import LayoutColumn from "../../layouts/LayoutColumn";
-import santri from "../../assets/santri.png";
+import santri from "../../assets/logo/santri.png";
 import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import LayoutColumn from "../../layouts/LayoutColumn";
-import mulazamah from "../../assets/logo/MULAZAMAH.png";
-import education from "../../assets/education.svg";
-import yayasan from "../../assets/yayasan.jpg";
+import LayoutColumn from "../../../layouts/LayoutColumn";
+import maa from "../../../assets/logo/MAA.png";
+import education from "../../../assets/education.svg";
+import yayasan from "../../../assets/yayasan.jpg";
 
 function Card({ img, title, label }) {
   return (
@@ -16,15 +16,15 @@ function Card({ img, title, label }) {
   );
 }
 
-function MulazamahAkhwat() {
+function MarkazAlquranAkhwat() {
   return (
     <LayoutColumn>
       <section className="pt-20 flex justify-center">
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-[#cafee6] rounded-bl-full">
             <div className="w-full flex justify-center">
-              <div className="w-[500px]">
-                <img src={mulazamah} alt="" className="w-full" />
+              <div className="w-[400px] h-[400px] flex items-center">
+                <img src={maa} alt="" className="" />
               </div>
             </div>
             <div className=" flex justify-center md:justify-start mt-5 md:mt-0">
@@ -33,7 +33,7 @@ function MulazamahAkhwat() {
                   className="text-[40px] text-end font-bold mb-2"
                   style={{ lineHeight: 1 }}
                 >
-                  <h1>Mulazamah</h1>
+                  <h1>Markaz Alquran</h1>
                   <h1>Akhwat</h1>
                 </div>
                 <p>
@@ -145,4 +145,4 @@ function MulazamahAkhwat() {
   );
 }
 
-export default MulazamahAkhwat;
+export default MarkazAlquranAkhwat;

@@ -1,10 +1,8 @@
 import React from "react";
 import LayoutColumn from "../../layouts/LayoutColumn";
-import animasi from "../../assets/animasi1.svg";
 import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
-import reading from "../../assets/Reading.svg";
-import mdmqi from "../../assets/MDMQI.png";
+import mdmqi from "../../assets/logo/MDMQI.png";
 
 function Card({ img, title, label }) {
   return (

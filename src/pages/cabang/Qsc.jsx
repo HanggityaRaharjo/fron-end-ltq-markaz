@@ -2,8 +2,7 @@ import React from "react";
 import LayoutColumn from "../../layouts/LayoutColumn";
 import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
-import reading from "../../assets/Reading.svg";
-import qsc from "../../assets/QSC.png";
+import qsc from "../../assets/logo/QSC.png";
 
 function Card({ img, title, label }) {
   return (

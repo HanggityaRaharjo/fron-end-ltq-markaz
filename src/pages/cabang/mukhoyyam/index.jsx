@@ -1,30 +1,33 @@
 import React from "react";
-import LayoutColumn from "../../layouts/LayoutColumn";
-import santri from "../../assets/santri.png";
-import education from "../../assets/education.svg";
-import yayasan from "../../assets/yayasan.jpg";
+import LayoutColumn from "../../../layouts/LayoutColumn";
+import santri from "../../../assets/logo/santri.png";
+import mukhoyyam from "../../../assets/logo/MUKHOYYAM.png";
+import education from "../../../assets/education.svg";
+import yayasan from "../../../assets/yayasan.jpg";
 
 function Card({ img, title, label }) {
   return (
-    <div className="flex justify-center border bg-white rounded-xl p-2 border-gray-200 hover:shadow-md">
-      <div className="w-10/12 lg:w-full">
-        <img src={img} alt="" />
+    <div className="flex justify-center p-5 bg-white shadow-lg">
+      <div className="w-full">
+        <div>
+          <img src={img} alt="" />
+        </div>
         <h1 className="text-[17px] py-2 font-semibold text-justify">{title}</h1>
-        <div className="">{label}</div>
+        <div className="text-justify">{label}</div>
       </div>
     </div>
   );
 }
 
-function RqAkhwat() {
+function Mukhoyyam() {
   return (
     <LayoutColumn>
       <section className="pt-20 flex justify-center">
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-[#cafee6] rounded-bl-full">
             <div className="w-full flex justify-center">
-              <div className="w-[500px]">
-                <img src={santri} alt="" className="w-full" />
+              <div className="w-[300px]">
+                <img src={mukhoyyam} alt="" className="w-full" />
               </div>
             </div>
             <div className=" flex justify-center md:justify-start mt-5 md:mt-0">
@@ -49,10 +52,10 @@ function RqAkhwat() {
           </div>
 
           <div className="mt-20 flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               {/* image */}
               <div className="flex justify-center lg:justify-end">
-                <div className="w-10/12 lg:w-[400px] flex justify-end">
+                <div className="w-10/12 lg:w-[300px] mr-10 flex justify-end ">
                   <img src={education} alt="" className="h-full" />
                 </div>
               </div>
@@ -145,4 +148,4 @@ function RqAkhwat() {
   );
 }
 
-export default RqAkhwat;
+export default Mukhoyyam;

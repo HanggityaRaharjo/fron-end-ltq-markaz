@@ -9,7 +9,6 @@ import LtqMqi from "./pages/cabang/LtqMqi";
 import Mdmqi from "./pages/cabang/Mdmqi";
 import Qsc from "./pages/cabang/Qsc";
 import SantriNusantara from "./pages/cabang/SantriNusantara";
-import RqAkhwat from "./pages/cabang/RqAkhwat";
 import MulazamahAkhwat from "./pages/cabang/MulazamahAkhwat";
 import Login from "./pages/autentication/Login";
 import Register from "./pages/autentication/Register";
@@ -19,9 +18,18 @@ import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBi
 import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
 import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
 import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
-import Profile from "./pages/profil";
 import Profil from "./pages/profil";
 import FormCuti from "./pages/formCuti";
+import Mukhoyyam from "./pages/cabang/mukhoyyam";
+import MarkazAlquranAkhwat from "./pages/cabang/markazAlquankhwat";
+import KajianTafsir from "./pages/cabang/kajianTafsir";
+import SelectBranch from "./pages/autentication/pilihcabang";
+import PengaturanCabang from "./pages/adminCabang/pengaturanCabang";
+import UserManager from "./pages/adminCabang/userManager";
+import TambahUser from "./pages/adminCabang/userManager/tambahUser";
+import UserRole from "./pages/adminCabang/userRole";
+import OtoritasMenu from "./pages/adminCabang/otoritasMenu";
+import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/pilihcabang",
+    element: <SelectBranch />,
   },
 
   // Daftar Tahsin
@@ -88,9 +100,18 @@ const router = createBrowserRouter([
     element: <MulazamahAkhwat />,
   },
   {
-    path: "/rqakhwat",
-    element: <RqAkhwat />,
+    path: "/mukhoyyam",
+    element: <Mukhoyyam />,
   },
+  {
+    path: "/markazalquranakhwat",
+    element: <MarkazAlquranAkhwat />,
+  },
+  {
+    path: "/kajianrafsir",
+    element: <KajianTafsir />,
+  },
+
   {
     path: "/tentang",
     element: <TentangKami />,
@@ -118,6 +139,34 @@ const router = createBrowserRouter([
   {
     path: "/peserta-baru",
     element: <FormBiodataSiswa />,
+  },
+
+
+  // Admin Cabang
+
+  {
+    path: "/pengaturan-cabang",
+    element: <PengaturanCabang />,
+  },
+  {
+    path: "/usermanager",
+    element: <UserManager />,
+  },
+  {
+    path: "/tambah-user",
+    element: <TambahUser />,
+  },
+  {
+    path: "/user-role",
+    element: <UserRole />,
+  },
+  {
+    path: "/otoritas-menu",
+    element: <OtoritasMenu />,
+  },
+  {
+    path: "/pengaturan-kelas",
+    element: <PengaturanKelas />,
   },
 ]);
 
