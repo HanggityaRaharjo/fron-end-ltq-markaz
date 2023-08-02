@@ -1,10 +1,90 @@
 import React from 'react'
+import { useState } from 'react';
 import Layout from '../../../layouts/Layout';
 import { Link } from 'react-router-dom';
+import DataTable from 'react-data-table-component';
 
 
 
 function UserManager() {
+  const columns = [
+    {
+      name: 'No',
+      selector: row => row.no,
+      sortable: true
+    },
+    {
+      name: 'Name',
+      selector: row => row.nama,
+      sortable: true
+    },
+    {
+      name: 'TTG',
+      selector: row => row.ttg,
+      sortable: true
+    },
+    {
+      name: 'No ID',
+      selector: row => row.noId,
+      sortable: true
+    },
+    {
+      name: 'No Wa',
+      selector: row => row.noWa,
+      sortable: true
+    },
+    {
+      name: 'Action',
+      selector: row => row.action,
+    },
+  ]
+
+  const data = [
+    {
+      no: 1,
+      nama: 'ahmad susanto',
+      ttg: '14-09-1998',
+      noId: '229108442',
+      noWa: '0897655646'
+    },
+    {
+      no: 2,
+      nama: 'ahmad susanto',
+      ttg: '14-09-1998',
+      noId: '229108442',
+      noWa: '0897655646'
+    },
+    {
+      no: 3,
+      nama: 'ahmad susanto',
+      ttg: '14-09-1998',
+      noId: '229108442',
+      noWa: '0897655646'
+    },
+    {
+      no: 4,
+      nama: 'ahmad susanto',
+      ttg: '14-09-1998',
+      noId: '229108442',
+      noWa: '0897655646'
+    },
+    {
+      no: 5,
+      nama: 'ahmad susanto',
+      ttg: '14-09-1998',
+      noId: '229108442',
+      noWa: '0897655646'
+    },
+  ]
+
+  const [records, setRecords] = useState(data);
+
+  function handleFilter(event) {
+    const newData = data.filter(row => row.nama.toLowerCase().includes(event.target.value.toLowerCase()))
+    setRecords(newData)
+  }
+
+
   return (
     <Layout>
       <section className='bg-white p-5'>
@@ -19,7 +99,12 @@ function UserManager() {
         </div>
 
         <div className='mt-10'>
-          <Table data={data} />
+          <div className='text-end'>
+            <input type="text" onChange={handleFilter} className=' border border-gray-300 p-1' placeholder='search...' />
+          </div>
+          <div className='bg-white shadow-md p-1'>
+            <DataTable columns={columns} data={records} selectableRows fixedHeader pagination paginationPerPage={5} />
+          </div>
         </div>
 
         <div className='flex justify-end mt-10 pr-7'>
@@ -31,62 +116,6 @@ function UserManager() {
     </Layout>
   )
 }
-
-const data = [
-  {
-    no: 1, name: 'ssajhabsc ashcb', TTL: 'Bandung, 24 januari 2000', id: "11282789", wa: "089786575577"
-  },
-  {
-    no: 2, name: 'cknki jasc kjasc ', TTL: 'Bandung, 24 januari 2000', id: "11282789", wa: "089786575577"
-  },
-  {
-    no: 3, name: 'caosc oajsnc jsc', TTL: 'Bandung, 24 januari 2000', id: "11282789", wa: "089786575577"
-  },
-  {
-    no: 4, name: 'oiaps oasca scciun', TTL: 'Bandung, 24 januari 2000', id: "11282789", wa: "089786575577"
-  },
-  {
-    no: 5, name: 'oiaps oasca scciun', TTL: 'Bandung, 24 januari 2000', id: "11282789", wa: "089786575577"
-  },
-];
-
-const Table = ({ data }) => {
-  return (
-    <table className='w-full border-collapse border'>
-      <thead>
-        <tr className='text-sm'>
-          <th className='w-[25px] border-collapse border'>No</th>
-          <th className='w-[200px] border-collapse border'>Name</th>
-          <th className='w-[200px] border-collapse border'>TTL</th>
-          <th className='w-[100px] border-collapse border'>ID LTQ</th>
-          <th className='w-[100px] border-collapse border'>No WA</th>
-          <th className='w-[100px] border-collapse border'>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map(item => (
-          <tr key={item.no}>
-            <td className='w-[15px] border-collapse border text-center'>{item.no}</td>
-            <td className='text-sm border'>{item.name}</td>
-            <td className='text-sm border'>{item.TTL}</td>
-            <td className='text-sm border text-center'>{item.id}</td>
-            <td className='text-sm border text-center'>{item.wa}</td>
-            <td className='text-sm border flex justify-center'>
-              <div>
-                <button className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                  <span>Edit</span>
-                </button>
-                <button className='bg-red-500 text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                  <span>Hapus</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
 
 
 export default UserManager;

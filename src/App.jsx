@@ -30,6 +30,8 @@ import TambahUser from "./pages/adminCabang/userManager/tambahUser";
 import UserRole from "./pages/adminCabang/userRole";
 import OtoritasMenu from "./pages/adminCabang/otoritasMenu";
 import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
+import PengatuanProgram from "./pages/adminCabang/pengaturanProgram";
+import PengaturanSoal from "./pages/adminCabang/pengaturanSoal";
 
 const router = createBrowserRouter([
   {
@@ -167,6 +169,14 @@ const router = createBrowserRouter([
   {
     path: "/pengaturan-kelas",
     element: <PengaturanKelas />,
+  },
+  {
+    path: "/pengaturan-program",
+    element: <PengatuanProgram />,
+  },
+  {
+    path: "/pengaturan-soal",
+    element: <PengaturanSoal />,
   },
 ]);
 
