@@ -28,3 +28,28 @@
 /* * {
   border: 1px solid gray;
 } */
+
+/* datatabel */
+/* .react-data-table-component {
+  border-collapse: collapse;
+}
+
+.react-data-table-component .rdt_Table {
+  border: 1px solid #e2e8f0;
+}
+
+.react-data-table-component .rdt_TableHead .rdt_TableCol {
+  border-right: 1px solid #e2e8f0;
+}
+
+.react-data-table-component .rdt_TableHead .rdt_Pagination {
+  border-top: 1px solid #e2e8f0;
+}
+
+.react-data-table-component .rdt_TableRow:not(.rdt_TableRowExpander) {
+  border-top: 1px solid #e2e8f0;
+}
+
+.react-data-table-component .rdt_TableCol:not(:last-child) {
+  border-right: 1px solid #e2e8f0;
+} */

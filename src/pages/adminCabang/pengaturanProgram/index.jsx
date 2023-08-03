@@ -1,8 +1,66 @@
 import React from 'react'
 import { useState } from 'react';
 import Layout from '../../../layouts/Layout'
+import DataTable from 'react-data-table-component';
+
 
 function PengatuanProgram() {
+    const Button = () => {
+        return (
+            <div className='flex gap-2'>
+                <button className='bg-[#169859] text-[12px] text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                    <span>Edit</span>
+                </button>
+                <button className='bg-red-400 text-[12px] text-[#f3faf6] p-1 w-20 mt-1 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                    <span>Hapus</span>
+                </button>
+            </div>
+        )
+
+    }
+    const colums = [
+        {
+            name: 'No',
+            selector: row => row.no,
+            minWidth: '100px',
+            width: '100px',
+        },
+        {
+            name: 'Name',
+            selector: row => row.name,
+            minWidth: '500px',
+            width: '70%',
+        },
+        {
+            name: 'ation',
+            selector: row => row.action,
+            minWidth: '300px',
+            width: '20%',
+        },
+    ]
+
+    const data = [
+        {
+            no: 1,
+            name: 'Tahfidz',
+            action: <Button />
+        },
+        {
+            no: 2,
+            name: 'Tartil',
+            action: <Button />
+        },
+        {
+            no: 3,
+            name: 'Talaqqi',
+            action: <Button />
+        },
+        {
+            no: 4,
+            name: 'Bahasa Arab',
+            action: <Button />
+        },
+    ]
 
 
     return (
@@ -14,8 +72,13 @@ function PengatuanProgram() {
                 <div className='mt-5'>
                     <AddModal />
                 </div>
-                <div className='mt-5'>
-                    <Table data={data} />
+                <div className='mt-5 shadow-md'>
+                    <DataTable columns={colums} data={data}></DataTable>
+                </div>
+                <div className='flex justify-end mt-10 pr-5'>
+                    <button className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                        <span>Save</span>
+                    </button>
                 </div>
 
             </section>

@@ -32,6 +32,7 @@ import OtoritasMenu from "./pages/adminCabang/otoritasMenu";
 import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
 import PengatuanProgram from "./pages/adminCabang/pengaturanProgram";
 import PengaturanSoal from "./pages/adminCabang/pengaturanSoal";
+import DashboardCabang from "./pages/adminCabang/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -146,6 +147,10 @@ const router = createBrowserRouter([
 
   // Admin Cabang
 
+  {
+    path: "/dashboard-cabang",
+    element: <DashboardCabang />,
+  },
   {
     path: "/pengaturan-cabang",
     element: <PengaturanCabang />,
