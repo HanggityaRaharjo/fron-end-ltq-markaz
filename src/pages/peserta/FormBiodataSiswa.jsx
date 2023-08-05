@@ -2,7 +2,13 @@ import React from "react";
 import Layout from "../../layouts/Layout";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import useAuth from "../../store/AuthStore";
+
+
 const FormBiodataSiswa = () => {
+  const user = useAuth((state) => state)
+
+
   // State untuk menyimpan nilai opsi yang terpilih
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -18,6 +24,24 @@ const FormBiodataSiswa = () => {
   };
 
   const HandleSubmit = (e) => {
+    axios.post('http://192.168.43.81:8000/api/biodata/create', {
+      uuid: e.target['uuid'].value,
+      full_name: e.target['full_name'].value,
+      usia: e.target['usia'].value,
+      jenis_kelamin: e.target['jenis_kelamin'].value,
+      tanggal_lahir: e.target['tanggal_lahir'].value,
+      alamat: e.target['alamat'].value,
+      photo: e.target['photo'].value,
+      photo_ktp: e.target['photo_ktp'].value,
+      kelurahan: e.target['kelurahan'].value,
+      kecamatan: e.target['kecamatan'].value,
+      kabupaten_kota: e.target['kabupaten_kota'].value,
+      provinsi: e.target['provinsi'].value,
+      no_wa: e.target['no_wa'].value,
+      no_alternatif: e.target['no_alternatif'].value
+    }).then((data) => {
+      console.log(data);
+    })
     e.preventDefault();
     console.log(e.target[1].value);
   };
@@ -35,65 +59,168 @@ const FormBiodataSiswa = () => {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-5">
-          <form action="" method="post" onSubmit={(e) => HandleSubmit(e)}>
-            <div className="grid grid-cols-2 gap-10 mb-2">
-              <FormInput label="Nama Lengkap" type="text" />
-              <FormInput label="Usia" type="text" />
-              <DropdownSelect
-                title={"Jenis Kelamin"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <FormInput label="Tanggal Lahir" type="date" />
-              <FormInput label="Alamat Lengkap" type="area" />
-              <DropdownSelect
-                title={"Kelurahan"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"kecamatan"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"Kabupaten"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"Provinsi"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <FormInput label="No WA" type="text" />
-              <FormInput label="No Alternatif" type="text" />
+          <form method="post" onSubmit={(e) => HandleSubmit(e)}>
+            <div className="grid grid-cols-1 gap-10 mb-2">
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
+                  Nama Lengkap
+                </label>
+                <input
+                  name='full_name'
+                  type="text"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  Usia
+                </label>
+                <input
+                  name='usia'
+                  type="text"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  Jenis Kelamin
+                </label>
+                <input
+                  name='jenis_kelamin'
+                  type="text"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  Tanggal Lahir
+                </label>
+                <input
+                  name='tanggal_lahir'
+                  type="date"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  Alamat
+                </label>
+                <input
+                  name='alamat'
+                  type="area"
+                  className=" w-full border border-[#169859]  px-5 h-20 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  kelurahan
+                  <span className="absolute pl-5">*</span>
+                </label>
+                <select
+                  name="kelurahan"
+                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                >
+                  <option value="">Pilih opsi...</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  Kecamatan
+                  <span className="absolute pl-5">*</span>
+                </label>
+                <select
+                  name="kecamatan"
+                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                >
+                  <option value="">Pilih opsi...</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                </select>
+              </div>
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  Kabupaten/Kota
+                  <span className="absolute pl-5">*</span>
+                </label>
+                <select
+                  name="kabupaten_kota"
+                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                >
+                  <option value="">Pilih opsi...</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  provinsi
+                  <span className="absolute pl-5">*</span>
+                </label>
+                <select
+                  name="provinsi"
+                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                >
+                  <option value="">Pilih opsi...</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                  <option value="">Lorem.</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  No Wa
+                </label>
+                <input
+                  name='no_wa'
+                  type="area"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                  No Alternatif
+                </label>
+                <input
+                  name='no_alternatif'
+                  type="area"
+                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                  placeholder="Type here.."
+                />
+              </div>
+
             </div>
+
             <div className="flex w-ful gap-2 mt-10">
               <ImageUploaderSquare />
-              <ImageUploaderCircle />
+              <ImageUploaderCircle name='photo_ktp' />
             </div>
 
             <div className="flex justify-end gap-5 mt-5">
-              {/* <button
-                type="submit"
-                className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+              <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                <span>Submit</span>
+              </button>
+              <button className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
               >
-                Submit
-              </button> */}
-              <Link className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                Submit
-              </Link>
-              <button
-                type="submit"
-                className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                Cancel
+                <span>Cancel</span>
               </button>
             </div>
           </form>
@@ -141,6 +268,7 @@ const ImageUploaderCircle = () => {
               <div className="flex justify-center">
                 <div className="w-[150px] h-[150px]">
                   <img
+                    name='photo'
                     src={imagePreview}
                     alt="Preview"
                     className="w-[150px] h-[150px] rounded-full object-center object-cover"
@@ -210,7 +338,7 @@ const ImageUploaderCircle = () => {
 
 // imagekotak
 
-const ImageUploaderSquare = () => {
+const ImageUploaderSquare = ({ name }) => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -280,6 +408,7 @@ const ImageUploaderSquare = () => {
                 className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
               >
                 <input
+                  name={name}
                   type="file"
                   onChange={handleFileChange}
                   accept="image/*"
@@ -345,57 +474,6 @@ const ImageUploaderSquare = () => {
       </div> */}
     </>
   );
-};
-
-const FormInput = ({ label, type }) => {
-  if (type === "text") {
-    return (
-      <div className="flex flex-col">
-        <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-          {label}
-        </label>
-        <input
-          type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-          placeholder="Type here.."
-        />
-      </div>
-    );
-  }
-  if (type === "date") {
-    return (
-      <div className="flex flex-col">
-        <div className="flex items-end gap-2">
-          <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-            {label}
-          </label>
-          <small>Hari/Bulan/Tahun</small>
-        </div>
-        <input
-          type="date"
-          className="w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-          placeholder="Type here.."
-        />
-      </div>
-    );
-  }
-  if (type === "area") {
-    return (
-      <div className="flex flex-col  col-span-2">
-        <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
-          {label}
-        </label>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="5"
-          className="border border-[#169859] rounded-lg rounded-tl-none col-span-3 p-5"
-          placeholder="Type Here"
-        ></textarea>
-      </div>
-    );
-  }
 };
 
 const StepNumber = ({ number, text, status }) => {

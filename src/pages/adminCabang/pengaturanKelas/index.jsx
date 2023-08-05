@@ -2,6 +2,17 @@ import React, { useState } from 'react'
 import Layout from '../../../layouts/Layout'
 import DataTable from 'react-data-table-component'
 
+function Icon() {
+    return (
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-500">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+        </button>
+
+    )
+}
+
 function PengaturanKelas() {
     const columns = [
         {
@@ -11,13 +22,14 @@ function PengaturanKelas() {
             minWidth: '300px',
             width: '200px',
 
+
         },
         {
             name: 'Pengajar',
             selector: row => row.pengajar,
             sortable: true,
             minWidth: '400px',
-            width: '450px',
+            width: '400px',
 
         },
         {
@@ -32,7 +44,14 @@ function PengaturanKelas() {
             selector: row => row.jam,
             sortable: false,
             minWidth: '200px',
-            width: '200px',
+            width: '150px',
+        },
+        {
+            name: ' ',
+            selector: row => row.action,
+            sortable: false,
+            minWidth: '100px',
+            width: '100px',
         },
     ]
 
@@ -41,20 +60,44 @@ function PengaturanKelas() {
             program: 'Tartil',
             pengajar: 'muhamad ahmad',
             hari: 'senin',
-            jam: '07.00-09.00'
+            jam: '07.00-09.00',
+            action: <Icon />
         },
         {
             program: 'Tahfidz',
             pengajar: 'Bu dini',
             hari: 'senin',
-            jam: '08.00-09.00'
+            jam: '08.00-09.00',
+            action: <Icon />
         },
         {
             program: 'Bahasa arab',
             pengajar: 'pak anis',
             hari: 'Rabu',
-            jam: '07.00-09.00'
-        }
+            jam: '07.00-09.00',
+            action: <Icon />
+        },
+        {
+            program: 'Tahfidz',
+            pengajar: 'pak eko',
+            hari: 'kamis',
+            jam: '07.00-09.00',
+            action: <Icon />
+        },
+        {
+            program: 'Isim',
+            pengajar: 'Bu dian',
+            hari: 'selasa',
+            jam: '07.00-09.00',
+            action: <Icon />
+        },
+        {
+            program: 'Tarti',
+            pengajar: 'Ahmad',
+            hari: 'Rabu',
+            jam: '07.00-09.00',
+            action: <Icon />
+        },
     ]
 
     const [records, setRecords] = useState(data);
@@ -65,6 +108,7 @@ function PengaturanKelas() {
     }
 
 
+
     return (
         <Layout>
             <section className='p-5 bg-white'>
@@ -73,7 +117,14 @@ function PengaturanKelas() {
                         Kelas
                     </h1>
                     <div className='mt-10'>
-                        <div className='text-end'>
+                        <div className='flex justify-between mb-2'>
+                            <button className='bg-[#169859] text-sm text-[#f3faf6] px-4 py-2 rounded-lg font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                                </svg>
+
+                                <span>Kelas</span>
+                            </button>
                             <input type="text" onChange={handleFilter} className=' border border-gray-300 p-1' placeholder='Search...' />
                         </div>
                         <DataTable columns={columns} data={records} selectableRows fixedHeader pagination paginationPerPage={10}></DataTable>
@@ -88,51 +139,5 @@ function PengaturanKelas() {
         </Layout>
     )
 }
-
-// const data = [
-//     { No: 1, program: 'Item 1', pengajar: 'fulan 1', hari: 'senin', jam: '07.00-09.00' },
-//     { No: 2, program: 'Item 2', pengajar: 'fulan 1', hari: 'senin', jam: '07.00-09.00' },
-//     { No: 3, program: 'Item 3', pengajar: 'fulan 1', hari: 'senin', jam: '07.00-09.00' },
-//     { No: 4, program: 'Item 4', pengajar: 'fulan 1', hari: 'senin', jam: '07.00-09.00' },
-// ];
-
-// const Table = ({ data }) => {
-//     return (
-//         <table className="w-full border-collapse border">
-//             <thead>
-//                 <tr>
-//                     <th className="border p-1 w-[10px]">No</th>
-//                     <th className="border p-2 w-[100px]">Program</th>
-//                     <th className="border p-2 w-[200px]">Pengajar</th>
-//                     <th className="border p-2 w-[60px]">Hari</th>
-//                     <th className="border p-2 w-[60px]">Jam</th>
-//                     <th className="border p-2 w-[0px]">Opsi</th>
-//                 </tr>
-//             </thead>
-//             <tbody>
-//                 {data.map(item => (
-//                     <tr key={item.No}>
-//                         <td className="border p-2">{item.No}</td>
-//                         <td className="border p-2 text-center">{item.program}</td>
-//                         <td className="border p-2 text-center">{item.pengajar}</td>
-//                         <td className="border p-2 text-center">{item.hari}</td>
-//                         <td className="border p-2 text-center">{item.jam}</td>
-//                         <td className='text-sm border flex justify-center'>
-//                             <div className=''>
-//                                 <button className='bg-[#169859] text-[12px] text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-//                                     <span>Edit</span>
-//                                 </button>
-//                                 <button className='bg-red-400 text-[12px] text-[#f3faf6] p-1 w-20 mt-1 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-//                                     <span>Hapus</span>
-//                                 </button>
-//                             </div>
-//                         </td>
-//                     </tr>
-//                 ))}
-//             </tbody>
-
-//         </table>
-//     );
-// };
 
 export default PengaturanKelas

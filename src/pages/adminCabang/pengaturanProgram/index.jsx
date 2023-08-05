@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout'
 import DataTable from 'react-data-table-component';
 
 
+
 function PengatuanProgram() {
     const Button = () => {
         return (
@@ -34,6 +35,7 @@ function PengatuanProgram() {
         {
             name: 'ation',
             selector: row => row.action,
+            cell: (row) => (<Button />),
             minWidth: '300px',
             width: '20%',
         },
@@ -43,22 +45,22 @@ function PengatuanProgram() {
         {
             no: 1,
             name: 'Tahfidz',
-            action: <Button />
+
         },
         {
             no: 2,
             name: 'Tartil',
-            action: <Button />
+
         },
         {
             no: 3,
             name: 'Talaqqi',
-            action: <Button />
+
         },
         {
             no: 4,
             name: 'Bahasa Arab',
-            action: <Button />
+
         },
     ]
 
@@ -175,45 +177,6 @@ function AddModal() {
     )
 }
 
-const data = [
-    { no: 1, name: 'Tahsin' },
-    { no: 2, name: 'Tartil' },
-    { no: 3, name: 'Talaqqi Online' },
-    { no: 4, name: 'Bahasa Arab' },
-];
 
-const Table = ({ data }) => {
-    return (
-        <table className="w-full border-collapse border">
-            <thead>
-                <tr>
-                    <th className="border w-[20px]">No</th>
-                    <th className="border p-2 w-[300px]">Name</th>
-                    <th className="border p-2 w-[50px]">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map(item => (
-                    <tr key={item.no}>
-                        <td className="border p-2 text-center">{item.no}</td>
-                        <td className="border p-2 ">{item.name}</td>
-                        <td className="border p-2 flex justify-center"><div className='grid grid-cols-2 gap-1'>
-                            <button className='bg-[#169859] text-[12px] text-[#f3faf6] p-1 w-14 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                <span>Edit</span>
-                            </button>
-                            <button className='bg-blue-400 text-[12px] text-[#f3faf6] p-1 w-14 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                <span>View</span>
-                            </button>
-                            <button className='bg-red-400 text-[12px] text-[#f3faf6] p-1 col-span-2 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                <span>Hapus</span>
-                            </button>
-                        </div></td>
-                    </tr>
-                ))}
-            </tbody>
-
-        </table>
-    );
-};
 
 export default PengatuanProgram

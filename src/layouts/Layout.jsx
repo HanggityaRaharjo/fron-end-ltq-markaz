@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import useAuth from "../store/AuthStore";
+import { useNavigate } from "react-router-dom";
 
 const Layout = ({ children }) => {
+  const user = useAuth((state) => state);
+  console.log(user, 'ini di store');
+  const navigate = useNavigate();
+  // useEffect(() => {
+  //   user.authToken === "" ? navigate("/login") : null;
+  // }, []);
   const [sidebarShow, setSidebarShow] = useState(true);
 
   console.log(sidebarShow);

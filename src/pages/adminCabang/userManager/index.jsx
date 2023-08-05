@@ -45,35 +45,40 @@ function UserManager() {
       nama: 'ahmad susanto',
       ttg: '14-09-1998',
       noId: '229108442',
-      noWa: '0897655646'
+      noWa: '0897655646',
+      action: <Button />
     },
     {
       no: 2,
       nama: 'ahmad susanto',
       ttg: '14-09-1998',
       noId: '229108442',
-      noWa: '0897655646'
+      noWa: '0897655646',
+      action: <Button />
     },
     {
       no: 3,
       nama: 'ahmad susanto',
       ttg: '14-09-1998',
       noId: '229108442',
-      noWa: '0897655646'
+      noWa: '0897655646',
+      action: <Button />
     },
     {
       no: 4,
       nama: 'ahmad susanto',
       ttg: '14-09-1998',
       noId: '229108442',
-      noWa: '0897655646'
+      noWa: '0897655646',
+      action: <Button />
     },
     {
       no: 5,
       nama: 'ahmad susanto',
       ttg: '14-09-1998',
       noId: '229108442',
-      noWa: '0897655646'
+      noWa: '0897655646',
+      action: <Button />
     },
   ]
 
@@ -115,6 +120,19 @@ function UserManager() {
       </section>
     </Layout>
   )
+}
+const Button = () => {
+  return (
+    <div className='flex gap-2'>
+      <button className='bg-[#169859] text-[12px] text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+        <span>Edit</span>
+      </button>
+      <button className='bg-red-400 text-[12px] text-[#f3faf6] p-1 w-20 mt-1 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+        <span>Hapus</span>
+      </button>
+    </div>
+  )
+
 }
 
 

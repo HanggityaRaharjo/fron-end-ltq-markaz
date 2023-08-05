@@ -33,6 +33,9 @@ import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
 import PengatuanProgram from "./pages/adminCabang/pengaturanProgram";
 import PengaturanSoal from "./pages/adminCabang/pengaturanSoal";
 import DashboardCabang from "./pages/adminCabang/dashboard";
+import PilihProgram from "./pages/pilihProgram";
+import Pembayaran from "./pages/pembayaran";
+import LevelPeserta from "./pages/levelPeserta";
 
 const router = createBrowserRouter([
   {
@@ -142,6 +145,18 @@ const router = createBrowserRouter([
   {
     path: "/peserta-baru",
     element: <FormBiodataSiswa />,
+  },
+  {
+    path: "/pilih-program",
+    element: <PilihProgram />,
+  },
+  {
+    path: "/pembayaran",
+    element: <Pembayaran />,
+  },
+  {
+    path: "/level-peserta",
+    element: <LevelPeserta />,
   },
 
 
