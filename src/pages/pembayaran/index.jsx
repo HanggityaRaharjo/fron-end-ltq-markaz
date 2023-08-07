@@ -1,197 +1,203 @@
-import React from 'react'
-import { useState } from 'react'
-import Layout from '../../layouts/Layout'
-import DataTable from 'react-data-table-component'
-import BRI from '../../assets/logo/BRI.png'
-import BSI from '../../assets/logo/BSI.png'
-import BCA from '../../assets/logo/BCA.png'
-
-
+import React, { useEffect } from "react";
+import { useState } from "react";
+import Layout from "../../layouts/Layout";
+import BRI from "../../assets/logo/BRI.png";
+import BSI from "../../assets/logo/BSI.png";
+import BCA from "../../assets/logo/BCA.png";
+import axios from "axios";
 
 function Pembayaran() {
-    const columns = [
-        {
-            name: 'No',
-            selector: (row) => row.no,
-            width: '100px'
-        },
-        {
-            name: 'program',
-            selector: (row) => row.program,
-            width: '500px'
-        },
-        {
-            name: 'jumlah',
-            selector: (row) => row.jumlah,
-            width: '200px'
-        },
-    ]
+    const [dataProgramPembayaran, setDataProgramPembayaran] = useState([]);
+    const [dataPembayan, setDataPembayaran] = useState([]);
+    const [userSelectBank, setUserSelectBank] = useState("");
+    const [modalShow, setModalShow] = useState(false);
 
-    const data = [
-        {
-            no: 1,
-            program: 'talaqqi',
-            jumlah: 'Rp.200.000'
-        }
-    ]
+    let total = 0;
 
+    console.log(userSelectBank);
 
+    dataProgramPembayaran &&
+        dataProgramPembayaran.map((item) => {
+            total = total + parseInt(item.program_harga.harga);
+        });
 
-    return <Layout>
-        <section className='min-h-screen bg-white font-poppins'>
-            <div className='flex justify-center'>
-                <div className='w-[800px] h-[400px] mt-10 shadow-md rounded-md'>
-                    <DataTable columns={columns} data={data} />
-                </div>
-            </div>
-            <div className='mb-10 mt-10'>
-                <h1 className='font-semibold'>Pembayaran Via Bank</h1>
-            </div>
-            <div className='flex justify-center'>
-                <div className='grid grid-cols-3 gap-2'>
-                    <div className='w-[300px] h-[200px] flex justify-center items-center relative rounded-md bg-white shadow-md hover:scale-105 transition duration-150'>
-                        <div className='flex justify-center h-[100px] w-[150px] items-center'>
-                            <img src={BRI} alt="" className='h-full w-full' />
-                        </div>
-                        <span className='absolute bottom-0 bg-slate-400 text-white w-full text-center py-2 rounded-b-md'>NoRek: xxxxxxxxx</span>
-                    </div>
-                    <div className='w-[300px] h-[200px] flex justify-center items-center relative rounded-md bg-white shadow-md hover:scale-105 transition duration-150'>
-                        <div className='flex justify-center items-center h-[100px] w-[150px] '>
-                            <img src={BSI} alt="" className='h-full w-full' />
-                        </div>
-                        <span className='absolute bottom-0 bg-slate-400 text-white w-full text-center py-2 rounded-b-md'>NoRek: xxxxxxxxx</span>
-                    </div>
-                    <div className='w-[300px] h-[200px] flex justify-center items-center relative rounded-md bg-white shadow-md hover:scale-105 transition duration-150'>
-                        <div className='flex justify-center items-center h-[100px] w-[150px]'>
-                            <img src={BCA} alt="" className='h-full w-full' />
-                        </div>
-                        <span className='absolute bottom-0 bg-slate-400 text-white w-full text-center py-2 rounded-b-md'>NoRek: xxxxxxxxx</span>
-                    </div>
+    const GetBankTransferData = () => {
+        axios
+            .get("http://192.168.43.81:8000/api/pembayaran", {
+                headers: {
+                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+                },
+            })
+            .then((response) => {
+                console.log(response.data.data, "sampe di data bank");
+                setDataPembayaran(response.data.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    };
 
-                </div>
-            </div>
-            <div className='mt-10 flex justify-center items-center'>
-                <div>
-                    <h1 className='text-center font-bold'>Upload</h1>
-                    <p className='text-center'>bukti pembayaran</p>
-                    <div className='w-[400px] mt-10 flex justify-center'>
-                        <ImageUploader />
-                    </div>
-                </div>
-            </div>
-            <div className='flex justify-end m-10'>
-                <button className='bg-[#169859] text-white p-2 rounded-md'>
-                    submit
-                </button>
-            </div>
-        </section>
-    </Layout>
-}
+    const GetUserProgramData = () => {
+        axios
+            .get("http://192.168.43.81:8000/api/user-program/", {
+                headers: {
+                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+                },
+            })
+            .then(({ data }) => {
+                console.log(data, "program data");
+                setDataProgramPembayaran(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    };
 
-const ImageUploader = ({ name }) => {
-    const [file, setFile] = useState(null);
-    const [imagePreview, setImagePreview] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    useEffect(() => {
+        GetBankTransferData();
+        GetUserProgramData();
+    }, []);
 
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        setFile(selectedFile);
+    const HandlePembayaran = (id) => {
+        setUserSelectBank(id);
+        setModalShow(true);
 
-        if (selectedFile) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result);
-            };
-            reader.readAsDataURL(selectedFile);
-        } else {
-            setImagePreview("");
-        }
+        // axios.post('http://192.168.43.81:8000/api/program-pembayaran', {
 
-        // Checking if the selected file is an image
-        if (selectedFile && selectedFile.type.split("/")[0] !== "image") {
-            setErrorMessage("File harus berupa gambar.");
-        } else {
-            setErrorMessage("");
-        }
+        // }, {
+        //     headers: {
+        //         Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`
+        //     }
+        // })
+        //     .then(response => {
+        //         console.log(response);
+        //     }).catch(error => {
+        //         console.error('Error fetching data:', error);
+        //     });
+        console.log("samppe sini");
     };
 
     return (
-        <>
-            <div className="w-1/2">
-                <div className="flex justify-center">
-                    <div className="w-full">
-                        {imagePreview ? (
-                            <div className="flex justify-center">
-                                <div className="w-[290px] h-[150px]">
-                                    <img
-                                        src={imagePreview}
-                                        alt="Preview"
-                                        className="w-[290px] h-[150px] rounded-md object-center object-cover"
-                                    />
+        <Layout>
+            <ModalConfirmation
+                show={modalShow}
+                changeModal={setModalShow}
+                data={userSelectBank}
+            />
+            <section className="min-h-screen font-poppins">
+                <div className="w-full mb-5 bg-white min-h-[100px] shadow-md rounded-lg">
+                    <div className="text-2xl font-bold p-5">Program</div>
+                    <hr />
+                    <div className="p-5">
+                        {dataProgramPembayaran &&
+                            dataProgramPembayaran.map((item, index) => (
+                                <div key={index} className="grid grid-cols-1">
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Nama Program</p>
+                                        <p>: {item.program.program_name}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Nama Peserta</p>
+                                        <p>: {item.users.name}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Email</p>
+                                        <p>: {item.users.email}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Email</p>
+                                        <p>: {item.users.email}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Cabang</p>
+                                        <p>: {item.users.email}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Tanggal</p>
+                                        <p>: {item.created_at}</p>
+                                    </div>
+                                    <div className="w-full flex">
+                                        <p className="w-56 font-semibold mb-5">Deskripsi</p>
+                                        <p>: {item.program.program_name}</p>
+                                    </div>
+                                    <div className="flex  justify-end gap-5">
+                                        <h1 className="font-bold">Total yang harus dibayar</h1>
+                                        <span className="">Rp.{total}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        ) : (
-                            <div className="flex justify-center">
-                                <div className="w-[290px] h-[150px] bg-gray-200 rounded-md flex justify-center items-center">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-20 h-20 text-gray-300"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        )}
-                        <div className="mt-5">
-                            <div
-                                onClick={(e) => {
-                                    e.target.firstChild.click();
-                                }}
-                                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
-                            >
-                                <input
-                                    name={name}
-                                    type="file"
-                                    onChange={handleFileChange}
-                                    accept="image/*"
-                                    className="border h-full w-full relative -z-10 hidden"
-                                />
-                                <div className="flex justify-center gap-5 items-center">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-5 h-5 text-white"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                                        />
-                                    </svg>
-                                    <p className="text-sm font-semibold text-white">
-                                        Upload File
-                                    </p>
-                                </div>
-
-                                {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-                            </div>
-                        </div>
+                            ))}
                     </div>
                 </div>
+
+                <h4 className="text-2xl font-bold mb-5">Opsi Pembayaran</h4>
+                <div className="grid grid-cols-3 gap-5">
+                    {dataPembayan &&
+                        dataPembayan.map((item) => (
+                            <button
+                                onClick={() => HandlePembayaran(item.id)}
+                                className=" h-[200px] flex justify-center items-center relative rounded-md bg-white shadow-md hover:scale-105 transition duration-150"
+                            >
+                                <div className="flex justify-center items-center h-[100px] w-[150px] ">
+                                    <img
+                                        src={`http://192.168.43.81:8000/storage/${item.type_bank}`}
+                                        alt=""
+                                        className="h-full w-full"
+                                    />
+                                </div>
+                                <span className="absolute bottom-0 bg-slate-400 text-white w-full text-center py-2 rounded-b-md">
+                                    No.Rekening {item.norek}
+                                </span>
+                            </button>
+                        ))}
+                </div>
+            </section>
+        </Layout>
+    );
+}
+
+const ModalConfirmation = ({ show, changeModal, data }) => {
+    console.log(data, "modal");
+
+    const HandleNextPost = () => {
+        axios
+            .post(
+                "http://192.168.43.81:8000/api/program-pembayaran",
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+                    },
+                }
+            )
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    };
+
+    return (
+        <div
+            className="fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center"
+            style={{ display: show ? "flex" : "none" }}
+        >
+            <div className="w-96 h-56 bg-white rounded-lg flex flex-col justify-center items-center">
+                <h2 className="text-3xl font-bold mb-5">Apakah anda yakin?</h2>
+                <div className="flex gap-5 items-center translate-y-5">
+                    <button className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px]">
+                        Ya
+                    </button>
+                    <button
+                        onClick={() => changeModal(false)}
+                        className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px]"
+                    >
+                        Batal
+                    </button>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default Pembayaran
+export default Pembayaran;

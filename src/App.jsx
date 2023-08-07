@@ -33,9 +33,11 @@ import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
 import PengatuanProgram from "./pages/adminCabang/pengaturanProgram";
 import PengaturanSoal from "./pages/adminCabang/pengaturanSoal";
 import DashboardCabang from "./pages/adminCabang/dashboard";
-import PilihProgram from "./pages/pilihProgram";
+import PilihProgram from "./pages/pilihProgramKelas";
 import Pembayaran from "./pages/pembayaran";
 import LevelPeserta from "./pages/levelPeserta";
+import StatusPembayaran from "./pages/pembayaran/statusPembayaran";
+import CountdownPembayaran from "./pages/countdownPambayaran";
 
 const router = createBrowserRouter([
   {
@@ -153,6 +155,14 @@ const router = createBrowserRouter([
   {
     path: "/pembayaran",
     element: <Pembayaran />,
+  },
+  {
+    path: "/transfer-pembayaran/:bank",
+    element: <CountdownPembayaran />,
+  },
+  {
+    path: "/status-pembayaran",
+    element: <StatusPembayaran />,
   },
   {
     path: "/level-peserta",

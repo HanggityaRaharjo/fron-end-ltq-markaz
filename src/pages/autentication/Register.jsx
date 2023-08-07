@@ -1,22 +1,21 @@
 import { React, useState } from "react";
 import LayoutAutentication from "../../layouts/LayoutAutentication";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function Register() {
+  const navigate = useNavigate();
   const HandleSubmitRegister = (event) => {
     event.preventDefault();
-    // console.log(event.target['username'].value);
-    // console.log(event.target['email'].value);
-    // console.log(event.target['password'].value);
     axios.post('http://192.168.43.81:8000/api/register', {
       name: event.target['username'].value,
       email: event.target['email'].value,
       password: event.target['password'].value
     }).then((response) => {
       console.log(response);
+      navigate('/login')
     })
-
     console.log("sampai sini");
   }
 
@@ -39,7 +38,7 @@ function Register() {
                 <input
                   type="text"
                   name="username"
-                  className="w-full h-9 bg-slate-100"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
                 />
               </div>
               <div>
@@ -47,7 +46,7 @@ function Register() {
                 <input
                   type="text"
                   name="email"
-                  className="w-full h-9 bg-slate-100"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
                 />
               </div>
               <div className="mt-2">
@@ -55,16 +54,12 @@ function Register() {
                 <input
                   type="password"
                   name="password"
-                  className="w-full h-9 bg-slate-100"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
                 />
               </div>
               <div className="flex justify-end gap-2 mt-5">
                 <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                  <span>Create</span>
-                </button>
-                <button className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                  <span>login</span>
-
+                  <span>Daftar</span>
                 </button>
               </div>
             </form>

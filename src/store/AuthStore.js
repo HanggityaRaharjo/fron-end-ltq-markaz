@@ -12,7 +12,7 @@ const useAuth = create((set) => ({
   setToken: (token) => {
     set({ authToken: token });
     // Cookies.set("jwt_token", token, { experies: 1 });
-    console.log("sampai sini, ini di store", token);
+    // console.log("sampai sini, ini di store", token);
   },
   HandleMe: (token) => {
     axios
@@ -22,7 +22,7 @@ const useAuth = create((set) => ({
         },
       })
       .then(({ data }) => {
-        console.log("sampai axios di store");
+        // console.log("sampai axios di store");
         set({ uuid: data.uuid, email: data.email, name: data.name });
       })
       .catch((error) => console.log(error.message));

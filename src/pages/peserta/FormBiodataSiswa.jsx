@@ -1,8 +1,9 @@
 import React from "react";
 import Layout from "../../layouts/Layout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../store/AuthStore";
+import axios from "axios";
 
 
 const FormBiodataSiswa = () => {
@@ -19,31 +20,51 @@ const FormBiodataSiswa = () => {
   ];
 
   // Fungsi untuk menangani perubahan opsi terpilih
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
 
+  const navigate = useNavigate();
   const HandleSubmit = (e) => {
+
+    function ubahFormatTanggalNumerik(tanggal) {
+      const tanggalArr = tanggal.split("-");
+      const tahun = tanggalArr[0];
+      const bulan = tanggalArr[1];
+      const tanggalBaru = tanggalArr[2];
+
+      const hasil = `${tahun}-${bulan}-${tanggalBaru}`;
+      return hasil;
+    }
+
+    console.log();
+
+
+
+    e.preventDefault();
+    // console.log(e.target[1].value);
+    // console.log(e.target['tanggal_lahir'].value);
     axios.post('http://192.168.43.81:8000/api/biodata/create', {
-      uuid: e.target['uuid'].value,
+      uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
       full_name: e.target['full_name'].value,
       usia: e.target['usia'].value,
       jenis_kelamin: e.target['jenis_kelamin'].value,
-      tanggal_lahir: e.target['tanggal_lahir'].value,
+      tanggal_lahir: ubahFormatTanggalNumerik(e.target['tanggal_lahir'].value),
       alamat: e.target['alamat'].value,
-      photo: e.target['photo'].value,
-      photo_ktp: e.target['photo_ktp'].value,
+      // photo: e.target['photo'].value,
+      // photo_ktp: e.target['photo_ktp'].value,
       kelurahan: e.target['kelurahan'].value,
       kecamatan: e.target['kecamatan'].value,
       kabupaten_kota: e.target['kabupaten_kota'].value,
       provinsi: e.target['provinsi'].value,
       no_wa: e.target['no_wa'].value,
       no_alternatif: e.target['no_alternatif'].value
-    }).then((data) => {
-      console.log(data);
+    }, {
+      headers: {
+        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTMwNDEzOCwiZXhwIjo2MTY5MTMwNDA3OCwibmJmIjoxNjkxMzA0MTM4LCJqdGkiOiJ4ZUNLRlRzMmVWbWczRktVIiwic3ViIjoiOCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6W119.TSwD4KAZGb9hHB8Ch2bACJylqj5Dr3VxSBXGNM8NkMA`
+      }
+    }).then((response) => {
+      console.log(response);
+      navigate('/pilih-program')
     })
-    e.preventDefault();
-    console.log(e.target[1].value);
+
   };
   return (
     <Layout>
@@ -79,22 +100,26 @@ const FormBiodataSiswa = () => {
                 </label>
                 <input
                   name='usia'
-                  type="text"
+                  type="number"
                   className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
                   placeholder="Type here.."
                 />
               </div>
 
               <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  Jenis Kelamin
+                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  jenis Kelamiin
+                  <span className="absolute pl-5">*</span>
                 </label>
-                <input
-                  name='jenis_kelamin'
-                  type="text"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
+                <select
+                  name="jenis_kelamin"
+                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                >
+                  <option value="">Pilih opsi...</option>
+                  <option value="laki-laki">Laki-laki</option>
+                  <option value="perempuan">Perempuan</option>
+
+                </select>
               </div>
 
               <div className="flex flex-col">
@@ -108,6 +133,7 @@ const FormBiodataSiswa = () => {
                   placeholder="Type here.."
                 />
               </div>
+
 
               <div className="flex flex-col">
                 <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
@@ -131,9 +157,8 @@ const FormBiodataSiswa = () => {
                   className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
                 >
                   <option value="">Pilih opsi...</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
+                  <option value="andir">andir</option>
+                  <option value="malakasari">malakasari</option>
                 </select>
               </div>
               <div className="flex flex-col">
@@ -146,9 +171,9 @@ const FormBiodataSiswa = () => {
                   className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
                 >
                   <option value="">Pilih opsi...</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
+                  <option value="baleendah">baleendah</option>
+                  <option value="adir">adir</option>
+
                 </select>
               </div>
               <div className="flex flex-col">
@@ -161,9 +186,9 @@ const FormBiodataSiswa = () => {
                   className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
                 >
                   <option value="">Pilih opsi...</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
+                  <option value="bandung">bandung</option>
+                  <option value="bekasi">bekasi</option>
+
                 </select>
               </div>
 
@@ -177,9 +202,9 @@ const FormBiodataSiswa = () => {
                   className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
                 >
                   <option value="">Pilih opsi...</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
-                  <option value="">Lorem.</option>
+                  <option value="jawa barat">jawa barat</option>
+                  <option value="jawa timur">jawa timur</option>
+
                 </select>
               </div>
 
@@ -189,7 +214,7 @@ const FormBiodataSiswa = () => {
                 </label>
                 <input
                   name='no_wa'
-                  type="area"
+                  type="number"
                   className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
                   placeholder="Type here.."
                 />
@@ -201,7 +226,7 @@ const FormBiodataSiswa = () => {
                 </label>
                 <input
                   name='no_alternatif'
-                  type="area"
+                  type="number"
                   className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
                   placeholder="Type here.."
                 />
@@ -210,8 +235,8 @@ const FormBiodataSiswa = () => {
             </div>
 
             <div className="flex w-ful gap-2 mt-10">
-              <ImageUploaderSquare />
-              <ImageUploaderCircle name='photo_ktp' />
+              {/* <ImageUploaderSquare />
+              <ImageUploaderCircle /> */}
             </div>
 
             <div className="flex justify-end gap-5 mt-5">
@@ -513,29 +538,5 @@ const StepArrow = () => {
   );
 };
 
-const DropdownSelect = (props) => {
-  const { options, selectedOption, onChange, title } = props;
-
-  return (
-    <div className="flex flex-col">
-      <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-        {title}
-        <span className="absolute pl-5">*</span>
-      </label>
-      <select
-        value={selectedOption}
-        onChange={onChange}
-        className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-      >
-        <option value="">Pilih opsi...</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-};
 
 export default FormBiodataSiswa;

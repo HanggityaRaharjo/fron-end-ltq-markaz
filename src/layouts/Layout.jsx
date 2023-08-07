@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const Layout = ({ children }) => {
   const user = useAuth((state) => state);
-  console.log(user, 'ini di store');
+  // console.log(user, 'ini di store');
   const navigate = useNavigate();
   // useEffect(() => {
   //   user.authToken === "" ? navigate("/login") : null;
   // }, []);
   const [sidebarShow, setSidebarShow] = useState(true);
-
-  console.log(sidebarShow);
+  // console.log(sidebarShow);
   return (
     <>
       <Navbar sidebarStatus={sidebarShow} HandleSidebar={setSidebarShow} />
