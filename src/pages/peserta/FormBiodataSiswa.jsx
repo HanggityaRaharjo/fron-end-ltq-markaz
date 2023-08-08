@@ -40,7 +40,7 @@ const FormBiodataSiswa = () => {
 
     e.preventDefault();
     // console.log(e.target[1].value);
-    // console.log(e.target['tanggal_lahir'].value);
+    console.log(e.target['tanggal_lahir'].value);
     axios.post('http://192.168.43.81:8000/api/biodata/create', {
       uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
       full_name: e.target['full_name'].value,
@@ -62,7 +62,7 @@ const FormBiodataSiswa = () => {
       }
     }).then((response) => {
       console.log(response);
-      navigate('/pilih-program')
+      // navigate('/pilih-program')
     })
 
   };

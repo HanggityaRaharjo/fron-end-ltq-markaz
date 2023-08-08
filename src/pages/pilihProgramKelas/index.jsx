@@ -30,7 +30,6 @@ function PilihProgram() {
                 },
             })
             .then(({ data }) => {
-
                 setDataProgram(data);
                 // console.log(data[0].programharga.id, 'sampe di get data');
             })
@@ -126,8 +125,6 @@ function PilihProgram() {
                                                 </td>
                                                 <td className="p-2 border text-center">
                                                     <input type="radio" name="program" value={`${item.id}-${item.programharga.id}`} />
-
-
                                                 </td>
                                             </tr>
                                         ))}
