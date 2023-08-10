@@ -38,6 +38,7 @@ import Pembayaran from "./pages/pembayaran";
 import LevelPeserta from "./pages/levelPeserta";
 import StatusPembayaran from "./pages/pembayaran/statusPembayaran";
 import CountdownPembayaran from "./pages/countdownPambayaran";
+import PendaftaranGuru from "./pages/guru/pendaftaran";
 
 const router = createBrowserRouter([
   {
@@ -157,7 +158,7 @@ const router = createBrowserRouter([
     element: <Pembayaran />,
   },
   {
-    path: "/transfer-pembayaran/:bank",
+    path: "/transfer-pembayaran/",
     element: <CountdownPembayaran />,
   },
   {
@@ -167,6 +168,12 @@ const router = createBrowserRouter([
   {
     path: "/level-peserta",
     element: <LevelPeserta />,
+  },
+
+  // Guru
+  {
+    path: "/pendaftaran-guru",
+    element: <PendaftaranGuru />,
   },
 
 

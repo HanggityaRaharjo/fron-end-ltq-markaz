@@ -235,8 +235,8 @@ const FormBiodataSiswa = () => {
             </div>
 
             <div className="flex w-ful gap-2 mt-10">
-              {/* <ImageUploaderSquare />
-              <ImageUploaderCircle /> */}
+              {/* <ImageUploaderSquare /> */}
+              {/* <ImageUploaderCircle name={photo} /> */}
             </div>
 
             <div className="flex justify-end gap-5 mt-5">
@@ -257,7 +257,7 @@ const FormBiodataSiswa = () => {
 
 // imagebulat
 
-const ImageUploaderCircle = () => {
+const ImageUploaderCircle = ({ name }) => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -327,6 +327,7 @@ const ImageUploaderCircle = () => {
               >
                 <input
                   type="file"
+                  name="photo"
                   onChange={handleFileChange}
                   accept="image/*"
                   className="border h-full w-full relative -z-10 hidden"
@@ -465,38 +466,7 @@ const ImageUploaderSquare = ({ name }) => {
           </div>
         </div>
       </div>
-      {/* <div
-        className="col-span-2  flex justify-center items-center bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
-        onClick={(e) => {
-          e.target.firstChild.click();
-        }}
-      >
-        <input
-          type="file"
-          onChange={handleFileChange}
-          accept="image/*"
-          className="border h-full w-full relative -z-10 hidden"
-        />
-        <div className="flex flex-col justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-20 h-20 text-white"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-            />
-          </svg>
-          <p className="text-xl font-semibold text-white">Upload File</p>
-        </div>
 
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </div> */}
     </>
   );
 };

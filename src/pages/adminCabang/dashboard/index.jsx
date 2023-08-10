@@ -1,29 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../../layouts/Layout'
 import { Bar } from 'react-chartjs-2';
+import axios from 'axios';
 
-
-const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'Sales',
-            data: [12, 19, 3, 5, 2, 3, 10],
-            backgroundColor: '#169859',
-        },
-    ],
-};
-
-const options = {
-    scales: {
-        y: {
-            beginAtZero: true,
-        },
-    },
-};
 
 
 function DashboardCabang() {
+
+
+
     return (
         <Layout>
             <section className='p-5 bg-white font-poppins'>
@@ -43,10 +28,10 @@ function DashboardCabang() {
                     </svg>} />
                 </div>
                 {/* <div className="w-full mx-auto my-20 flex justify-start ">
-                        <div className='w-7/12'>
-                            <Bar data={data} options={options} />
-                        </div>
-                    </div> */}
+                    <div className='w-7/12'>
+                        <Bar data={data} options={options} />
+                    </div>
+                </div> */}
                 <div className='mt-10'>
                     <div className='mb-5'><h1 className='font-semibold'>kelas</h1></div>
                     <div className='flex justify-center'>
@@ -88,7 +73,6 @@ function Card({ label, title, icons, bg }) {
                 {icons}
                 <span className='text-[32px] font-extrabold'>{title}</span>
             </div>
-
         </div>
     )
 }

@@ -1,26 +1,33 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Layout from "../../layouts/Layout";
-import BRI from "../../assets/logo/BRI.png";
-import BSI from "../../assets/logo/BSI.png";
-import BCA from "../../assets/logo/BCA.png";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+
+const LoaderData = () => {
+    return (
+        <div className=" h-56 flex justify-center items-center">
+            <div className="animate-pulse text-2xl">Loading...</div>
+        </div>
+    );
+};
 
 function Pembayaran() {
-    const [dataProgramPembayaran, setDataProgramPembayaran] = useState([]);
+    const [dataProgramPembayaran, setDataProgramPembayaran] = useState({});
     const [dataPembayaran, setDataPembayaran] = useState([]);
     const [userSelectBank, setUserSelectBank] = useState("");
     const [modalShow, setModalShow] = useState(false);
 
     let total = 0;
 
-    console.log(userSelectBank);
+    // console.log(userSelectBank);
 
-    dataProgramPembayaran &&
-        dataProgramPembayaran.map((item) => {
-            total = total + parseInt(item.program_harga.harga);
-        });
+
+
+    Object.keys(dataProgramPembayaran).length === 0 ? "kosong" :
+        total = total + parseInt(dataProgramPembayaran.program_harga.harga);
+
 
     const GetBankTransferData = () => {
         axios
@@ -30,7 +37,7 @@ function Pembayaran() {
                 },
             })
             .then((response) => {
-                console.log(response.data.data, "sampe di data bank");
+
                 setDataPembayaran(response.data.data);
             })
             .catch((error) => {
@@ -40,19 +47,20 @@ function Pembayaran() {
 
     const GetUserProgramData = () => {
         axios
-            .get("http://192.168.43.81:8000/api/user-program/", {
+            .get("http://192.168.43.81:8000/api/user-program/show/19d7cb21-3dfd-482e-8bb3-e776b600e407", {
                 headers: {
-                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTY3Njk5NiwiZXhwIjo2MTY5MTY3NjkzNiwibmJmIjoxNjkxNjc2OTk2LCJqdGkiOiI0OW9qZ00wczlMcExCclBBIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ.3_pQESk6_0frceXjjHb4cAxqAlnzI7jXmn7NdtoN6rw`,
                 },
             })
             .then(({ data }) => {
-                console.log(data, "program data");
+                console.log(data, "program data asd");
                 setDataProgramPembayaran(data);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
     };
+    console.log(dataProgramPembayaran && "ada", 'ini di state');
 
     useEffect(() => {
         GetBankTransferData();
@@ -78,6 +86,8 @@ function Pembayaran() {
         console.log("sampe sini");
     };
 
+
+
     return (
         <Layout>
             <ModalConfirmation
@@ -85,42 +95,44 @@ function Pembayaran() {
                 changeModal={setModalShow}
                 id={userSelectBank}
                 total={total}
-                bank={dataPembayaran}
+                bank={dataProgramPembayaran}
+
             />
             <section className="min-h-screen font-poppins">
                 <div className="w-full mb-5 bg-white min-h-[100px] shadow-md rounded-lg">
                     <div className="text-2xl font-bold p-5">Program</div>
                     <hr />
                     <div className="p-5">
-                        {dataProgramPembayaran &&
-                            dataProgramPembayaran.map((item, index) => (
-                                <div key={index} className="grid grid-cols-1">
+
+                        {
+                            Object.keys(dataProgramPembayaran).length === 0 ? <LoaderData /> :
+
+                                <div className="grid grid-cols-1">
                                     <div className="w-full flex">
                                         <p className="w-56 font-semibold mb-5">Nama Program</p>
-                                        <p>: {item.program.program_name}</p>
+                                        <p>: {dataProgramPembayaran && dataProgramPembayaran.program.program_name}</p>
                                     </div>
                                     <div className="w-full flex">
                                         <p className="w-56 font-semibold mb-5">Nama Peserta</p>
-                                        <p>: {item.users.name}</p>
+                                        <p>: {dataProgramPembayaran && dataProgramPembayaran.users.name}</p>
                                     </div>
                                     <div className="w-full flex">
                                         <p className="w-56 font-semibold mb-5">Email</p>
-                                        <p>: {item.users.email}</p>
+                                        <p>: {dataProgramPembayaran && dataProgramPembayaran.users.email}</p>
                                     </div>
                                     <div className="w-full flex">
                                         <p className="w-56 font-semibold mb-5">Tanggal</p>
-                                        <p>: {item.created_at}</p>
+                                        <p>:{dataProgramPembayaran && dataProgramPembayaran.created_at}</p>
                                     </div>
-                                    <div className="w-full flex">
-                                        <p className="w-56 font-semibold mb-5">Program</p>
-                                        <p>: {item.program.program_name}</p>
-                                    </div>
+
                                     <div className="flex  justify-end gap-5">
                                         <h1 className="font-bold">Total yang harus dibayar</h1>
                                         <span className="">Rp.{total}</span>
                                     </div>
                                 </div>
-                            ))}
+
+                        }
+
                     </div>
                 </div>
 
@@ -151,15 +163,14 @@ function Pembayaran() {
 }
 
 const ModalConfirmation = ({ show, changeModal, id, total, bank }) => {
-    console.log(bank);
     const navigate = useNavigate();
-    // console.log(total, id, "modal");
+    console.log(total, id, "modal");
     const HandleNextPost = () => {
         axios
             .post(
                 "http://192.168.43.81:8000/api/program-pembayaran/create",
                 {
-                    uuid: "c7e4e49f-fa3e-4507-a523-81656c9a5aa1",
+                    uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
                     pembayaran_id: id,
                     total: total,
                     bank: bank
@@ -175,12 +186,9 @@ const ModalConfirmation = ({ show, changeModal, id, total, bank }) => {
             .then((data) => {
                 console.log(data);
                 changeModal(false);
-                {
-                    bank && bank.map((item) =>
-                        navigate(`/transfer-pembayaran/${item.nama_bank}`)
+                navigate(`/transfer-pembayaran/${bank.user_id}`)
 
-                    )
-                }
+
 
             })
             .catch((error) => {

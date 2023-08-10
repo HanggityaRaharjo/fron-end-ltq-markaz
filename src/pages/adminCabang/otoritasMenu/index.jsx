@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Layout from '../../../layouts/Layout'
 import DataTable from 'react-data-table-component';
+import axios from 'axios';
 
 
 
 function OtoritasMenu() {
+    const [dataShow, setDataShow] = useState([]);
+
     const columns = [
         {
             name: 'No',
@@ -87,6 +90,16 @@ function OtoritasMenu() {
         }
     ]
 
+    useEffect(() => {
+        axios.get('http://192.168.43.81:8000/api/biodata', {
+
+        }).then((response) => {
+            console.log(response.data.Data)
+            setDataShow(response.data.Data)
+        })
+
+    }, [])
+
     const [records, setRecords] = useState(data);
 
     function handleFilter(event) {
@@ -104,7 +117,33 @@ function OtoritasMenu() {
                 <div className='text-end'>
                     <input type="text" onChange={handleFilter} className=' border border-gray-300 p-1' placeholder='Search...' />
                 </div>
-                <DataTable columns={columns} data={records}></DataTable>
+                <div className='max-h-[300px] overflow-y-auto'>
+                    <table className='w-full x'>
+                        <thead>
+                            <td className='p-2 font-semibold text-center border'>No</td>
+                            <td className='p-2 font-semibold text-center border'>Nama</td>
+                            <td className='p-2 font-semibold text-center border'>Menu 1</td>
+                            <td className='p-2 font-semibold text-center border'>Menu 2</td>
+                            <td className='p-2 font-semibold text-center border'>Menu 3</td>
+                            <td className='p-2 font-semibold text-center border'>Menu 4</td>
+
+                        </thead>
+                        <tbody>
+                            {dataShow && dataShow.map((item, index) =>
+                                <tr>
+                                    <td className='p-2 border  '>{index + 1}</td>
+                                    <td className='p-2 border  '>{item.full_name}</td>
+                                    <td className='p-2 border  '><Switch /></td>
+                                    <td className='p-2 border  '><Switch /></td>
+                                    <td className='p-2 border  '><Switch /></td>
+                                    <td className='p-2 border  '><Switch /></td>
+
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+                {/* <DataTable columns={columns} data={records}></DataTable> */}
                 <div className='flex justify-end mt-10 pr-2'>
                     <button className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
                         <span>Save</span>
