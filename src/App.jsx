@@ -39,6 +39,8 @@ import LevelPeserta from "./pages/levelPeserta";
 import StatusPembayaran from "./pages/pembayaran/statusPembayaran";
 import CountdownPembayaran from "./pages/countdownPambayaran";
 import PendaftaranGuru from "./pages/guru/pendaftaran";
+import InputnilaiSiswa from "./pages/guru/inputNilai";
+import PresensiKehadiran from "./pages/guru/presensiKehadiran";
 
 const router = createBrowserRouter([
   {
@@ -174,6 +176,14 @@ const router = createBrowserRouter([
   {
     path: "/pendaftaran-guru",
     element: <PendaftaranGuru />,
+  },
+  {
+    path: "/input-nilai",
+    element: <InputnilaiSiswa />,
+  },
+  {
+    path: "/presensi-kehadiran",
+    element: <PresensiKehadiran />,
   },
 
 

@@ -68,8 +68,8 @@ function PendaftaranGuru() {
 
 
         e.preventDefault();
-        console.log(e.target['photo_ktp'].files[0]);
-        axios.post('http://192.168.43.81:8000/api/biodata-guru/create', {
+        // console.log(e.target['photo_ktp'].files[0]);
+        axios.post('http://192.168.0.5:8000/api/biodata-guru/create', {
             uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
             full_name: e.target['full_name'].value,
             usia: e.target['usia'].value,
