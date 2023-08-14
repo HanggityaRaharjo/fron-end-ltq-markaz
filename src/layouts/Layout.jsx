@@ -16,11 +16,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar sidebarStatus={sidebarShow} HandleSidebar={setSidebarShow} />
-      <div className=" flex justify-center bg-gradient-to-r from-white to-[#f1fff8] text-[#4a4a4a] font-poppins">
-        <div className="w-full flex max-w-7xl">
+      <div className=" flex justify-center bg-[#e5eaf0] font-poppins">
+        <div className="w-full flex max-w-[1366px] px-5">
           <Sidebar sidebarStatus={sidebarShow} />
           <div className="w-full">
-            <main className="pt-20 text-[#1f2937]">
+            <main className="pt-20 min-h-screen text-[#1f2937]">
               <div
                 className="transition-all"
                 style={{ paddingLeft: sidebarShow ? "224px" : "0px" }}

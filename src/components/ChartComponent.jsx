@@ -19,10 +19,10 @@ const ChartComponent = () => {
       ],
       datasets: [
         {
-          label: "Sales",
+          label: "Nilai Siswa",
           data: [12, 19, 3, 5, 2, 3],
           backgroundColor: "rgba(22, 152, 89,0.2)",
-          borderColor: "rgba(22, 152, 89,1)",
+          borderColor: "white",
           borderWidth: 3,
         },
       ],

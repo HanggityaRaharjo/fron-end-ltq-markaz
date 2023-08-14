@@ -101,12 +101,12 @@ const AccordionItem = ({ header, text }) => {
     setActive(!active);
   };
   return (
-    <div className="single-faq mb-8 w-full rounded-lg border border-[#F3F4FE] bg-white p-4 sm:p-8 lg:px-6 xl:px-8">
+    <div className="single-faq mb-8 w-full rounded-md border border-[#F3F4FE] bg-white p-4 sm:p-8 lg:px-6 xl:px-8">
       <button
         className={`faq-btn flex w-full text-left`}
         onClick={() => handleToggle()}
       >
-        <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
+        <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-md bg-primary bg-opacity-5 text-primary">
           <svg
             className={`duration-200 ease-in-out fill-primary stroke-primary ${
               active ? "rotate-180" : ""

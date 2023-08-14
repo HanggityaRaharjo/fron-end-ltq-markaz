@@ -1,94 +1,369 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react';
-import Layout from '../../../layouts/Layout';
-import { Link } from 'react-router-dom';
-import DataTable from 'react-data-table-component';
-import axios from 'axios';
-
+import React, { useEffect } from "react";
+import { useState } from "react";
+import Layout from "../../../layouts/Layout";
+import { Link } from "react-router-dom";
+import DataTable from "react-data-table-component";
+import axios from "axios";
+import {
+  Breadcrumbs,
+  BreadcrumbsActive,
+  BreadcrumbsItem,
+} from "../../../components/breadcrumbs";
 
 function UserManager() {
   const [showModal, setShowmodal] = useState(false);
-  const [showBiodata, setShowBiodata] = useState([])
+  const [showBiodata, setShowBiodata] = useState([]);
 
   const HandleTambahUser = () => {
-    setShowmodal(true)
-  }
-
+    setShowmodal(true);
+  };
 
   useEffect(() => {
-    axios.get('http://192.168.43.81:8000/api/biodata', {
-
-    }).then((response) => {
+    axios.get("http://192.168.43.81:8000/api/biodata", {}).then((response) => {
       console.log(response);
       setShowBiodata(response.data.Data);
-    })
-  }, [])
-
+    });
+  }, []);
 
   return (
     <Layout>
-      <ModalTambah
-        show={showModal}
-        changeModal={setShowmodal}
-      />
-      <section className='bg-white p-5'>
-        <div className='mt-5'>
-          <div className='text-end border flex justify-between mb-2'>
-            <button onClick={() => HandleTambahUser()} className='bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-              <span>Tambah User</span>
-            </button>
-            {/* <input type="text" onChange={handleFilter} className=' border border-gray-300 p-1' placeholder='search...' /> */}
-          </div>
-          <div className='bg-white shadow-md p-1 max-h-[400px] overflow-y-auto'>
-            {/* <DataTable columns={columns} data={records} selectableRows fixedHeader pagination paginationPerPage={5} /> */}
-            <table className='w-full  '>
-              <thead>
-                <td className='p-2 border text-center font-semibold w-[50px]'>No</td>
-                <td className='p-2 border text-center font-semibold w-[250px]'>Nama</td>
-                <td className='p-2 border text-center font-semibold w-[100px]'>TTG</td>
-                <td className='p-2 border text-center font-semibold w-[150px]'>Jenis Kelamin</td>
-                <td className='p-2 border text-center font-semibold w-[150px]'>Alamat</td>
-                <td className='p-2 border text-center font-semibold w-[150px]'>No Wa</td>
-                <td className='p-2 border text-center font-semibold w-[150px]'>Action</td>
-              </thead>
-              <tbody>
-                {showBiodata && showBiodata.map((item, index) =>
-                  <tr>
-                    <td className='p-2 border'>{index + 1}</td>
-                    <td className='p-2 border'>{item.full_name}</td>
-                    <td className='p-2 border'>{item.tanggal_lahir}</td>
-                    <td className='p-2 border'>{item.jenis_kelamin}</td>
-                    <td className='p-2 border'>{item.alamat}</td>
-                    <td className='p-2 border'>{item.no_wa}</td>
-                    <td className='p-2 border'>
-                      <div className='flex gap-1'>
-                        <button className='bg-[#169859] text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                          <span>Edit</span>
-                        </button>
-                        <button
-                          className='bg-red-400 text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                          <span>Hapus</span>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <Breadcrumbs>
+        <BreadcrumbsItem>Dashboard</BreadcrumbsItem>
+        <BreadcrumbsActive>User</BreadcrumbsActive>
+      </Breadcrumbs>
 
-        <div className='flex justify-end mt-10 pr-7'>
-          <button className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-            <span>Save</span>
-          </button>
+      <section className="p-5 ">
+        <div className="bg-white p-5 rounded-md shadow-lg">
+          <div className="flex justify-between items-center mb-5">
+            <div className="flex gap-2">
+              <span>Menampilan</span>
+              <select name="" id="" className="border">
+                <option value="10">10</option>
+                <option value="10">25</option>
+                <option value="10">50</option>
+                <option value="10">100</option>
+              </select>
+              <span>data</span>
+            </div>
+            <div className="flex gap-5">
+              <input
+                type="text"
+                className=" border border-gray-300 p-1 rounded-md"
+                placeholder="search..."
+              />
+              <Link
+                to={"/tambah-user"}
+                className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+              >
+                <span>Tambah User</span>
+              </Link>
+            </div>
+          </div>
+
+          <table className="w-full mb-5">
+            <thead>
+              <tr className="bg-[#169859] text-white">
+                <td className="p-2 border text-center font-semibold w-[50px]">
+                  No
+                </td>
+                <td className="p-2 border text-center font-semibold w-[250px]">
+                  Nama
+                </td>
+                <td className="p-2 border text-center font-semibold w-[100px]">
+                  TTG
+                </td>
+                <td className="p-2 border text-center font-semibold w-[150px]">
+                  Jenis Kelamin
+                </td>
+                <td className="p-2 border text-center font-semibold w-[150px]">
+                  Alamat
+                </td>
+                <td className="p-2 border text-center font-semibold w-[150px]">
+                  No Wa
+                </td>
+                <td className="p-2 border text-center font-semibold w-[150px]">
+                  Action
+                </td>
+              </tr>
+            </thead>
+            {/* <tbody>
+                {showBiodata &&
+                  showBiodata.map((item, index) => (
+                    <tr>
+                      <td className="p-2 border">{index + 1}</td>
+                      <td className="p-2 border">{item.full_name}</td>
+                      <td className="p-2 border">{item.tanggal_lahir}</td>
+                      <td className="p-2 border">{item.jenis_kelamin}</td>
+                      <td className="p-2 border">{item.alamat}</td>
+                      <td className="p-2 border">{item.no_wa}</td>
+                      <td className="p-2 border">
+                        <div className="flex gap-1">
+                          <button className="bg-[#169859] text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                            <span>Edit</span>
+                          </button>
+                          <button className="bg-red-400 text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                            <span>Hapus</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody> */}
+            <tbody>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+              <tr>
+                <td className="border p-1">No</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+                <td className="border p-1">data</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="flex justify-end">
+            <div className="flex items-center gap-5">
+              <button className="bg-[#169859] p-1 rounded-md text-white ">
+                Sebelumnya
+              </button>
+              <button className="">1</button>
+              <button className="">2</button>
+              <button className="">3</button>
+              <button className="bg-[#169859] p-1 rounded-md text-white ">
+                Selanjutnya
+              </button>
+            </div>
+          </div>
         </div>
       </section>
-    </Layout >
-  )
+    </Layout>
+  );
 }
-
-
 
 const ModalTambah = ({ show, changeModal }) => {
   return (
@@ -96,19 +371,18 @@ const ModalTambah = ({ show, changeModal }) => {
       className="fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center"
       style={{ display: show ? "flex" : "none" }}
     >
-      <div className='flex justify-center items-center h-full w-full'>
-
-        <div className="w-[600px] p-5 bg-white rounded-lg  justify-center items-center max-h-[400px] overflow-y-auto">
-          <h1 className='font-semibold'>Tambah User</h1>
-          <div className='grid grid-cols-1 gap-2'>
+      <div className="flex justify-center items-center h-full w-full">
+        <div className="w-[600px] p-5 bg-white rounded-md  justify-center items-center max-h-[400px] overflow-y-auto">
+          <h1 className="font-semibold">Tambah User</h1>
+          <div className="grid grid-cols-1 gap-2">
             <div className="flex flex-col mt-2">
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
                 Nama Lengkap
               </label>
               <input
-                name='full_name'
+                name="full_name"
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -117,9 +391,9 @@ const ModalTambah = ({ show, changeModal }) => {
                 Tanggal Lahir
               </label>
               <input
-                name='full_name'
+                name="full_name"
                 type="date"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -130,7 +404,7 @@ const ModalTambah = ({ show, changeModal }) => {
               </label>
               <select
                 name="jenis_kelamin"
-                className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
               >
                 <option value="">Pilih opsi...</option>
                 <option value="laki-laki">Laki-laki</option>
@@ -142,9 +416,9 @@ const ModalTambah = ({ show, changeModal }) => {
                 No Wa
               </label>
               <input
-                name='full_name'
+                name="full_name"
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -153,9 +427,9 @@ const ModalTambah = ({ show, changeModal }) => {
                 Alamat
               </label>
               <input
-                name='full_name'
+                name="full_name"
                 type="area"
-                className=" w-full border border-[#169859]  px-5 h-20 rounded-lg rounded-tl-none"
+                className=" w-full border border-[#169859]  px-5 h-20 rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -166,12 +440,11 @@ const ModalTambah = ({ show, changeModal }) => {
               </label>
               <select
                 name="provinsi"
-                className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
               >
                 <option value="">Pilih opsi...</option>
                 <option value="jawa barat">jawa barat</option>
                 <option value="jawa timur">jawa timur</option>
-
               </select>
             </div>
             <div className="flex flex-col">
@@ -181,12 +454,11 @@ const ModalTambah = ({ show, changeModal }) => {
               </label>
               <select
                 name="kabupaten_kota"
-                className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
               >
                 <option value="">Pilih opsi...</option>
                 <option value="bandung">bandung</option>
                 <option value="bekasi">bekasi</option>
-
               </select>
             </div>
             <div className="flex flex-col">
@@ -196,12 +468,11 @@ const ModalTambah = ({ show, changeModal }) => {
               </label>
               <select
                 name="kecamatan"
-                className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
               >
                 <option value="">Pilih opsi...</option>
                 <option value="baleendah">baleendah</option>
                 <option value="adir">adir</option>
-
               </select>
             </div>
             <div className="flex flex-col">
@@ -211,7 +482,7 @@ const ModalTambah = ({ show, changeModal }) => {
               </label>
               <select
                 name="kelurahan"
-                className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+                className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
               >
                 <option value="">Pilih opsi...</option>
                 <option value="andir">andir</option>
@@ -223,12 +494,13 @@ const ModalTambah = ({ show, changeModal }) => {
             <button
               type="submit"
               // onClick={() => HandleNextPost()}
-              className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px]">
+              className="bg-green-700 rounded-md px-5 py-2 text-white min-w-[100px]"
+            >
               Ya
             </button>
             <button
               onClick={() => changeModal(false)}
-              className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px]"
+              className="bg-green-700 rounded-md px-5 py-2 text-white min-w-[100px]"
             >
               Batal
             </button>
@@ -236,8 +508,7 @@ const ModalTambah = ({ show, changeModal }) => {
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default UserManager;

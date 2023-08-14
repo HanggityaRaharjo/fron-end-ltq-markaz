@@ -35,7 +35,7 @@ const FormInput = ({ label, type }) => {
         </label>
         <input
           type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -52,7 +52,7 @@ const FormInput = ({ label, type }) => {
         </div>
         <input
           type="date"
-          className="w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className="w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -69,7 +69,7 @@ const FormInput = ({ label, type }) => {
           id=""
           cols="30"
           rows="5"
-          className="border border-[#169859] rounded-lg rounded-t-none col-span-3 p-5"
+          className="border border-[#169859] rounded-md rounded-t-none col-span-3 p-5"
           placeholder="Type Here"
         ></textarea>
       </div>

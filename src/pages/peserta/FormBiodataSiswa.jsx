@@ -4,11 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../store/AuthStore";
 import axios from "axios";
-
+import {
+  Breadcrumbs,
+  BreadcrumbsItem,
+  BreadcrumbsActive,
+} from "../../components/breadcrumbs";
 
 const FormBiodataSiswa = () => {
-  const user = useAuth((state) => state)
-
+  const user = useAuth((state) => state);
 
   // State untuk menyimpan nilai opsi yang terpilih
   const [selectedOption, setSelectedOption] = useState("");
@@ -23,7 +26,6 @@ const FormBiodataSiswa = () => {
 
   const navigate = useNavigate();
   const HandleSubmit = (e) => {
-
     function ubahFormatTanggalNumerik(tanggal) {
       const tanggalArr = tanggal.split("-");
       const tahun = tanggalArr[0];
@@ -36,216 +38,235 @@ const FormBiodataSiswa = () => {
 
     console.log();
 
-
-
     e.preventDefault();
     // console.log(e.target[1].value);
-    console.log(e.target['tanggal_lahir'].value);
-    axios.post('http://192.168.43.81:8000/api/biodata/create', {
-      uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
-      full_name: e.target['full_name'].value,
-      usia: e.target['usia'].value,
-      jenis_kelamin: e.target['jenis_kelamin'].value,
-      tanggal_lahir: ubahFormatTanggalNumerik(e.target['tanggal_lahir'].value),
-      alamat: e.target['alamat'].value,
-      // photo: e.target['photo'].value,
-      // photo_ktp: e.target['photo_ktp'].value,
-      kelurahan: e.target['kelurahan'].value,
-      kecamatan: e.target['kecamatan'].value,
-      kabupaten_kota: e.target['kabupaten_kota'].value,
-      provinsi: e.target['provinsi'].value,
-      no_wa: e.target['no_wa'].value,
-      no_alternatif: e.target['no_alternatif'].value
-    }, {
-      headers: {
-        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTMwNDEzOCwiZXhwIjo2MTY5MTMwNDA3OCwibmJmIjoxNjkxMzA0MTM4LCJqdGkiOiJ4ZUNLRlRzMmVWbWczRktVIiwic3ViIjoiOCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6W119.TSwD4KAZGb9hHB8Ch2bACJylqj5Dr3VxSBXGNM8NkMA`
-      }
-    }).then((response) => {
-      console.log(response);
-      // navigate('/pilih-program')
-    })
-
+    console.log(e.target["tanggal_lahir"].value);
+    axios
+      .post(
+        "http://192.168.43.81:8000/api/biodata/create",
+        {
+          uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
+          full_name: e.target["full_name"].value,
+          usia: e.target["usia"].value,
+          jenis_kelamin: e.target["jenis_kelamin"].value,
+          tanggal_lahir: ubahFormatTanggalNumerik(
+            e.target["tanggal_lahir"].value
+          ),
+          alamat: e.target["alamat"].value,
+          // photo: e.target['photo'].value,
+          // photo_ktp: e.target['photo_ktp'].value,
+          kelurahan: e.target["kelurahan"].value,
+          kecamatan: e.target["kecamatan"].value,
+          kabupaten_kota: e.target["kabupaten_kota"].value,
+          provinsi: e.target["provinsi"].value,
+          no_wa: e.target["no_wa"].value,
+          no_alternatif: e.target["no_alternatif"].value,
+        },
+        {
+          headers: {
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTMwNDEzOCwiZXhwIjo2MTY5MTMwNDA3OCwibmJmIjoxNjkxMzA0MTM4LCJqdGkiOiJ4ZUNLRlRzMmVWbWczRktVIiwic3ViIjoiOCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6W119.TSwD4KAZGb9hHB8Ch2bACJylqj5Dr3VxSBXGNM8NkMA`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        // navigate('/pilih-program')
+      });
   };
   return (
     <Layout>
+      <Breadcrumbs>
+        <BreadcrumbsItem>Pendaftaran</BreadcrumbsItem>
+        <BreadcrumbsActive>Biodata</BreadcrumbsActive>
+      </Breadcrumbs>
       <section className="min-h-screen ">
-        <div className="h-20  bg-white rounded-full flex items-center justify-around shadow-lg mb-5">
-          <StepNumber number={1} text="Biodata Siswa" status={true} />
-          <StepArrow />
-          <StepNumber number={2} text="Pilihan Program" status={false} />
-          <StepArrow />
-          <StepNumber number={3} text="Biaya Pendidikan" status={false} />
-          <StepArrow />
-          <StepNumber number={4} text="Placement Test" status={false} />
-        </div>
-
-        <div className="bg-white rounded-lg shadow-lg p-5">
+        <div className="">
           <form method="post" onSubmit={(e) => HandleSubmit(e)}>
-            <div className="grid grid-cols-1 gap-10 mb-2">
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
-                  Nama Lengkap
-                </label>
-                <input
-                  name='full_name'
-                  type="text"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
+            {/* Biodata */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                Biodata
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40">
+                    Nama Lengkap
+                  </label>
+                  <input
+                    name="full_name"
+                    type="text"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                    Usia
+                  </label>
+                  <input
+                    name="usia"
+                    type="number"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                    jenis Kelamiin
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="jenis_kelamin"
+                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="laki-laki">Laki-laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                    Tanggal Lahir
+                  </label>
+                  <input
+                    name="tanggal_lahir"
+                    type="date"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
               </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  Usia
-                </label>
-                <input
-                  name='usia'
-                  type="number"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                  jenis Kelamiin
-                  <span className="absolute pl-5">*</span>
-                </label>
-                <select
-                  name="jenis_kelamin"
-                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-                >
-                  <option value="">Pilih opsi...</option>
-                  <option value="laki-laki">Laki-laki</option>
-                  <option value="perempuan">Perempuan</option>
-
-                </select>
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  Tanggal Lahir
-                </label>
-                <input
-                  name='tanggal_lahir'
-                  type="date"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
-              </div>
-
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  Alamat
-                </label>
-                <input
-                  name='alamat'
-                  type="area"
-                  className=" w-full border border-[#169859]  px-5 h-20 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                  kelurahan
-                  <span className="absolute pl-5">*</span>
-                </label>
-                <select
-                  name="kelurahan"
-                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-                >
-                  <option value="">Pilih opsi...</option>
-                  <option value="andir">andir</option>
-                  <option value="malakasari">malakasari</option>
-                </select>
-              </div>
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                  Kecamatan
-                  <span className="absolute pl-5">*</span>
-                </label>
-                <select
-                  name="kecamatan"
-                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-                >
-                  <option value="">Pilih opsi...</option>
-                  <option value="baleendah">baleendah</option>
-                  <option value="adir">adir</option>
-
-                </select>
-              </div>
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                  Kabupaten/Kota
-                  <span className="absolute pl-5">*</span>
-                </label>
-                <select
-                  name="kabupaten_kota"
-                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-                >
-                  <option value="">Pilih opsi...</option>
-                  <option value="bandung">bandung</option>
-                  <option value="bekasi">bekasi</option>
-
-                </select>
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                  provinsi
-                  <span className="absolute pl-5">*</span>
-                </label>
-                <select
-                  name="provinsi"
-                  className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-                >
-                  <option value="">Pilih opsi...</option>
-                  <option value="jawa barat">jawa barat</option>
-                  <option value="jawa timur">jawa timur</option>
-
-                </select>
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  No Wa
-                </label>
-                <input
-                  name='no_wa'
-                  type="number"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                  No Alternatif
-                </label>
-                <input
-                  name='no_alternatif'
-                  type="number"
-                  className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                  placeholder="Type here.."
-                />
-              </div>
-
             </div>
+            {/* End Biodata */}
 
-            <div className="flex w-ful gap-2 mt-10">
-              {/* <ImageUploaderSquare /> */}
-              {/* <ImageUploaderCircle name={photo} /> */}
+            {/* Alamat Lengkap */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                Alamat Lengkap
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                    Alamat
+                  </label>
+                  <input
+                    name="alamat"
+                    type="area"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-20 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                    kelurahan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="kelurahan"
+                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="andir">andir</option>
+                    <option value="malakasari">malakasari</option>
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                    Kecamatan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="kecamatan"
+                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="baleendah">baleendah</option>
+                    <option value="adir">adir</option>
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                    Kabupaten/Kota
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="kabupaten_kota"
+                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="bandung">bandung</option>
+                    <option value="bekasi">bekasi</option>
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                    provinsi
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="provinsi"
+                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="jawa barat">jawa barat</option>
+                    <option value="jawa timur">jawa timur</option>
+                  </select>
+                </div>
+              </div>
             </div>
+            {/* End Alamat Lengkap */}
+
+            {/* No Telephone */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                No Telepon
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                    No Wa
+                  </label>
+                  <input
+                    name="no_wa"
+                    type="number"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                    No Alternatif
+                  </label>
+                  <input
+                    name="no_alternatif"
+                    type="number"
+                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+              </div>
+            </div>
+            {/* End No Telephone */}
+
+            {/* <div className="flex w-ful gap-2 mt-10">
+              <ImageUploaderSquare />
+              <ImageUploaderCircle name={photo} />
+            </div> */}
 
             <div className="flex justify-end gap-5 mt-5">
-              <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                <span>Submit</span>
-              </button>
-              <button className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+              <button
+                type="submit"
+                className="bg-[#169859] text-[#f3faf6] p-2 w-32  rounded-md font-semibold hover:bg-opacity-70 transition duration-150  active:scale-95"
               >
-                <span>Cancel</span>
+                <span>Simpan</span>
+              </button>
+              <button className="border border-[#169859] w-32  text-[#169859] p-2  rounded-md font-semibold hover:bg-opacity-70 transition duration-150  active:scale-95">
+                <span>Batal</span>
               </button>
             </div>
           </form>
@@ -293,7 +314,7 @@ const ImageUploaderCircle = ({ name }) => {
               <div className="flex justify-center">
                 <div className="w-[150px] h-[150px]">
                   <img
-                    name='photo'
+                    name="photo"
                     src={imagePreview}
                     alt="Preview"
                     className="w-[150px] h-[150px] rounded-full object-center object-cover"
@@ -323,7 +344,7 @@ const ImageUploaderCircle = ({ name }) => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
               >
                 <input
                   type="file"
@@ -431,7 +452,7 @@ const ImageUploaderSquare = ({ name }) => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
               >
                 <input
                   name={name}
@@ -466,7 +487,6 @@ const ImageUploaderSquare = ({ name }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
@@ -507,6 +527,5 @@ const StepArrow = () => {
     </div>
   );
 };
-
 
 export default FormBiodataSiswa;

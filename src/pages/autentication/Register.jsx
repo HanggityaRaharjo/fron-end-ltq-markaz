@@ -3,27 +3,26 @@ import LayoutAutentication from "../../layouts/LayoutAutentication";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 function Register() {
   const navigate = useNavigate();
   const HandleSubmitRegister = (event) => {
     event.preventDefault();
-    axios.post('http://192.168.43.81:8000/api/register', {
-      name: event.target['username'].value,
-      email: event.target['email'].value,
-      password: event.target['password'].value
-    }).then((response) => {
-      console.log(response);
-      navigate('/login')
-    })
+    axios
+      .post("http://192.168.43.81:8000/api/register", {
+        name: event.target["username"].value,
+        email: event.target["email"].value,
+        password: event.target["password"].value,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/login");
+      });
     console.log("sampai sini");
-  }
+  };
 
   return (
     <LayoutAutentication>
-
-      <div className="w-10/12  bg-white shadow-lg p-5 rounded-lg">
-
+      <div className="w-10/12  bg-white shadow-lg p-5 rounded-md">
         {/* <div className="h-[200px] w-{200px}">
                 <img src={logo} alt="" className="h-full w-full" />
               </div> */}
@@ -38,7 +37,7 @@ function Register() {
                 <input
                   type="text"
                   name="username"
-                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-md"
                 />
               </div>
               <div>
@@ -46,7 +45,7 @@ function Register() {
                 <input
                   type="text"
                   name="email"
-                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-md"
                 />
               </div>
               <div className="mt-2">
@@ -54,11 +53,14 @@ function Register() {
                 <input
                   type="password"
                   name="password"
-                  className="w-full h-9 bg-slate-100 p-2 rounded-lg"
+                  className="w-full h-9 bg-slate-100 p-2 rounded-md"
                 />
               </div>
               <div className="flex justify-end gap-2 mt-5">
-                <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                <button
+                  type="submit"
+                  className="bg-[#169859] text-[#f3faf6] p-2 w-32 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                >
                   <span>Daftar</span>
                 </button>
               </div>
@@ -66,7 +68,7 @@ function Register() {
           </div>
         </div>
       </div>
-    </LayoutAutentication >
+    </LayoutAutentication>
   );
 }
 

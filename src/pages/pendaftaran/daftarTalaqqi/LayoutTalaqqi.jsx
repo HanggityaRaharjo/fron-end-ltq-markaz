@@ -26,7 +26,7 @@ function LayoutTalaqqi({ children }) {
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-2">
-              <div className="mt-5 md:mt-0 bg-[#effff7] p-2 rounded-lg">
+              <div className="mt-5 md:mt-0 bg-[#effff7] p-2 rounded-md">
                 <h1 className="text-[16px] font-semibold">Kuliah Perdana</h1>
                 <ul>
                   <li>Sabtu, 13 Mei 2023</li>
@@ -35,7 +35,7 @@ function LayoutTalaqqi({ children }) {
                   <li>KH. Abdul Aziz Abdur Ra'uf, Lc., Alhafizh</li>
                 </ul>
               </div>
-              <div className="mt-5 md:mt-0 bg-[#f6e7c5] p-2 rounded-lg">
+              <div className="mt-5 md:mt-0 bg-[#f6e7c5] p-2 rounded-md">
                 <h1 className="text-[16px] font-semibold">
                   Investasi Pendidikan/Semester
                 </h1>

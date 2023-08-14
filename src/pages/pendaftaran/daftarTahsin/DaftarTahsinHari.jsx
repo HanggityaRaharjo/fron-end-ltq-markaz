@@ -17,7 +17,7 @@ const DropdownSelect = (props) => {
       <select
         value={selectedOption}
         onChange={onChange}
-        className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+        className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
       >
         <option value="">Pilih opsi...</option>
         {options.map((option) => (
@@ -111,7 +111,7 @@ const FormSelect = ({ title, list0, list1, list2, value }) => {
         <select
           name="cars"
           id="cars"
-          className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+          className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
         >
           <option value={value}>{list0}</option>
           <option value={value}>{list1}</option>

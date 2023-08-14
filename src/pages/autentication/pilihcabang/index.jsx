@@ -32,7 +32,7 @@ function Card({ imageName, cabangLembagaId }) {
   return (
     <button
       onClick={() => HandleCabang()}
-      className="h-[200px] w-[200px] bg-white rounded-lg shadow-lg hover:scale-110 active:scale-95 transition  duration-150 flex items-center p-2"
+      className="h-[200px] w-[200px] bg-white rounded-md shadow-lg hover:scale-110 active:scale-95 transition  duration-150 flex items-center p-2"
     >
       <img
         src={`http://192.168.43.81:8000/storage/${imageName}`}

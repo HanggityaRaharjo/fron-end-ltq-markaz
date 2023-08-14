@@ -3,7 +3,6 @@ import { Home, Kontak } from "./pages/index";
 import { FormBiodataSiswa } from "./pages/peserta";
 import LandingPageMaster from "./pages/LandingPageMaster";
 import TentangKami from "./pages/TentangKami";
-
 import Faq from "./pages/Faq";
 import LtqMqi from "./pages/cabang/LtqMqi";
 import Mdmqi from "./pages/cabang/Mdmqi";
@@ -12,12 +11,6 @@ import SantriNusantara from "./pages/cabang/SantriNusantara";
 import MulazamahAkhwat from "./pages/cabang/MulazamahAkhwat";
 import Login from "./pages/autentication/Login";
 import Register from "./pages/autentication/Register";
-import DaftarTahsinTahfidz from "./pages/pendaftaran/daftarTahsin/DaftarTahsinTahfidz";
-import DaftarTalaqqi from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqi";
-import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBiodata";
-import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
-import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
-import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
 import Profil from "./pages/profil";
 import FormCuti from "./pages/formCuti";
 import Mukhoyyam from "./pages/cabang/mukhoyyam";
@@ -28,7 +21,6 @@ import PengaturanCabang from "./pages/adminCabang/pengaturanCabang";
 import UserManager from "./pages/adminCabang/userManager";
 import TambahUser from "./pages/adminCabang/userManager/tambahUser";
 import UserRole from "./pages/adminCabang/userRole";
-import OtoritasMenu from "./pages/adminCabang/otoritasMenu";
 import PengaturanKelas from "./pages/adminCabang/pengaturanKelas";
 import PengatuanProgram from "./pages/adminCabang/pengaturanProgram";
 import PengaturanSoal from "./pages/adminCabang/pengaturanSoal";
@@ -41,6 +33,9 @@ import CountdownPembayaran from "./pages/countdownPambayaran";
 import PendaftaranGuru from "./pages/guru/pendaftaran";
 import InputnilaiSiswa from "./pages/guru/inputNilai";
 import PresensiKehadiran from "./pages/guru/presensiKehadiran";
+import BuatSoal from "./pages/adminCabang/pengaturanSoal/BuatSoal";
+import PengaturanUser from "./pages/adminCabang/user";
+import BuatKelas from "./pages/adminCabang/pengaturanKelas/BuatKelas";
 
 const router = createBrowserRouter([
   {
@@ -54,36 +49,6 @@ const router = createBrowserRouter([
   {
     path: "/pilihcabang",
     element: <SelectBranch />,
-  },
-
-  // Daftar Tahsin
-
-  {
-    path: "/daftartahsintahfidz",
-    element: <DaftarTahsinTahfidz />,
-  },
-  {
-    path: "/daftartahsinBiodata",
-    element: <DaftarTahsinBiodata />,
-  },
-  {
-    path: "/daftartahsinhari",
-    element: <DaftarTahsinHari />,
-  },
-
-  // Daftar Talaqqi
-
-  {
-    path: "/daftartalaqqi",
-    element: <DaftarTalaqqi />,
-  },
-  {
-    path: "/daftartalaqqibiodata",
-    element: <DaftarTalaqqiBiodata />,
-  },
-  {
-    path: "/daftartalaqqihari",
-    element: <DaftarTalaqqiHari />,
   },
 
   {
@@ -146,6 +111,7 @@ const router = createBrowserRouter([
   {
     path: "/formcuti",
     element: <FormCuti />,
+    // --------------------------------------------- Peserta ------------------------------
   },
   {
     path: "/peserta-baru",
@@ -171,8 +137,8 @@ const router = createBrowserRouter([
     path: "/level-peserta",
     element: <LevelPeserta />,
   },
-
-  // Guru
+  // --------------------------------------------- End Peserta ------------------------------
+  // --------------------------------------------- Guru ------------------------------
   {
     path: "/pendaftaran-guru",
     element: <PendaftaranGuru />,
@@ -184,11 +150,10 @@ const router = createBrowserRouter([
   {
     path: "/presensi-kehadiran",
     element: <PresensiKehadiran />,
+    // --------------------------------------------- End Guru ------------------------------
   },
 
-
-  // Admin Cabang
-
+  // --------------------------------------------- Admin Cabang ------------------------------
   {
     path: "/dashboard-cabang",
     element: <DashboardCabang />,
@@ -198,7 +163,7 @@ const router = createBrowserRouter([
     element: <PengaturanCabang />,
   },
   {
-    path: "/usermanager",
+    path: "/manage-user",
     element: <UserManager />,
   },
   {
@@ -206,25 +171,42 @@ const router = createBrowserRouter([
     element: <TambahUser />,
   },
   {
-    path: "/user-role",
+    path: "/otorisasi-pengguna",
     element: <UserRole />,
   },
+  // Gk Kepake
+  // {
+  //   path: "/otoritas-menu",
+  //   element: <OtoritasMenu />,
+  // },
+  // User
   {
-    path: "/otoritas-menu",
-    element: <OtoritasMenu />,
+    path: "/pengaturan-user",
+    element: <PengaturanUser />,
   },
+  // Kelas
   {
     path: "/pengaturan-kelas",
     element: <PengaturanKelas />,
   },
   {
+    path: "/pengaturan-kelas/buat-kelas",
+    element: <BuatKelas />,
+  },
+  {
     path: "/pengaturan-program",
     element: <PengatuanProgram />,
   },
+  // Soal
   {
     path: "/pengaturan-soal",
     element: <PengaturanSoal />,
   },
+  {
+    path: "/pengaturan-soal/buat-soal",
+    element: <BuatSoal />,
+  },
+  // --------------------------------------------- End Admin Cabang ------------------------------
 ]);
 
 const App = () => {

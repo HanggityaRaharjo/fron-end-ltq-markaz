@@ -47,8 +47,11 @@ function NavLanding() {
                         />
                       </svg>
                     </div>
-                    <div className="flex flex-col top-7 bg-white rounded-lg shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-[400px] transition-all duration-150">
-                      <Link to="/ltqmqi" className="px-4 py-2 hover:bg-gray-100">
+                    <div className="flex flex-col top-7 bg-white rounded-md shadow-lg absolute w-56 max-h-0 overflow-hidden group-hover:max-h-[400px] transition-all duration-150">
+                      <Link
+                        to="/ltqmqi"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>LTQ MQI</span>
                       </Link>
                       <Link to="/mdmqi" className="px-4 py-2 hover:bg-gray-100">
@@ -57,19 +60,34 @@ function NavLanding() {
                       <Link to="/qsc" className="px-4 py-2 hover:bg-gray-100">
                         <span>QSC</span>
                       </Link>
-                      <Link to="/kajianrafsir" className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        to="/kajianrafsir"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>Kajian Tafsir</span>
                       </Link>
-                      <Link to="/mulazamah" className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        to="/mulazamah"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>Mulazamah Akhwat</span>
                       </Link>
-                      <Link to="/santri" className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        to="/santri"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>Santri Nusantara</span>
                       </Link>
-                      <Link to="/mukhoyyam" className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        to="/mukhoyyam"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>Mukhoyyam</span>
                       </Link>
-                      <Link to="/markazalquranakhwat" className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        to="/markazalquranakhwat"
+                        className="px-4 py-2 hover:bg-gray-100"
+                      >
                         <span>Markaz Alquan Akhwat</span>
                       </Link>
                     </div>

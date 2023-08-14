@@ -87,7 +87,7 @@ function Inputfile({ title }) {
             onClick={(e) => {
               e.target.firstChild.click();
             }}
-            className=" flex justify-center items-center w-40 h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+            className=" flex justify-center items-center w-40 h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
           >
             <input
               type="file"
@@ -117,13 +117,13 @@ function Inputfile({ title }) {
           </div>
           <div>
             <div className="flex justify-center">
-              <div className="h-[200px] w-[200px] bg-gray-200 rounded-lg flex justify-center items-center">
+              <div className="h-[200px] w-[200px] bg-gray-200 rounded-md flex justify-center items-center">
                 {imagePreview ? (
                   <div className="w-[200px] h-[200px] ">
                     <img
                       src={imagePreview}
                       alt="Preview"
-                      className="w-[200px] h-[200px]  rounded-lg object-center object-cover"
+                      className="w-[200px] h-[200px]  rounded-md object-center object-cover"
                     />
                   </div>
                 ) : (

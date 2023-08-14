@@ -59,7 +59,7 @@ const StickyNavigation = () => {
           </svg>
         </button>
         <div
-          className="absolute bg-white bg-opacity-70 backdrop-blur-sm bottom-14 flex flex-col right-0 w-56 rounded-lg shadow-lg   overflow-hidden transition-all duration-150"
+          className="absolute bg-white bg-opacity-70 backdrop-blur-sm bottom-14 flex flex-col right-0 w-56 rounded-md shadow-lg   overflow-hidden transition-all duration-150"
           style={{
             maxHeight: stickyNavStatus ? "14rem" : "0rem",
             opacity: stickyNavStatus ? "1" : "0",

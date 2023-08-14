@@ -26,7 +26,7 @@ function LayoutDaftarTahsin({ children }) {
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-2">
-              <div className="mt-5 md:mt-0 bg-[#effff7] p-2 rounded-lg">
+              <div className="mt-5 md:mt-0 bg-[#effff7] p-2 rounded-md">
                 <h1 className="text-[16px] font-semibold">
                   Jenjang Pendidikan
                 </h1>
@@ -39,7 +39,7 @@ function LayoutDaftarTahsin({ children }) {
                   <li>Tahfidz</li>
                 </ul>
               </div>
-              <div className="mt-5 md:mt-0 bg-[#f6e7c5] p-2 rounded-lg">
+              <div className="mt-5 md:mt-0 bg-[#f6e7c5] p-2 rounded-md">
                 <h1 className="text-[16px] font-semibold">
                   Investasi Pendidikan/Semester
                 </h1>
