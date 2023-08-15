@@ -41,6 +41,13 @@ import CountdownPembayaran from "./pages/countdownPambayaran";
 import PendaftaranGuru from "./pages/guru/pendaftaran";
 import InputnilaiSiswa from "./pages/guru/inputNilai";
 import PresensiKehadiran from "./pages/guru/presensiKehadiran";
+import InputNilaiRapot from "./pages/guru/inputNilaiRapot";
+import StockBarang from "./pages/tu/administrasi/spp/stockBarang";
+import BiodataPegawai from "./pages/tu/biodata";
+import BiodataGuru from "./pages/guru/biodataGuru";
+import FormCutiGuru from "./pages/guru/formCuti/indext";
+import DataKonsumen from "./pages/tu/administrasi/spp/kasir/dataKonsumen";
+import SppPesertaBaru from "./pages/tu/administrasi/spp/pembayaranSpp/pesertabaru";
 
 const router = createBrowserRouter([
   {
@@ -145,7 +152,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/formcuti",
-    element: <FormCuti />,
+    element: <FormCutiGuru />,
   },
   {
     path: "/peserta-baru",
@@ -174,16 +181,47 @@ const router = createBrowserRouter([
 
   // Guru
   {
+    path: "show/biodata-guru",
+    element: <BiodataGuru />,
+  },
+  {
     path: "/pendaftaran-guru",
     element: <PendaftaranGuru />,
   },
   {
-    path: "/input-nilai",
+    path: "form/form-cuti",
+    element: <FormCutiGuru />,
+  },
+  {
+    path: "/show/talaqi-A/nilai-siswa",
     element: <InputnilaiSiswa />,
   },
   {
-    path: "/presensi-kehadiran",
+    path: "/input-nilai-rapot",
+    element: <InputNilaiRapot />,
+  },
+  {
+    path: "/show/presensi-kehadiran",
     element: <PresensiKehadiran />,
+  },
+
+  // TU
+
+  {
+    path: "/show/biodata-pegawai",
+    element: <BiodataPegawai />,
+  },
+  {
+    path: "/form/spp-peserta-baru",
+    element: <SppPesertaBaru />,
+  },
+  {
+    path: "/show/stock-barang",
+    element: <StockBarang />,
+  },
+  {
+    path: "/show/konsumen",
+    element: <DataKonsumen />,
   },
 
 
