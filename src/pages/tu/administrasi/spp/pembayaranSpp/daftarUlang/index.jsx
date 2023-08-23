@@ -2,7 +2,8 @@ import React from 'react'
 import Layout from '../../../../../../layouts/Layout'
 import { Link } from 'react-router-dom'
 
-function TabelPesertaBaru() {
+
+function TabelDaftarUlang() {
     return (
         <Layout>
             <section className='p-5'>
@@ -30,11 +31,11 @@ function TabelPesertaBaru() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='py-2 text-center border'>1</td>
-                                    <td className='py-2  border'>Bagus subagja</td>
-                                    <td className='py-2 text-center border'>Talaqqi</td>
-                                    <td className='py-2 text-center border'>Rp. 150.000</td>
-                                    <td className='py-2 text-center border'>12/11/2023</td>
+                                    <td className='py-2 px-2 text-center border'>1</td>
+                                    <td className='py-2 px-2  border'>Bagus subagja</td>
+                                    <td className='py-2 px-2 text-center border'>Talaqqi</td>
+                                    <td className='py-2 px-2 text-center border'>Rp. 150.000</td>
+                                    <td className='py-2 px-2 text-center border'>12/11/2023</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -57,11 +58,11 @@ function TabelPesertaBaru() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='py-2 text-center border'>1</td>
-                                    <td className='py-2  border'>Bagus subagja</td>
-                                    <td className='py-2 text-center border'>Talaqqi</td>
-                                    <td className='py-2 text-center border'>Rp. 150.000</td>
-                                    <td className='py-2 text-center border'>12/11/2023</td>
+                                    <td className='py-2 px-2 text-center border'>1</td>
+                                    <td className='py-2 px-2  border'>Bagus subagja</td>
+                                    <td className='py-2 px-2 text-center border'>Talaqqi</td>
+                                    <td className='py-2 px-2 text-center border'>Rp. 150.000</td>
+                                    <td className='py-2 px-2 text-center border'>12/11/2023</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,11 +85,11 @@ function TabelPesertaBaru() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='py-2 text-center border'>1</td>
-                                    <td className='py-2  border'>Bagus subagja</td>
-                                    <td className='py-2 text-center border'>Talaqqi</td>
-                                    <td className='py-2 text-center border'>Rp. 150.000</td>
-                                    <td className='py-2 text-center border'>12/11/2023</td>
+                                    <td className='py-2 px-2 text-center border'>1</td>
+                                    <td className='py-2 px-2  border'>Bagus subagja</td>
+                                    <td className='py-2 px-2 text-center border'>Talaqqi</td>
+                                    <td className='py-2 px-2 text-center border'>Rp. 150.000</td>
+                                    <td className='py-2 px-2 text-center border'>12/11/2023</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -108,10 +109,10 @@ function TabelPesertaBaru() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className='py-2 text-center border'>1</td>
-                                <td className='py-2  border'>Kajian Keluarga Besar</td>
-                                <td className='py-2 text-center border'>Talaqqi</td>
-                                <td className='py-2 text-center border'>12/11/2023</td>
+                                <td className='py-2 px-2  text-center border'>1</td>
+                                <td className='py-2 px-2   border'>Kajian Keluarga Besar</td>
+                                <td className='py-2 px-2  text-center border'>Talaqqi</td>
+                                <td className='py-2 px-2  text-center border'>12/11/2023</td>
                             </tr>
                         </tbody>
                     </table>
@@ -121,4 +122,4 @@ function TabelPesertaBaru() {
     )
 }
 
-export default TabelPesertaBaru
+export default TabelDaftarUlang

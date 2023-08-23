@@ -22,9 +22,9 @@ function Mdmqi() {
       <section className="pt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center py-20 bg-[#cafee6] rounded-bl-full">
           {/* gambar */}
-          <div className="flex justify-center  md:hidden">
-            <div className=" w-10/12 ">
-              <img src={mdmqi} alt="" />
+          <div className="flex justify-center md:hidden">
+            <div className=" w-10/12 overflow-hidden">
+              <img src={mdmqi} alt="" className="w-full scale-150" />
             </div>
           </div>
 
@@ -45,10 +45,10 @@ function Mdmqi() {
             </div>
           </div>
           {/* gambar */}
-          <div className=" hidden justify-end md:block">
-            <div className="flex justify-end">
+          <div className=" hidden justify-end md:block ml-10">
+            <div className="flex justify-start">
               <div className="w-[500px]">
-                <img src={mdmqi} alt="" />
+                <img src={mdmqi} alt="" className="w-full scale-125" />
               </div>
             </div>
           </div>

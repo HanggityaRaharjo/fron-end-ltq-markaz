@@ -4,6 +4,7 @@ import education from "../../assets/education.svg";
 import yayasan from "../../assets/yayasan.jpg";
 import ltq from "../../assets/logo/LTQ.png";
 
+
 function Card({ img, title, label }) {
   return (
     <div className="flex justify-center">
@@ -23,32 +24,29 @@ const LtqMqi = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center py-20 bg-[#cafee6] rounded-bl-full">
           {/* gambar */}
           <div className="flex justify-center  md:hidden">
-            <div className=" w-10/12 ">
-              <img src={ltq} alt="" />
+            <div className="w-10/12 ">
+              <img src={ltq} alt="" className="w-full" />
             </div>
           </div>
 
           <div className="flex justify-center">
             <div className="w-10/12 md:10/12 pt-5">
               <h1 className="text-[32px] text-center font-semibold mb-5">
-                LTQ MQI
+                Cabang LTQ MKI
               </h1>
               <p className="text-[20px] font-semibold mb-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
-                tempore?
+                Selamat Datang di Cabang LTQ MKI
               </p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo
-                eos impedit tenetur quas corrupti eligendi eum reiciendis beatae
-                magnam quibusdam!
+                Di sini, kami membawa warisan Alquran kepada Anda dengan dedikasi dan semangat.
               </p>
             </div>
           </div>
           {/* gambar */}
           <div className="justify-center hidden md:block">
-            <div className="flex justify-end">
-              <div className="w-[500px]">
-                <img src={ltq} alt="" />
+            <div className="flex justify-center">
+              <div className="w-[500px] overflow-hidden">
+                <img src={ltq} alt="" className="w-full scale-125" />
               </div>
             </div>
           </div>
@@ -64,18 +62,11 @@ const LtqMqi = () => {
             </div>
             <div className="flex justify-center lg:justify-start">
               <div className="w-10/12 lg:w-8/12">
-                <h1>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-                  mollitia?
+                <h1 className="font-bold py-2">
+                  Tentang Kami
                 </h1>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus quaerat minus, assumenda, ipsa saepe, facere
-                  alias iusto voluptate debitis officiis eligendi. Odio,
-                  veritatis tenetur, perferendis voluptas sunt doloribus
-                  blanditiis exercitationem soluta error ut corrupti quia esse
-                  facere commodi eos delectus ex quis cupiditate reiciendis quam
-                  sed voluptates numquam consectetur. Minus.
+                <p className="text-justify">
+                  Cabang Markaz Quran adalah bagian penting dari jaringan Lembaga Markaz Quran yang sudah dikenal secara luas di seluruh dunia. Kami berkomitmen untuk menyediakan pendidikan Alquran berkualitas tinggi dan memahaminya dengan mendalam. Dengan pengalaman bertahun-tahun dalam mengajar dan memahami Alquran, kami adalah mitra terpercaya dalam perjalanan spiritual dan intelektual Anda.
                 </p>
               </div>
             </div>
@@ -85,7 +76,7 @@ const LtqMqi = () => {
         <div className="mt-20">
           <div className="flex justify-center">
             <div>
-              <h1 className="text-center text-[20px] font-semibold">Program</h1>
+              <h1 className="text-center text-[20px] font-semibold">Pilihan Program</h1>
               <div className="flex items-center  justify-center gap-3">
                 <div className="h-[1px] w-[25px] bg-gray-200" />
                 <svg
@@ -115,28 +106,28 @@ const LtqMqi = () => {
                   img={yayasan}
                   title={"Tahsin Reguler"}
                   label={
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veroquia nam aspernatur dolores suscipit  distinctio dolorem deleniti ipsum obcaecati perspicia tenetur, nostrum facere est repudiandae vel. Voluptate?"
+                    "Tahsin adalah istilah dalam bahasa Arab yang mengacu pada usaha untuk meningkatkan kualitas atau keindahan dalam membaca atau menghafal Al-Quran. Dalam konteks Islam, tahsin adalah salah satu dari dua konsep utama yang berkaitan dengan Al-Quran, dengan konsep lainnya adalah tartil."
                   }
                 />
                 <Card
                   img={yayasan}
                   title={"Tartil"}
                   label={
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veroquia nam aspernatur dolores suscipit  distinctio dolorem deleniti ipsum obcaecati perspicia tenetur, nostrum facere est repudiandae vel. Voluptate?"
+                    "Tartil adalah istilah dalam bahasa Arab yang merujuk pada cara membaca Al-Quran dengan sangat hati-hati, perlahan, dan dengan tajwid yang benar. Ini adalah cara membaca Al-Quran yang sangat dihormati dalam Islam, karena penting untuk memahami dan menghormati teks suci ini dengan cara yang paling baik dan sesuai."
                   }
                 />
                 <Card
                   img={yayasan}
                   title={"Talaqqi"}
                   label={
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veroquia nam aspernatur dolores suscipit  distinctio dolorem deleniti ipsum obcaecati perspicia tenetur, nostrum facere est repudiandae vel. Voluptate?"
+                    "Talaqqi adalah istilah dalam bahasa Arab yang mengacu pada metode tradisional dalam belajar Al-Quran atau ilmu agama Islam dengan cara mendengarkan dan mengulangi apa yang didengar dari seorang guru atau ustadz. Istilah ini sering digunakan dalam konteks pengajaran Al-Quran, hadis, fiqih, dan ilmu-ilmu agama lainnya."
                   }
                 />
                 <Card
                   img={yayasan}
                   title={"Keluarga Qurani"}
                   label={
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veroquia nam aspernatur dolores suscipit  distinctio dolorem deleniti ipsum obcaecati perspicia tenetur, nostrum facere est repudiandae vel. Voluptate?"
+                    `Istilah "keluarga" Qurani atau "Keluarga Al-Quran" adalah istilah yang sering digunakan untuk merujuk kepada keluarga atau rumah tangga di mana semua anggotanya terlibat dalam memahami, menghafal, dan mengamalkan Al-Quran. Konsep ini sangat dihargai dalam Islam karena Al-Quran dianggap sebagai pedoman hidup utama bagi umat Muslim.`
                   }
                 />
               </div>

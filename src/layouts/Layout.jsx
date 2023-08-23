@@ -16,6 +16,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar sidebarStatus={sidebarShow} HandleSidebar={setSidebarShow} />
+
       <div className=" flex justify-center bg-gradient-to-r from-white to-[#f1fff8] text-[#4a4a4a] font-poppins">
         <div className="w-full flex max-w-7xl">
           <Sidebar sidebarStatus={sidebarShow} />

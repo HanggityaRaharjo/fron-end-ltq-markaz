@@ -40,10 +40,7 @@ function Login() {
   return (
     <>
       <LayoutAutentication>
-        <div className="w-10/12  bg-white shadow-lg p-5 rounded-lg">
-          {/* <div className="h-[200px] w-{200px}">
-                <img src={logo} alt="" className="h-full w-full" />
-            </div> */}
+        <div className=" w-full md:w-10/12  bg-white shadow-lg p-5 rounded-lg">
           <h1 className="text-center text-[#169859] text-[30px] font-bold">
             LOGIN
           </h1>
@@ -56,6 +53,10 @@ function Login() {
                 </div>
                 <div className="mt-2">
                   <h1>Password</h1>
+                  <input type="password" name="password" className="w-full h-9 bg-slate-100" />
+                </div>
+                <div className="mt-2">
+                  <h1>Confirm Password</h1>
                   <input type="password" name="password" className="w-full h-9 bg-slate-100" />
                 </div>
                 <div className="p-2">

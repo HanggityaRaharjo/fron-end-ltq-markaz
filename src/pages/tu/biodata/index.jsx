@@ -25,43 +25,35 @@ function BiodataPegawai() {
                 close={setShowEditFoto}
             />
             <section className='p-5'>
-                <div className='flex'>
-                    <div className='w-1/2'>
-                        <div className='bg-white p-2 shadow-md mr-2'>
-                            <div className='flex gap-10 justify-center items-center h-[200px]'>
-                                <div className='h-full w-[200px] rounded-full bg-gray-500 overflow-hidden object-cover'>
-                                    <img src={foto} alt="" className='object-cover h-full' />
-                                </div>
+                <div className=''>
+                    <div className='bg-white p-10 shadow-md flex gap-10'>
+                        <div className='h-[150px] w-[150px] rounded-md bg-gray-500 overflow-hidden object-cover'>
+                            <img src={foto} alt="" className='object-cover h-full' />
+                        </div>
+                        <div>
+                            <div className='flex flex-col gap-2'>
+                                <h1 className='font-bold text-[24px]'>Ujang Enam S.T</h1>
+                                <p>Email : <span className='text-blue-500 text-[16px]'>UjangEnam@gmail.com</span></p>
+                                <p>Bagian : <span>Tatausaha</span></p>
                             </div>
-                            <div className='flex justify-center mt-5'>
-                                <h1 className='font-bold'>
-                                    Ujang
-                                </h1>
-                            </div>
-                            <table className='mt-5'>
-                                <tr>
-                                    <td className='p-2 w-[150px] font-bold'>Bagian</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Tu</td>
-                                </tr>
-                                <tr>
-                                    <td className='p-2 font-bold'>Email</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Ujang@gmail.com</td>
-                                </tr>
-                            </table>
-                            <div className='flex justify-end'>
+
+                            <div className='flex mt-5'>
                                 <button
                                     onClick={() => HandleFoto()}
-                                    className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                    className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
                                     Edit
                                 </button>
                             </div>
                         </div>
+
+
                     </div>
-                    <div className='w-1/2'>
-                        <div className='bg-white p-2 shadow-lg rounded-md'>
-                            <table className=''>
+                </div>
+                <div className='flex mt-10 gap-2'>
+                    <div className=' w-3/5'>
+                        <div className='bg-white p-5 shadow-lg rounded-md'>
+                            <h1 className='font-bold'>Biodata</h1>
+                            <table className='mt-2'>
                                 <tr>
                                     <td className='p-2 w-[150px] font-bold'>Nama Lengkap</td>
                                     <td className='p-2'>:</td>
@@ -82,16 +74,53 @@ function BiodataPegawai() {
                                     <td className='p-2'>:</td>
                                     <td className='p-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quaerat corporis possimus, ad velit eum!</td>
                                 </tr>
+                                <tr>
+                                    <td className='p-2 font-bold'>Desa</td>
+                                    <td className='p-2'>:</td>
+                                    <td className='p-2'>Malakasari</td>
+                                </tr>
+                                <tr>
+                                    <td className='p-2 font-bold'>Kecamatan</td>
+                                    <td className='p-2'>:</td>
+                                    <td className='p-2'>Baleendah</td>
+                                </tr>
+                                <tr>
+                                    <td className='p-2 font-bold'>Kabupaten</td>
+                                    <td className='p-2'>:</td>
+                                    <td className='p-2'>Bandung</td>
+                                </tr>
+                                <tr>
+                                    <td className='p-2 font-bold'>Provinsi</td>
+                                    <td className='p-2'>:</td>
+                                    <td className='p-2'>Jawa barat</td>
+                                </tr>
                             </table>
                             <div className='flex justify-end'>
-                                <button onClick={() => HandleEdit()} className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                <button onClick={() => HandleEdit()} className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
                                     Edit
                                 </button>
                             </div>
                         </div>
 
                     </div>
-
+                    <div className='w-2/5 bg-white p-5 shadow-lg rounded-md'>
+                        <h1 className='font-bold'>Akun</h1>
+                        <div className='mt-4 flex flex-col gap-4 '>
+                            <p className='flex gap-5'>UserName : <span>Ujang99</span></p>
+                            <p className='flex gap-5'>Email : <span>Ujang@gmail.com</span></p>
+                            <div className=''>
+                                <p className='bg-black text-white w-40 p-1 rounded-t-md'> Change Password</p>
+                                <input type="password" className='border bg-slate-100 w-full p-2 ' />
+                            </div>
+                        </div>
+                        <div className=' mt-20'>
+                            <div className='flex justify-end '>
+                                <button onClick={() => HandleEdit()} className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </Layout>
@@ -104,7 +133,7 @@ const ModalBiodata = ({ show, close }) => {
         <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-40 justify-center items-center'
             style={{ display: show ? "flex" : "none" }}>
             <div className='flex justify-center items-center h-full'>
-                <div className='bg-white rounded  max-h-[500px] p-5'>
+                <div className='bg-white rounded w-[400px]  max-h-[500px] p-5'>
                     <h1 className='font-bold'>Edit</h1>
                     <div className='mt-5 flex flex-col gap-2'>
                         <div className="flex flex-col">

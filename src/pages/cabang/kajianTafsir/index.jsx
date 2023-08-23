@@ -48,9 +48,9 @@ function KajianTafsir() {
           </div>
           {/* gambar */}
           <div className="justify-center hidden md:block">
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <div className="w-[500px]">
-                <img src={kajiantafsir} alt="" />
+                <img src={kajiantafsir} alt="" className="w-full scale-125" />
               </div>
             </div>
           </div>

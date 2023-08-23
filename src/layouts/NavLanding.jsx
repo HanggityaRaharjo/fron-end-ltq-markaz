@@ -23,9 +23,8 @@ function NavLanding() {
                 <div className="flex items-center gap-5 font-semibold">
                   <Link
                     to={"/"}
-                    className={`${
-                      pathName == "/" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
+                    className={`${pathName == "/" ? "text-[#169859] bg-[#effff7]" : ""
+                      } px-3 py-1 rounded-full`}
                   >
                     Beranda
                   </Link>
@@ -76,45 +75,26 @@ function NavLanding() {
                   </div>
                   <Link
                     to={"/tentang"}
-                    className={`${
-                      pathName == "/tentang"
+                    className={`${pathName == "/tentang"
                         ? "text-[#169859] bg-[#effff7]"
                         : ""
-                    } px-3 py-1 rounded-full`}
+                      } px-3 py-1 rounded-full`}
                   >
                     Tentang
                   </Link>
                   <Link
                     to={"/kontak"}
-                    className={`${
-                      pathName == "/kontak" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
+                    className={`${pathName == "/kontak" ? "text-[#169859] bg-[#effff7]" : ""
+                      } px-3 py-1 rounded-full`}
                   >
                     Kontak
                   </Link>
                   <Link
                     to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
+                    className={`${pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
+                      } px-3 py-1 rounded-full`}
                   >
                     FAQ
-                  </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Informasi
-                  </Link>
-                  <Link
-                    to={"/faq"}
-                    className={`${
-                      pathName == "/faq" ? "text-[#169859] bg-[#effff7]" : ""
-                    } px-3 py-1 rounded-full`}
-                  >
-                    Program
                   </Link>
                 </div>
               </div>

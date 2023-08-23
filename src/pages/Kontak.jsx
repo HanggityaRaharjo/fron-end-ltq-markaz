@@ -5,8 +5,8 @@ import LayoutColumn from "../layouts/LayoutColumn";
 function Kontak() {
   return (
     <LayoutColumn>
-      <section className=" kontak pt-20 h-[100vh] bg-[#f2fff9] relative ">
-        <div className=" lg:flex justify-center pt-20 absolute top-[250px] right-[15px] lg:-left-[10px] lg:top-[25px]">
+      <section className=" kontak mt-10 h-[100vh]  relative ">
+        <div className=" hidden lg:flex justify-center pt-20 absolute top-[250px] right-[15px] lg:-left-[10px] lg:top-[25px]">
           <h1 className="text-[50px]">Lest</h1>
           <h1 className="text-[50px]">Have</h1>
           <h1 className="text-[50px]">A</h1>
@@ -14,7 +14,7 @@ function Kontak() {
         </div>
         <div className="h-full flex items-end ">
           <div className="grid grid-cols-1 lg:grid-cols-3 ">
-            <div className="w-full">
+            <div className="w-full hidden lg:block">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d63374.17817952167!2d107.610112!3d-6.9042176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1690215709855!5m2!1sen!2sid"
                 width={600}
@@ -26,7 +26,12 @@ function Kontak() {
                 className=" h-[450px] w-[650px]"
               />
             </div>
-
+            <div className=" flex justify-center pt-20 lg:hidden">
+              <h1 className="text-[50px]">Lest</h1>
+              <h1 className="text-[50px]">Have</h1>
+              <h1 className="text-[50px]">A</h1>
+              <h1 className="text-[50px]">Talk</h1>
+            </div>
             <div className="bg-gray-300 h-full w-full">
               <div className="flex justify-center items-center h-full">
                 <div className="w-[400px]">
@@ -96,9 +101,7 @@ function Kontak() {
                   <h1 className="text-[30px] mb-14">Pitch us</h1>
                   <h1 className="pt-5">Hello</h1>
                   <p className="pt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatem inventore itaque quasi nemo corporis laboriosam
-                    veniam ducimus vitae recusandae laborum.
+                    Apakah Anda telah mengikuti program pembelajaran atau memiliki pengalaman dengan Lembaga Markaz Quran? Kami ingin mendengar cerita Anda. Silakan bagikan testimonial Anda di bawah ini dan berikan inspirasi kepada orang lain untuk menjalani perjalanan belajar Alquran bersama kami.
                   </p>
                   <button className="mt-5 bg-[#169859] w-32 p-2 rounded-full">
                     <span>send</span>

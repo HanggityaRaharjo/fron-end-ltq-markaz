@@ -22,7 +22,7 @@ const Sidebar = ({ sidebarStatus }) => {
       >
         <DropdownDivider name="Home" />
 
-        <div className="bg-[#169859] text-[#f3faf6] w-full py-2 px-4 rounded-full  font-semibold transition-all duration-150">
+        <div className="bg-[#169859] text-[#f3faf6] w-full py-2 px-4 font-semibold transition-all duration-150">
           Dashboard
         </div>
 

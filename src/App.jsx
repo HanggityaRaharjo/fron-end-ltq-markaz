@@ -47,7 +47,16 @@ import BiodataPegawai from "./pages/tu/biodata";
 import BiodataGuru from "./pages/guru/biodataGuru";
 import FormCutiGuru from "./pages/guru/formCuti/indext";
 import DataKonsumen from "./pages/tu/administrasi/spp/kasir/dataKonsumen";
-import SppPesertaBaru from "./pages/tu/administrasi/spp/pembayaranSpp/pesertabaru";
+import SppPesertaBaru from "./pages/tu/administrasi/spp/pembayaranSpp/pesertabaru/formPesertabaru";
+import SppDaftarUlang from "./pages/tu/administrasi/spp/pembayaranSpp/daftarUlang/formDaftarUlang";
+import WaBlash from "./pages/tu/administrasi/waBlash";
+import PanitiaPsb from "./pages/tu/administrasi/panitiaPsb";
+import Kurikulum from "./pages/guru/kurikulum";
+import PresensiGuru from "./pages/guru/presensiGuru";
+import TabelDaftarUlang from "./pages/tu/administrasi/spp/pembayaranSpp/daftarUlang";
+import TabelPesertaBaru from "./pages/tu/administrasi/spp/pembayaranSpp/pesertabaru";
+import Faktur from "./pages/tu/administrasi/spp/faktur";
+import JumlahTagihan from "./pages/tu/administrasi/spp/faktur/jumlahTagihan";
 
 const router = createBrowserRouter([
   {
@@ -201,8 +210,16 @@ const router = createBrowserRouter([
     element: <InputNilaiRapot />,
   },
   {
+    path: "/show/presensi-guru",
+    element: <PresensiGuru />,
+  },
+  {
     path: "/show/presensi-kehadiran",
     element: <PresensiKehadiran />,
+  },
+  {
+    path: "/show/kurikulum",
+    element: <Kurikulum />,
   },
 
   // TU
@@ -212,8 +229,28 @@ const router = createBrowserRouter([
     element: <BiodataPegawai />,
   },
   {
+    path: "/show/spp-peserta-baru",
+    element: <TabelPesertaBaru />,
+  },
+  {
     path: "/form/spp-peserta-baru",
     element: <SppPesertaBaru />,
+  },
+  {
+    path: "/form/spp-daftar-ulang",
+    element: <SppDaftarUlang />,
+  },
+  {
+    path: "/show/spp-daftar-ulang",
+    element: <TabelDaftarUlang />,
+  },
+  {
+    path: "/show/faktur",
+    element: <Faktur />,
+  },
+  {
+    path: "/show/jumlah-tagihan",
+    element: <JumlahTagihan />,
   },
   {
     path: "/show/stock-barang",
@@ -222,6 +259,14 @@ const router = createBrowserRouter([
   {
     path: "/show/konsumen",
     element: <DataKonsumen />,
+  },
+  {
+    path: "/show/panitia-psb",
+    element: <PanitiaPsb />,
+  },
+  {
+    path: "/form/wa-blash",
+    element: <WaBlash />,
   },
 
 

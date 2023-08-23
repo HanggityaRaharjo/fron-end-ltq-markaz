@@ -129,7 +129,7 @@ const TabelData = ({ no, name, hadir, sakit, absen, izin, input }) => {
 function ModalEditPresensi({ show, close }) {
     return (
         <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-30 justify-center items-center'
-            style={{ display: show ? "flex" : "none" }}>
+            style={{ display: show ? "block" : "none" }}>
             <div className='flex justify-center items-center h-full w-full'>
                 <div className='p-5 max-h-[600px] w-[400px] bg-white rounded-lg'>
                     <h1 className='font-bold'>Edit Presensi</h1>

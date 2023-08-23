@@ -20,14 +20,10 @@ function TentangKami() {
                   <div className="w-[500px]">
                     <h1 className="text-[40px] font-bold">Tentang Kami</h1>
                     <p className="text-[20px] font-semibold py-5">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Aliquam, tempore.
+                      Yayasan Markaz AlQuran Indonesia.
                     </p>
                     <p className="text-justify">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Ex commodi temporibus veritatis iusto sed. Enim, soluta
-                      sapiente ratione maiores repudiandae suscipit ab nesciunt
-                      aut ducimus in quo veniam modi fugiat!
+                      Selamat datang di Lembaga Tahfidz Alquran, sebuah lembaga yang berkomitmen untuk membantu Anda dalam perjalanan memahami dan menghafal Alquran. Kami didirikan dengan tujuan mulia untuk memfasilitasi pembelajaran Alquran yang efektif, berfokus pada pemahaman yang mendalam dan hafalan yang kokoh. Kami adalah rumah bagi para pencari ilmu Alquran, baik anak-anak maupun dewasa.s
                     </p>
                   </div>
                 </div>
@@ -53,8 +49,7 @@ function TentangKami() {
                   <div className="h-[250px] w-[250px] bg-[#cafee6]">
                     <div className="flex items-center h-full p-5">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Animi, et?
+                        Aep Saepudim M.Ag
                       </p>
                     </div>
                   </div>
@@ -64,8 +59,7 @@ function TentangKami() {
                   <div className="h-[250px] w-[250px] bg-[#f6e7c5]">
                     <div className="flex items-center h-full p-5">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Animi, et?
+                        Entis Sutisna M.Ag
                       </p>
                     </div>
                   </div>
@@ -81,8 +75,7 @@ function TentangKami() {
                   <div className="h-[250px] w-[250px] bg-[#f6e7c5]">
                     <div className="flex items-center h-full p-5">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Animi, et?
+                        Ervan Herdiansyah S.T
                       </p>
                     </div>
                   </div>
@@ -92,8 +85,7 @@ function TentangKami() {
                   <div className="h-[250px] w-[250px] bg-[#cafee6]">
                     <div className="flex items-center h-full p-5">
                       <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Animi, et?
+                        Hanggitya Raharjo S.T. M.Ag
                       </p>
                     </div>
                   </div>

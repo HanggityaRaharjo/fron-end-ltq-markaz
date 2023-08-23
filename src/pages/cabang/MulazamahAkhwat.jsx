@@ -24,7 +24,7 @@ function MulazamahAkhwat() {
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-[#cafee6] rounded-bl-full">
             <div className="w-full flex justify-center">
               <div className="w-[500px]">
-                <img src={mulazamah} alt="" className="w-full" />
+                <img src={mulazamah} alt="" className="w-full scale-125" />
               </div>
             </div>
             <div className=" flex justify-center md:justify-start mt-5 md:mt-0">

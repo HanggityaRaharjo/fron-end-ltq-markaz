@@ -46,9 +46,9 @@ function Qsc() {
           </div>
           {/* gambar */}
           <div className=" hidden justify-end md:block">
-            <div className="flex justify-end">
+            <div className="flex justify-center">
               <div className="w-[500px]">
-                <img src={qsc} alt="" />
+                <img src={qsc} alt="" className="w-full scale-125" />
               </div>
             </div>
           </div>

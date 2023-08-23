@@ -26,79 +26,85 @@ function BiodataGuru() {
                 show={showEditFoto}
                 close={setShowEditFoto}
             />
-            <section className='p-5 h-[100vh]'>
-                <div className='flex'>
-                    <div className='w-1/2'>
-                        <div className='bg-white p-2 shadow-md mr-2 rounded-md border'>
-                            <div className='flex gap-10 justify-center items-center h-[200px]'>
-                                <div className='h-full w-[200px] rounded-full bg-gray-500 overflow-hidden object-cover'>
-                                    <img src={foto} alt="" className='object-cover h-full' />
-                                </div>
+            <section className='p-5'>
+                <div className=''>
+                    <div className='bg-white p-10 shadow-md flex gap-10'>
+                        <div className='h-[150px] w-[150px] rounded-md bg-gray-500 overflow-hidden object-cover'>
+                            <img src={foto} alt="" className='object-cover h-full' />
+                        </div>
+                        <div>
+                            <div className='flex flex-col gap-2'>
+                                <h1 className='font-bold text-[24px]'>Agus Gunawan</h1>
+                                <p>Email : <span className='text-blue-500 text-[16px]'>agusgunawan98@gmail.com</span></p>
+                                <p>Bagian : <span>Guru Talaqqi</span></p>
                             </div>
-                            <div className='flex justify-center mt-5'>
-                                <h1 className='font-bold'>
-                                    Ujang
-                                </h1>
-                            </div>
-                            <table className='mt-5'>
-                                <tr>
-                                    <td className='p-2 w-[150px] font-bold'>Bagian</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Guru</td>
-                                </tr>
-                                <tr>
-                                    <td className='p-2 font-bold'>Email</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Ujang@gmail.com</td>
-                                </tr>
-                            </table>
-                            <div className='flex justify-end'>
+
+                            <div className='flex mt-5'>
                                 <button
                                     onClick={() => HandleFoto()}
-                                    className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='w-1/2'>
-                        <div className='bg-white p-2 shadow-lg rounded-md border'>
-                            <table className=''>
-                                <tr>
-                                    <td className='p-2 w-[150px] font-bold'>Nama Lengkap</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Ujang Enam</td>
-                                </tr>
-                                <tr>
-                                    <td className='p-2 font-bold'>Email</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Ujang@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td className='p-2 font-bold'>Phone</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>089767856466</td>
-                                </tr>
-                                <tr>
-                                    <td className='p-2 font-bold'>Alamat</td>
-                                    <td className='p-2'>:</td>
-                                    <td className='p-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quaerat corporis possimus, ad velit eum!</td>
-                                </tr>
-                            </table>
-                            <div className='flex justify-end'>
-                                <button
-                                    onClick={() => HandleEdit()}
-                                    className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                    className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
                                     Edit
                                 </button>
                             </div>
                         </div>
 
+
+                    </div>
+                </div>
+                <div className='mt-10 w-3/5'>
+                    <div className='bg-white p-2 shadow-lg rounded-md'>
+                        <table className=''>
+                            <tr>
+                                <td className='p-2 w-[150px] font-bold'>Nama Lengkap</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Agus Gunawan</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Email</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>agusgunawan98@gmail.com</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Phone</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>089767856466</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Alamat</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quaerat corporis possimus, ad velit eum!</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Desa</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Malakasari</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Kecamatan</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Baleendah</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Kabupaten</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Bandung</td>
+                            </tr>
+                            <tr>
+                                <td className='p-2 font-bold'>Provinsi</td>
+                                <td className='p-2'>:</td>
+                                <td className='p-2'>Jawa barat</td>
+                            </tr>
+                        </table>
+                        <div className='flex justify-end p-5'>
+                            <button onClick={() => HandleEdit()} className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
+                                Edit
+                            </button>
+                        </div>
                     </div>
 
                 </div>
             </section>
-        </Layout >
+        </Layout>
     )
 }
 
