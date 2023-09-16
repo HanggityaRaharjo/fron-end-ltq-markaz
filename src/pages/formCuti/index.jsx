@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout";
 function FormCuti() {
   return (
     <Layout>
-      <section className="mt-10 bg-white p-5 shadow-md">
+      <section className="mt-10 bg-white p-5 shadow">
         <div className="grid grid-cols-2 gap-2">
           <FormInput label={"Mulai cuti"} type={"date"} />
           <FormInput label={"Sampai dengan"} type={"date"} />
@@ -35,7 +35,7 @@ const FormInput = ({ label, type }) => {
         </label>
         <input
           type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -52,7 +52,7 @@ const FormInput = ({ label, type }) => {
         </div>
         <input
           type="date"
-          className="w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className="w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -69,7 +69,7 @@ const FormInput = ({ label, type }) => {
           id=""
           cols="30"
           rows="5"
-          className="border border-[#169859] rounded-lg rounded-t-none col-span-3 p-5"
+          className="border border-[#169859] rounded-md rounded-t-none col-span-3 p-5"
           placeholder="Type Here"
         ></textarea>
       </div>

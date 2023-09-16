@@ -6,7 +6,7 @@ function DaftarTahsinBiodata() {
   return (
     <>
       <LayoutDaftarTahsin>
-        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow-md">
+        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow">
           <div className="px-5">
             <div className="grid grid-cols-2 gap-10">
               <FormInput title={"No ID LTQ (5 Digit)"} />
@@ -25,7 +25,7 @@ function DaftarTahsinBiodata() {
               </label>
               <input
                 type="text"
-                className="pr-5 w-full border border-[#169859]  px-5 h-[100px] rounded-lg rounded-tl-none"
+                className="pr-5 w-full border border-[#169859]  px-5 h-[100px] rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -74,7 +74,7 @@ const FormInput = ({ title, start }) => {
         </label>
         <input
           type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -96,7 +96,7 @@ const FormSelect = ({ title, list0, list1, list2, value }) => {
         <select
           name="cars"
           id="cars"
-          className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+          className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
         >
           <option value={value}>{list0}</option>
           <option value={value}>{list1}</option>

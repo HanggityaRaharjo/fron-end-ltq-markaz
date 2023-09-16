@@ -6,7 +6,7 @@ function DaftarTalaqqi() {
   return (
     <>
       <LayoutTalaqqi>
-        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow-md">
+        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow">
           <div className="px-5">
             <Inputfile title={"Lampirkan Bukti Tranfer Pendaftaran"} />
 
@@ -67,7 +67,7 @@ function Inputfile({ title }) {
             onClick={(e) => {
               e.target.firstChild.click();
             }}
-            className=" flex justify-center items-center w-40 h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+            className=" flex justify-center items-center w-40 h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
           >
             <input
               type="file"
@@ -97,13 +97,13 @@ function Inputfile({ title }) {
           </div>
           <div>
             <div className="flex justify-center">
-              <div className="h-[200px] w-[200px] bg-gray-200 rounded-lg flex justify-center items-center">
+              <div className="h-[200px] w-[200px] bg-gray-200 rounded-md flex justify-center items-center">
                 {imagePreview ? (
                   <div className="w-[200px] h-[200px]">
                     <img
                       src={imagePreview}
                       alt="Preview"
-                      className="w-[200px] h-[200px]  rounded-lg object-center object-cover"
+                      className="w-[200px] h-[200px]  rounded-md object-center object-cover"
                     />
                   </div>
                 ) : (
@@ -144,7 +144,7 @@ const FormInput = ({ title, start }) => {
         </label>
         <input
           type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+          className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
           placeholder="Type here.."
         />
       </div>
@@ -166,7 +166,7 @@ const FormSelect = ({ title, list0, list1, list2, value }) => {
         <select
           name="cars"
           id="cars"
-          className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+          className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
         >
           <option value={value}>{list0}</option>
           <option value={value}>{list1}</option>
@@ -192,7 +192,7 @@ const DropdownSelect = (props) => {
       <select
         value={selectedOption}
         onChange={onChange}
-        className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+        className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
       >
         <option value="">Pilih opsi...</option>
         {options.map((option) => (

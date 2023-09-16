@@ -17,7 +17,7 @@ const DropdownSelect = (props) => {
       <select
         value={selectedOption}
         onChange={onChange}
-        className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+        className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
       >
         <option value="">Pilih opsi...</option>
         {options.map((option) => (
@@ -52,7 +52,7 @@ function DaftarTahsinHari() {
   return (
     <>
       <LayoutDaftarTahsin>
-        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow-md">
+        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow">
           <div className="px-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <FormSelect
@@ -111,7 +111,7 @@ const FormSelect = ({ title, list0, list1, list2, value }) => {
         <select
           name="cars"
           id="cars"
-          className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
+          className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
         >
           <option value={value}>{list0}</option>
           <option value={value}>{list1}</option>

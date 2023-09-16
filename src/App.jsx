@@ -1,112 +1,38 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Kontak } from "./pages/index";
-import { FormBiodataSiswa } from "./pages/peserta";
-import LandingPageMaster from "./pages/LandingPageMaster";
-import TentangKami from "./pages/TentangKami";
-
-import Faq from "./pages/Faq";
-import LtqMqi from "./pages/cabang/LtqMqi";
-import Mdmqi from "./pages/cabang/Mdmqi";
-import Qsc from "./pages/cabang/Qsc";
-import SantriNusantara from "./pages/cabang/SantriNusantara";
-import RqAkhwat from "./pages/cabang/RqAkhwat";
-import MulazamahAkhwat from "./pages/cabang/MulazamahAkhwat";
-import Login from "./pages/autentication/Login";
-import Register from "./pages/autentication/Register";
-import DaftarTahsinTahfidz from "./pages/pendaftaran/daftarTahsin/DaftarTahsinTahfidz";
-import DaftarTalaqqi from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqi";
-import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBiodata";
-import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
-import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
-import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
-import Profile from "./pages/profil";
 import Profil from "./pages/profil";
 import FormCuti from "./pages/formCuti";
+import { GuestRoute } from "./route/GuestRoute";
+import { AuthRoute } from "./route/AuthRoute";
+import { PesertaRoute } from "./route/PesertaRoute";
+import { AdminRoute } from "./route/AdminRoute";
+import { BendaharaRoute } from "./route/BendaharaRoute";
+import { GuruRoute } from "./route/GuruRoute";
 
 const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-
-  // Daftar Tahsin
-
-  {
-    path: "/daftartahsintahfidz",
-    element: <DaftarTahsinTahfidz />,
-  },
-  {
-    path: "/daftartahsinBiodata",
-    element: <DaftarTahsinBiodata />,
-  },
-  {
-    path: "/daftartahsinhari",
-    element: <DaftarTahsinHari />,
-  },
-
-  // Daftar Talaqqi
-
-  {
-    path: "/daftartalaqqi",
-    element: <DaftarTalaqqi />,
-  },
-  {
-    path: "/daftartalaqqibiodata",
-    element: <DaftarTalaqqiBiodata />,
-  },
-  {
-    path: "/daftartalaqqihari",
-    element: <DaftarTalaqqiHari />,
-  },
-
-  {
-    path: "/",
-    element: <LandingPageMaster />,
-  },
-  {
-    path: "/ltqmqi",
-    element: <LtqMqi />,
-  },
-  {
-    path: "/mdmqi",
-    element: <Mdmqi />,
-  },
-  {
-    path: "/qsc",
-    element: <Qsc />,
-  },
-  {
-    path: "/santri",
-    element: <SantriNusantara />,
-  },
-  {
-    path: "/mulazamah",
-    element: <MulazamahAkhwat />,
-  },
-  {
-    path: "/rqakhwat",
-    element: <RqAkhwat />,
-  },
-  {
-    path: "/tentang",
-    element: <TentangKami />,
-  },
-  {
-    path: "/kontak",
-    element: <Kontak />,
-  },
-  {
-    path: "/faq",
-    element: <Faq />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
+  ...AuthRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...GuestRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...PesertaRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...GuruRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...AdminRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...BendaharaRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
   {
     path: "/profil",
     element: <Profil />,
@@ -114,10 +40,6 @@ const router = createBrowserRouter([
   {
     path: "/formcuti",
     element: <FormCuti />,
-  },
-  {
-    path: "/peserta-baru",
-    element: <FormBiodataSiswa />,
   },
 ]);
 

@@ -5,7 +5,7 @@ import profil from "../../assets/founder/founder.jpg";
 function Profil() {
   return (
     <Layout>
-      <section className="bg-white p-5 shadow-md">
+      <section className="bg-white p-5 shadow">
         <div className="flex justify-center mt-10">
           <div className="h-[200px] w-[200px] bg-slate-100 rounded-full relative overflow-hidden">
             <img
@@ -22,7 +22,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Nama
               </label>
-              <p className=" w-full border border-[#169859] h-10 p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-10 p-2  rounded-md rounded-tl-none">
                 Lorem ipsum dolor, sit amet consectetur
               </p>
             </div>
@@ -31,7 +31,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Email
               </label>
-              <p className=" w-full border border-[#169859] h-10 p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-10 p-2  rounded-md rounded-tl-none">
                 Lorem ipsum dolor, sit amet consectetur
               </p>
             </div>
@@ -40,7 +40,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Usia
               </label>
-              <p className=" w-full border border-[#169859] h-10 p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-10 p-2  rounded-md rounded-tl-none">
                 32
               </p>
             </div>
@@ -49,7 +49,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Jenis Kelamin
               </label>
-              <p className=" w-full border border-[#169859] h-10 p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-10 p-2  rounded-md rounded-tl-none">
                 Lorem ipsum dolor, sit amet consectetur
               </p>
             </div>
@@ -58,7 +58,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Alamat
               </label>
-              <p className=" w-full border border-[#169859] h-Auto p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-Auto p-2  rounded-md rounded-tl-none">
                 Lorem ipsum dolor, sit amet consectetur Lorem ipsum dolor sit
                 amet consectetur adipisicing elit. Atque, excepturi!
               </p>
@@ -76,7 +76,7 @@ function Profil() {
               <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
                 Username
               </label>
-              <p className=" w-full border border-[#169859] h-Auto p-2  rounded-lg rounded-tl-none">
+              <p className=" w-full border border-[#169859] h-Auto p-2  rounded-md rounded-tl-none">
                 Lorem ipsum dolor
               </p>
             </div>
@@ -87,7 +87,7 @@ function Profil() {
               </label>
               <input
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-[#169859]  px-5 h-10 rounded-md rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>

@@ -1,99 +1,273 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layouts/Layout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-const FormBiodataSiswa = () => {
-  // State untuk menyimpan nilai opsi yang terpilih
-  const [selectedOption, setSelectedOption] = useState("");
+import useAuth from "../../store/AuthStore";
+import axios from "axios";
+import {
+  Breadcrumbs,
+  BreadcrumbsItem,
+  BreadcrumbsActive,
+} from "../../components/breadcrumbs";
+import Cookies from "js-cookie";
 
-  // Daftar opsi yang akan ditampilkan dalam dropdown
+const FormBiodataSiswa = () => {
+  const user = useAuth((state) => state);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [dataProvinsi, setDataProvinsi] = useState([]);
   const options = [
     { value: "option1", label: "Laki-Laki" },
     { value: "option2", label: "Perempuan" },
   ];
 
-  // Fungsi untuk menangani perubahan opsi terpilih
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const GetAllProvince = () => {
+    axios
+      .get("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json")
+      .then(({ data }) => {
+        console.log(data);
+        setDataProvinsi(data);
+      });
   };
+  useEffect(() => {
+    GetAllProvince();
+  }, []);
 
+  // Fungsi untuk menangani perubahan opsi terpilih
+  const navigate = useNavigate();
   const HandleSubmit = (e) => {
+    function ubahFormatTanggalNumerik(tanggal) {
+      const tanggalArr = tanggal.split("-");
+      const tahun = tanggalArr[0];
+      const bulan = tanggalArr[1];
+      const tanggalBaru = tanggalArr[2];
+      const hasil = `${tahun}-${bulan}-${tanggalBaru}`;
+      return hasil;
+    }
     e.preventDefault();
-    console.log(e.target[1].value);
+
+    axios
+      .post(
+        `${import.meta.env.VITE_BACK_END_END_POINT_URL}/biodata/create`,
+        {
+          uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
+          full_name: e.target["full_name"].value,
+          usia: e.target["usia"].value,
+          jenis_kelamin: e.target["jenis_kelamin"].value,
+          tanggal_lahir: ubahFormatTanggalNumerik(
+            e.target["tanggal_lahir"].value
+          ),
+          alamat: e.target["alamat"].value,
+          photo: e.target["foto_diri"].files[0],
+          photo_ktp: e.target["ktp"].files[0],
+          kelurahan: e.target["kelurahan"].value,
+          kecamatan: e.target["kecamatan"].value,
+          kabupaten_kota: e.target["kabupaten_kota"].value,
+          provinsi: e.target["provinsi"].value,
+          no_wa: e.target["no_wa"].value,
+          no_alternatif: e.target["no_alternatif"].value,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        navigate("/pilih-program");
+      })
+      .catch((error) => console.log(error.message));
   };
   return (
     <Layout>
-      <section className="min-h-screen ">
-        <div className="h-20  bg-white rounded-full flex items-center justify-around shadow-lg mb-5">
-          <StepNumber number={1} text="Biodata Siswa" status={true} />
-          <StepArrow />
-          <StepNumber number={2} text="Pilihan Program" status={false} />
-          <StepArrow />
-          <StepNumber number={3} text="Biaya Pendidikan" status={false} />
-          <StepArrow />
-          <StepNumber number={4} text="Placement Test" status={false} />
-        </div>
+      <Breadcrumbs>
+        <BreadcrumbsItem>Pendaftaran</BreadcrumbsItem>
+        <BreadcrumbsActive>Biodata</BreadcrumbsActive>
+      </Breadcrumbs>
+      <section className="min-h-screen font-poppins text-gray-500">
+        <div className="">
+          <form method="post" onSubmit={(e) => HandleSubmit(e)}>
+            {/* Biodata */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                Biodata
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="font-medium">Nama Lengkap</label>
+                  <input
+                    name="full_name"
+                    type="text"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
+                </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-5">
-          <form action="" method="post" onSubmit={(e) => HandleSubmit(e)}>
-            <div className="grid grid-cols-2 gap-10 mb-2">
-              <FormInput label="Nama Lengkap" type="text" />
-              <FormInput label="Usia" type="text" />
-              <DropdownSelect
-                title={"Jenis Kelamin"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <FormInput label="Tanggal Lahir" type="date" />
-              <FormInput label="Alamat Lengkap" type="area" />
-              <DropdownSelect
-                title={"Kelurahan"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"kecamatan"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"Kabupaten"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <DropdownSelect
-                title={"Provinsi"}
-                options={options}
-                selectedOption={selectedOption}
-                onChange={handleOptionChange}
-              />
-              <FormInput label="No WA" type="text" />
-              <FormInput label="No Alternatif" type="text" />
+                <div className="flex flex-col">
+                  <label className="font-medium">Usia</label>
+                  <input
+                    name="usia"
+                    type="number"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    jenis Kelamin
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="jenis_kelamin"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                  >
+                    <option value="">Pilih opsi...</option>
+                    <option value="laki-laki">Laki-laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">Tanggal Lahir</label>
+                  <input
+                    name="tanggal_lahir"
+                    type="date"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex w-ful gap-2 mt-10">
-              <ImageUploaderSquare />
-              <ImageUploaderCircle />
+            {/* End Biodata */}
+
+            {/* Alamat Lengkap */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                Alamat Lengkap
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    provinsi
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <select
+                    name="provinsi"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    style={{ height: "auto" }}
+                  >
+                    <option value="">Pilih opsi...</option>
+                    {dataProvinsi &&
+                      dataProvinsi.map((item) => (
+                        <option value={item.name}>{item.name}</option>
+                      ))}
+                  </select>
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    Kabupaten/Kota
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kabupaten_kota"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kabupaten/Kota"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    Kecamatan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kecamatan"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kecamatan"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    kelurahan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kelurahan"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kelurahan"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">Alamat</label>
+                  <input
+                    name="alamat"
+                    type="area"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+              </div>
+            </div>
+            {/* End Alamat Lengkap */}
+
+            {/* No Telephone */}
+            <div className=" bg-white rounded-md rounded-l-none shadow-lg p-5 mb-5 border-l-4 border-[#169859]">
+              <h3 className="text-lg text-gray-500 font-semibold mb-2 text-end">
+                No Telepon
+              </h3>
+              <div className="grid grid-cols-1 gap-5">
+                <div className="flex flex-col">
+                  <label className="font-medium">No Wa</label>
+                  <input
+                    name="no_wa"
+                    type="number"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">Nomor Alternatif</label>
+                  <input
+                    name="no_alternatif"
+                    type="number"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Nomor Alternatif"
+                  />
+                </div>
+              </div>
+            </div>
+            {/* End No Telephone */}
+
+            <div className="flex w-full border-l-4 border-[#169859] gap-2 mt-10 bg-white p-5 rounded-md rounded-l-none shadow">
+              <ImageUploaderCircle name="foto_diri" />
+              <ImageUploaderSquare name="ktp" />
             </div>
 
             <div className="flex justify-end gap-5 mt-5">
-              {/* <button
-                type="submit"
-                className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                Submit
-              </button> */}
-              <Link className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                Submit
-              </Link>
               <button
                 type="submit"
-                className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                className="bg-[#169859] text-[#f3faf6] p-2 w-32  rounded-md font-semibold hover:bg-opacity-70 transition duration-150  active:scale-95"
               >
-                Cancel
+                <span>Simpan</span>
+              </button>
+              <button className="border border-[#169859] w-32  text-[#169859] p-2  rounded-md font-semibold hover:bg-opacity-70 transition duration-150  active:scale-95">
+                <span>Batal</span>
               </button>
             </div>
           </form>
@@ -105,7 +279,7 @@ const FormBiodataSiswa = () => {
 
 // imagebulat
 
-const ImageUploaderCircle = () => {
+const ImageUploaderCircle = ({ name }) => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -137,10 +311,12 @@ const ImageUploaderCircle = () => {
       <div className="w-1/2">
         <div className="flex justify-center">
           <div className="w-full">
+            <p className="text-center text-gray-500 font-semibold">Foto Diri</p>
             {imagePreview ? (
               <div className="flex justify-center">
                 <div className="w-[150px] h-[150px]">
                   <img
+                    name="photo"
                     src={imagePreview}
                     alt="Preview"
                     className="w-[150px] h-[150px] rounded-full object-center object-cover"
@@ -170,10 +346,12 @@ const ImageUploaderCircle = () => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859]  rounded-md cursor-pointer"
               >
                 <input
                   type="file"
+                  required
+                  name={name}
                   onChange={handleFileChange}
                   accept="image/*"
                   className="border h-full w-full relative -z-10 hidden"
@@ -210,7 +388,7 @@ const ImageUploaderCircle = () => {
 
 // imagekotak
 
-const ImageUploaderSquare = () => {
+const ImageUploaderSquare = ({ name }) => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -242,6 +420,7 @@ const ImageUploaderSquare = () => {
       <div className="w-1/2">
         <div className="flex justify-center">
           <div className="w-full">
+            <p className="text-center text-gray-500 font-semibold">Foto KTP</p>
             {imagePreview ? (
               <div className="flex justify-center">
                 <div className="w-[290px] h-[150px]">
@@ -277,10 +456,12 @@ const ImageUploaderSquare = () => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] rounded-md cursor-pointer"
               >
                 <input
+                  name={name}
                   type="file"
+                  required
                   onChange={handleFileChange}
                   accept="image/*"
                   className="border h-full w-full relative -z-10 hidden"
@@ -311,91 +492,8 @@ const ImageUploaderSquare = () => {
           </div>
         </div>
       </div>
-      {/* <div
-        className="col-span-2  flex justify-center items-center bg-[#169859] bg-opacity-60 rounded-lg cursor-pointer"
-        onClick={(e) => {
-          e.target.firstChild.click();
-        }}
-      >
-        <input
-          type="file"
-          onChange={handleFileChange}
-          accept="image/*"
-          className="border h-full w-full relative -z-10 hidden"
-        />
-        <div className="flex flex-col justify-center items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-20 h-20 text-white"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-            />
-          </svg>
-          <p className="text-xl font-semibold text-white">Upload File</p>
-        </div>
-
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </div> */}
     </>
   );
-};
-
-const FormInput = ({ label, type }) => {
-  if (type === "text") {
-    return (
-      <div className="flex flex-col">
-        <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-          {label}
-        </label>
-        <input
-          type="text"
-          className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-          placeholder="Type here.."
-        />
-      </div>
-    );
-  }
-  if (type === "date") {
-    return (
-      <div className="flex flex-col">
-        <div className="flex items-end gap-2">
-          <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-            {label}
-          </label>
-          <small>Hari/Bulan/Tahun</small>
-        </div>
-        <input
-          type="date"
-          className="w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-          placeholder="Type here.."
-        />
-      </div>
-    );
-  }
-  if (type === "area") {
-    return (
-      <div className="flex flex-col  col-span-2">
-        <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
-          {label}
-        </label>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="5"
-          className="border border-[#169859] rounded-lg rounded-tl-none col-span-3 p-5"
-          placeholder="Type Here"
-        ></textarea>
-      </div>
-    );
-  }
 };
 
 const StepNumber = ({ number, text, status }) => {
@@ -431,31 +529,6 @@ const StepArrow = () => {
           d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
         />
       </svg>
-    </div>
-  );
-};
-
-const DropdownSelect = (props) => {
-  const { options, selectedOption, onChange, title } = props;
-
-  return (
-    <div className="flex flex-col">
-      <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-        {title}
-        <span className="absolute pl-5">*</span>
-      </label>
-      <select
-        value={selectedOption}
-        onChange={onChange}
-        className="h-10 w-full border border-[#169859]  px-5 rounded-lg rounded-tl-none"
-      >
-        <option value="">Pilih opsi...</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
     </div>
   );
 };
