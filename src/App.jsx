@@ -12,13 +12,13 @@ import SantriNusantara from "./pages/cabang/SantriNusantara";
 import MulazamahAkhwat from "./pages/cabang/MulazamahAkhwat";
 import Login from "./pages/autentication/Login";
 import Register from "./pages/autentication/Register";
+import BiodataPeserta from "./pages/biodataPeserta";
 import DaftarTahsinTahfidz from "./pages/pendaftaran/daftarTahsin/DaftarTahsinTahfidz";
 import DaftarTalaqqi from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqi";
 import DaftarTahsinBiodata from "./pages/pendaftaran/daftarTahsin/DaftarTahsinBiodata";
 import DaftarTahsinHari from "./pages/pendaftaran/daftarTahsin/DaftarTahsinHari";
 import DaftarTalaqqiBiodata from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiBiodata";
 import DaftarTalaqqiHari from "./pages/pendaftaran/daftarTalaqqi/DaftarTalaqqiHari";
-import Profil from "./pages/profil";
 import FormCuti from "./pages/formCuti";
 import Mukhoyyam from "./pages/cabang/mukhoyyam";
 import MarkazAlquranAkhwat from "./pages/cabang/markazAlquankhwat";
@@ -43,7 +43,7 @@ import InputnilaiSiswa from "./pages/guru/inputNilai";
 import PresensiKehadiran from "./pages/guru/presensiKehadiran";
 import InputNilaiRapot from "./pages/guru/inputNilaiRapot";
 import StockBarang from "./pages/tu/administrasi/spp/stockBarang";
-import BiodataPegawai from "./pages/tu/biodata";
+import BiodataPegawai from "./pages/tu/pendaftaran/biodata";
 import BiodataGuru from "./pages/guru/biodataGuru";
 import FormCutiGuru from "./pages/guru/formCuti/indext";
 import DataKonsumen from "./pages/tu/administrasi/spp/kasir/dataKonsumen";
@@ -57,6 +57,30 @@ import TabelDaftarUlang from "./pages/tu/administrasi/spp/pembayaranSpp/daftarUl
 import TabelPesertaBaru from "./pages/tu/administrasi/spp/pembayaranSpp/pesertabaru";
 import Faktur from "./pages/tu/administrasi/spp/faktur";
 import JumlahTagihan from "./pages/tu/administrasi/spp/faktur/jumlahTagihan";
+import AlurKas from "./pages/bendahara/alurKas";
+import FormAlurKas from "./pages/bendahara/alurKas/formAlurKas";
+import DashboardTu from "./pages/tu/dashboard";
+import DaftarUlangTu from "./pages/tu/pendaftaran/daftarUlang";
+import InformasiRapot from "./pages/informasi/rapot";
+import RiwayatPendidikan from "./pages/informasi/riwayatPendidikan";
+import FormUbahBiodata from "./pages/biodataPeserta/formBiodata";
+import BiayaPendidikan from "./pages/biayaPendidikan";
+import TestLevel from "./pages/testLevel";
+import UjianPraktek from "./pages/testLevel/ujianPraktek";
+import KelasSiswa from "./pages/kelas";
+import PengaturanAkun from "./pages/pengaturanAkun";
+import GantiPassword from "./pages/pengaturanAkun/formGantiPassword";
+import UbahBiodataPegawai from "./pages/tu/pendaftaran/biodata/ubahBiodata";
+import UbahBiodataGuru from "./pages/guru/biodataGuru/ubahBiodata";
+import NilaiRapot from "./pages/guru/inputNilaiRapot";
+import FormCutiTu from "./pages/tu/pendaftaran/formCuti";
+import PengaturanAkunTu from "./pages/tu/pendaftaran/pengaturanAkun/indec";
+import FormPengaturanAkunTu from "./pages/tu/pendaftaran/pengaturanAkun/formPengaturanAkun";
+import PengaturanAkunGuru from "./pages/guru/pengaturanAkun";
+import FormPengaturanAkunGuru from "./pages/guru/pengaturanAkun/formPengaturanAkun";
+import BarangMasuk from "./pages/tu/administrasi/spp/stockBarang/barangMasuk";
+import BarangKeluar from "./pages/tu/administrasi/spp/stockBarang/barangKeluar";
+
 
 const router = createBrowserRouter([
   {
@@ -135,7 +159,7 @@ const router = createBrowserRouter([
     element: <MarkazAlquranAkhwat />,
   },
   {
-    path: "/kajianrafsir",
+    path: "/kajiantafsir",
     element: <KajianTafsir />,
   },
 
@@ -155,21 +179,52 @@ const router = createBrowserRouter([
     path: "/home",
     element: <Home />,
   },
+
+  // peserta
+
   {
-    path: "/profil",
-    element: <Profil />,
+    path: "/form/pengaturan-akun",
+    element: <PengaturanAkun />,
   },
   {
-    path: "/formcuti",
-    element: <FormCutiGuru />,
+    path: "/form/ganti-password",
+    element: <GantiPassword />,
+  },
+  {
+    path: "/show/biodata-peserta",
+    element: <BiodataPeserta />,
+  },
+  {
+    path: "/form/biodata-peserta",
+    element: <FormUbahBiodata />,
+  },
+  {
+    path: "/show/kelas",
+    element: <KelasSiswa />,
+  },
+  {
+    path: "/form/cuti",
+    element: <FormCuti />,
   },
   {
     path: "/peserta-baru",
     element: <FormBiodataSiswa />,
   },
   {
-    path: "/pilih-program",
+    path: "form/pilih-program",
     element: <PilihProgram />,
+  },
+  {
+    path: "/form/biaya-pendidikan",
+    element: <BiayaPendidikan />,
+  },
+  {
+    path: "/form/test-level",
+    element: <TestLevel />,
+  },
+  {
+    path: "/form/ujian-praktek",
+    element: <UjianPraktek />,
   },
   {
     path: "/pembayaran",
@@ -187,18 +242,38 @@ const router = createBrowserRouter([
     path: "/level-peserta",
     element: <LevelPeserta />,
   },
+  {
+    path: "/show/informasi-rapot",
+    element: <InformasiRapot />,
+  },
+  {
+    path: "/show/riwayat-pendidikan",
+    element: <RiwayatPendidikan />,
+  },
 
   // Guru
   {
-    path: "show/biodata-guru",
-    element: <BiodataGuru />,
-  },
-  {
-    path: "/pendaftaran-guru",
+    path: "/form/pendaftaran-guru",
     element: <PendaftaranGuru />,
   },
   {
-    path: "form/form-cuti",
+    path: "/show/biodata-guru",
+    element: <BiodataGuru />,
+  },
+  {
+    path: "/form/ubah-biodata-guru",
+    element: <UbahBiodataGuru />,
+  },
+  {
+    path: "/show/pengaturan-akun-guru",
+    element: <PengaturanAkunGuru />,
+  },
+  {
+    path: "/form/pengaturan-akun-guru",
+    element: <FormPengaturanAkunGuru />,
+  },
+  {
+    path: "/form/cuti-guru",
     element: <FormCutiGuru />,
   },
   {
@@ -206,8 +281,8 @@ const router = createBrowserRouter([
     element: <InputnilaiSiswa />,
   },
   {
-    path: "/input-nilai-rapot",
-    element: <InputNilaiRapot />,
+    path: "/show/nilai-rapot",
+    element: <NilaiRapot />,
   },
   {
     path: "/show/presensi-guru",
@@ -225,8 +300,32 @@ const router = createBrowserRouter([
   // TU
 
   {
+    path: "/show/dashboard-tu",
+    element: <DashboardTu />,
+  },
+  {
+    path: "/form/pendaftaran-tu",
+    element: <DaftarUlangTu />,
+  },
+  {
+    path: "/form/cuti-tu",
+    element: <FormCutiTu />,
+  },
+  {
     path: "/show/biodata-pegawai",
     element: <BiodataPegawai />,
+  },
+  {
+    path: "/form/ubah-biodata-pegawai",
+    element: <UbahBiodataPegawai />,
+  },
+  {
+    path: "/show/pengaturan-akun-tu",
+    element: <PengaturanAkunTu />,
+  },
+  {
+    path: "/form/pengaturan-akun-tu",
+    element: <FormPengaturanAkunTu />,
   },
   {
     path: "/show/spp-peserta-baru",
@@ -255,6 +354,14 @@ const router = createBrowserRouter([
   {
     path: "/show/stock-barang",
     element: <StockBarang />,
+  },
+  {
+    path: "/show/barang-masuk",
+    element: <BarangMasuk />,
+  },
+  {
+    path: "/show/barang-keluar",
+    element: <BarangKeluar />,
   },
   {
     path: "/show/konsumen",
@@ -307,6 +414,16 @@ const router = createBrowserRouter([
   {
     path: "/pengaturan-soal",
     element: <PengaturanSoal />,
+  },
+
+  // Bendahara
+  {
+    path: "/show/alur-kas",
+    element: <AlurKas />,
+  },
+  {
+    path: "/form/alur-kas",
+    element: <FormAlurKas />,
   },
 ]);
 

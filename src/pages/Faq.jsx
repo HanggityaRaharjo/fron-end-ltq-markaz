@@ -1,32 +1,31 @@
 import React, { useState } from "react";
-import NavLanding from "../layouts/NavLanding";
-import Footer from "../layouts/Footer";
 import LayoutColumn from "../layouts/LayoutColumn";
 
 const Faq = () => {
   return (
     <LayoutColumn>
-      <section className="relative z-20 overflow-hidden  pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
-        <div className="container mx-auto">
-          <div className="-mx-4 flex flex-wrap">
+      <section className="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] w-full px-10">
+        <div className=" w-full">
+          <div className="mx-4 flex">
             <div className="w-full px-4">
               <div className="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
                 <span className="mb-2 block text-lg font-semibold text-primary">
                   FAQ
                 </span>
                 <h2 className="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px]">
-                  Any Questions? Look Here
+                  Ada pertanyaan? Lihat disini
                 </h2>
                 <p className="text-base text-body-color">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                  Platform Digital untuk
+                  Kebutuhan Finansial dan Pengadaan
+                  Lembaga Pendidikan Anda.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 lg:w-1/2">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="w-full ">
               <AccordionItem
                 header="How long we deliver your first blog post?"
                 text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
@@ -40,7 +39,7 @@ const Faq = () => {
                 text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
               />
             </div>
-            <div className="w-full px-4 lg:w-1/2">
+            <div className="w-full px-4 lg:w-full">
               <AccordionItem
                 header="How long we deliver your first blog post?"
                 text="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
@@ -55,36 +54,6 @@ const Faq = () => {
               />
             </div>
           </div>
-        </div>
-
-        <div className="absolute bottom-0 right-0 z-[-1]">
-          <svg
-            width="1440"
-            height="886"
-            viewBox="0 0 1440 886"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.5"
-              d="M193.307 -273.321L1480.87 1014.24L1121.85 1373.26C1121.85 1373.26 731.745 983.231 478.513 729.927C225.976 477.317 -165.714 85.6993 -165.714 85.6993L193.307 -273.321Z"
-              fill="url(#paint0_linear)"
-            />
-            <defs>
-              {/* <linearGradient
-              id="paint0_linear"
-              x1="1308.65"
-              y1="1142.58"
-              x2="602.827"
-              y2="-418.681"
-              gradientUnits="userSpaceOnUse"
-              >
-              <stop stop-color="#3056D3" stop-opacity="0.36" />
-              <stop offset="1" stop-color="#F5F2FD" stop-opacity="0" />
-              <stop offset="1" stop-color="#F5F2FD" stop-opacity="0.096144" />
-            </linearGradient> */}
-            </defs>
-          </svg>
         </div>
       </section>
     </LayoutColumn>
@@ -108,9 +77,8 @@ const AccordionItem = ({ header, text }) => {
       >
         <div className="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
           <svg
-            className={`duration-200 ease-in-out fill-primary stroke-primary ${
-              active ? "rotate-180" : ""
-            }`}
+            className={`duration-200 ease-in-out fill-primary stroke-primary ${active ? "rotate-180" : ""
+              }`}
             width="17"
             height="10"
             viewBox="0 0 17 10"
@@ -130,9 +98,8 @@ const AccordionItem = ({ header, text }) => {
       </button>
 
       <div
-        className={`pl-[62px] duration-200 ease-in-out ${
-          active ? "block" : "hidden"
-        }`}
+        className={`pl-[62px] duration-200 ease-in-out ${active ? "block" : "hidden"
+          }`}
       >
         <p className="py-3 text-base leading-relaxed text-body-color">{text}</p>
       </div>

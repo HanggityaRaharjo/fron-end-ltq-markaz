@@ -56,9 +56,9 @@ function PresensiKehadiran() {
             <section className='p-5 bg-white'>
                 <div>
                     <div>
-                        <h1 className='font-bold '>Presensi Kehadiran</h1>
+                        <h1 className='font-bold text-xl'>Presensi Kehadiran</h1>
                     </div>
-                    <div className='mt-10'>
+                    <div className='mt-10 overflow-auto'>
                         <table className='w-full'>
                             <thead>
                                 <tr className='bg-black text-white'>
@@ -146,10 +146,10 @@ function ModalEditPresensi({ show, close }) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='p-2 text-center'><input type="checkbox" name="" id="" /></td>
-                                    <td className='p-2 text-center'><input type="checkbox" name="" id="" /></td>
-                                    <td className='p-2 text-center'><input type="checkbox" name="" id="" /></td>
-                                    <td className='p-2 text-center'><input type="checkbox" name="" id="" /></td>
+                                    <td className='p-2 text-center'><input type="checkbox" name="hadir" id="" /></td>
+                                    <td className='p-2 text-center'><input type="checkbox" name="sakit" id="" /></td>
+                                    <td className='p-2 text-center'><input type="checkbox" name="izin" id="" /></td>
+                                    <td className='p-2 text-center'><input type="checkbox" name="absen" id="" /></td>
                                 </tr>
                             </tbody>
                         </table>

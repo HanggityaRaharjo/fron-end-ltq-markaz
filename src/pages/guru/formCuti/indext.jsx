@@ -4,78 +4,43 @@ import Layout from '../../../layouts/Layout';
 function FormCutiGuru() {
     return (
         <Layout>
-            <section className="mt-10 bg-white p-5 shadow-md">
-                <div className="grid grid-cols-2 gap-2">
-                    <FormInput label={"Mulai cuti"} type={"date"} />
-                    <FormInput label={"Sampai dengan"} type={"date"} />
-                    <FormInput label={"Alasan"} type={"area"} />
+            <section className=" p-5">
+                <div className='bg-white p-5 shadow-md rounded-md font-poppins text-gray-500'>
+                    <div className="flex flex-col gap-2">
+                        <h1 className="font-bold text-2xl">Formulir Pengajuan Cuti Guru</h1>
+                        <hr className="border-black" />
+                        {/* <p className="bg-[#5FB68A80] px-5 py-2 rounded-md">Ujian dibagi menjadi 2 bagian, yaitu Ujian Teori & Ujian Praktek</p> */}
+                    </div>
+
+                    <div className="mt-10 flex flex-col gap-4">
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Mulai Cuti</label>
+                            <input type="date" className='h-10 border-b-2 focus:border-[#169859]  w-1/2 outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Sampai dengan</label>
+                            <input type="date" className='h-10 border-b-2 focus:border-[#169859]  w-1/2 outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>Alasan Cuti</label>
+                            <input type="area" placeholder="Alasan cuti" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                    </div>
+
+                    <div className="flex justify-end mt-10">
+                        <button className="h-10bg-[#169859] text-white rounded-md active:scale-95 duration-300">Simpan</button>
+                    </div>
                 </div>
-                <div className="flex justify-end gap-5 mt-10 pr-5">
-                    <button className="bg-[#169859] text-[#f3faf6] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                        Submit
-                    </button>
-                    <button
-                        type="submit"
-                        className="border border-[#169859] text-[#169859] p-2 w-40 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                    >
-                        Cancel
-                    </button>
+                <div className='mt-10 flex justify-end gap-5'>
+                    <button className='bg-[#169859] text-white px-4 py-2 rounded-md active:scale-95 duration-300'>Kembali</button>
+                    <button className='bg-[#169859] text-white px-4 py-2 rounded-md active:scale-95 duration-300'>Simpan</button>
                 </div>
             </section>
-        </Layout>
+        </Layout >
     );
 }
 
-const FormInput = ({ label, type }) => {
-    if (type === "text") {
-        return (
-            <div className="flex flex-col">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg w-auto p-1">
-                    {label}
-                </label>
-                <input
-                    type="text"
-                    className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                    placeholder="Type here.."
-                />
-            </div>
-        );
-    }
-    if (type === "date") {
-        return (
-            <div className="flex flex-col">
-                <div className="flex items-end gap-2">
-                    <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-auto p-1">
-                        {label}
-                    </label>
-                    <small>Hari/Bulan/Tahun</small>
-                </div>
-                <input
-                    type="date"
-                    className="w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                    placeholder="Type here.."
-                />
-            </div>
-        );
-    }
-    if (type === "area") {
-        return (
-            <div className="flex flex-col  col-span-2">
-                <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-auto p-1">
-                    {label}
-                </label>
-                <textarea
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="5"
-                    className="border border-[#169859] rounded-lg rounded-t-none col-span-3 p-5"
-                    placeholder="Type Here"
-                ></textarea>
-            </div>
-        );
-    }
-};
+
 
 
 export default FormCutiGuru

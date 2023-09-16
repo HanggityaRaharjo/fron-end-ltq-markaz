@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../../layouts/Layout'
 import foto from '../../../assets/founder/founder.jpg'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 function BiodataGuru() {
-
     const [showModal, setShowModal] = useState(false)
     const [showEditFoto, setShowEditFoto] = useState(false)
+    const [isActive, setIsActive] = useState('biodata')
+
 
     const HandleEdit = () => {
         setShowModal(true)
@@ -18,149 +21,150 @@ function BiodataGuru() {
 
     return (
         <Layout>
-            <ModalBiodata
-                show={showModal}
-                close={setShowModal}
-            />
-            <ModalEditFoto
-                show={showEditFoto}
-                close={setShowEditFoto}
-            />
             <section className='p-5'>
-                <div className=''>
-                    <div className='bg-white p-10 shadow-md flex gap-10'>
+                <div className="flex flex-col gap-2">
+                    <h1 className="font-bold text-2xl">Biodata</h1>
+                    <hr className="border-black" />
+                    <p className="bg-[#5FB68A80] px-5 py-2 rounded-md">Lengkapi biodata diri anda</p>
+                </div>
+                <div className='bg-white shadow-md p-5 mt-5 '>
+                    <div className=' flex flex-col md:flex-row gap-5'>
                         <div className='h-[150px] w-[150px] rounded-md bg-gray-500 overflow-hidden object-cover'>
                             <img src={foto} alt="" className='object-cover h-full' />
                         </div>
-                        <div>
+                        <div className=''>
                             <div className='flex flex-col gap-2'>
-                                <h1 className='font-bold text-[24px]'>Agus Gunawan</h1>
-                                <p>Email : <span className='text-blue-500 text-[16px]'>agusgunawan98@gmail.com</span></p>
-                                <p>Bagian : <span>Guru Talaqqi</span></p>
-                            </div>
-
-                            <div className='flex mt-5'>
-                                <button
-                                    onClick={() => HandleFoto()}
-                                    className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                    Edit
-                                </button>
+                                <h1 className='px-2 font-bold text-[24px]'>Ujang Enam S.T</h1>
+                                <table>
+                                    <tr>
+                                        <td className="px-2 w-[100px] font-semibold">Email</td>
+                                        <td className="px-2">:</td>
+                                        <td className="px-2 text-blue-400">UjangEnam@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-2 w-[100px] font-semibold">Facebook</td>
+                                        <td className="px-2">:</td>
+                                        <td className="px-2 text-blue-400">UjangEnam@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-2 w-[100px] font-semibold">Instagram</td>
+                                        <td className="px-2">:</td>
+                                        <td className="px-2 text-blue-400">UjangEnam@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-2 w-[100px] font-semibold">Role</td>
+                                        <td className="px-2">:</td>
+                                        <td className="px-2">Pegawai</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-                <div className='mt-10 w-3/5'>
-                    <div className='bg-white p-2 shadow-lg rounded-md'>
-                        <table className=''>
-                            <tr>
-                                <td className='p-2 w-[150px] font-bold'>Nama Lengkap</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Agus Gunawan</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Email</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>agusgunawan98@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Phone</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>089767856466</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Alamat</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quaerat corporis possimus, ad velit eum!</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Desa</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Malakasari</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Kecamatan</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Baleendah</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Kabupaten</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Bandung</td>
-                            </tr>
-                            <tr>
-                                <td className='p-2 font-bold'>Provinsi</td>
-                                <td className='p-2'>:</td>
-                                <td className='p-2'>Jawa barat</td>
-                            </tr>
-                        </table>
-                        <div className='flex justify-end p-5'>
-                            <button onClick={() => HandleEdit()} className='bg-black text-sm text-[#f3faf6] p-1 w-20 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                                Edit
-                            </button>
+
+                <div className="flex justify-end my-5">
+                    <Link to={'/form/ubah-biodata-guru'} className="flex items-center gap-2 p-2 bg-[#169859] rounded-md text-white active:scale-95 duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                        </svg>
+                        Ubah biodata
+                    </Link>
+                </div>
+
+                <div className='bg-white p-5 shadow-lg rounded-b-md mt-5'>
+                    <div className="mt-10 flex flex-col gap-2">
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Nama Lengkap</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Aceng fikri</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tempat Lahir</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tanggal Lahir</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>12-21-1998</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Jenis Kelamin</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Laki-Laki</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Alamat</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>jln. Cipisung</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Kelurahan</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Andir</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Kota</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Provinsi</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Jawa Barat</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >No Wa</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08978654657</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >No alternatif</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08976656567</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Pekerjaan</label>
+                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Karyawan swasta</p>
+                        </div>
+                        <div className=''>
+                            <label className='font-medium'>Foto KTP</label>
+                            <div className="w-full pt-2">
+                                <div className="w-[285px] h-[190px] rounded-md overflow-hidden border">
+                                    <img src={foto} alt="" className="h-full w-full object-cover" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </section>
-        </Layout>
+        </Layout >
     )
 }
+
+
 
 const ModalBiodata = ({ show, close }) => {
 
     return (
-        <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-40 justify-center items-center'
-            style={{ display: show ? "flex" : "none" }}>
+        <div className={`fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-30 justify-center items-center transition-all duration-300 ${show ? 'top-0' : ' top-[-1000px]'}`}>
             <div className='flex justify-center items-center h-full'>
-                <div className='bg-white rounded  max-h-[500px] p-5'>
+                <div className='bg-white rounded max-h-[500px] p-5 w-[600px]'>
                     <h1 className='font-bold'>Edit</h1>
                     <div className='mt-5 flex flex-col gap-2'>
-                        <div className="flex flex-col">
-                            <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-40">
+                        <div className="flex">
+                            <label className="bg-black text-[#f3faf6] px-2 py-1 rounded-l-md  w-[250px]">
                                 Nama Lengakap
                             </label>
                             <input
                                 name='alamat'
                                 type="text"
-                                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                                className=" w-full border border-black px-5 py-1 rounded-r-md outline-none"
                                 placeholder="Type here.."
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
+                        <div className="flex">
+                            <label className="bg-black text-[#f3faf6] px-2 py-1 rounded-l-md  w-[250px]">
                                 Email
                             </label>
                             <input
                                 name='alamat'
                                 type="text"
-                                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                                className=" w-full border border-black px-5 py-1 rounded-r-md outline-none"
                                 placeholder="Type here.."
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                                No
-                            </label>
-                            <input
-                                name='alamat'
-                                type="text"
-                                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
-                                placeholder="Type here.."
-                            />
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="bg-[#169859] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                                Alamat
-                            </label>
-                            <input
-                                name='alamat'
-                                type="area"
-                                className=" w-full border border-[#169859]  px-5 h-20 rounded-lg rounded-tl-none"
-                                placeholder="Type here.."
-                            />
-                        </div>
+
 
                     </div>
                     <div className="flex justify-center gap-5 mt-5">
@@ -208,8 +212,7 @@ const ModalEditFoto = ({ show, close }) => {
 
 
     return (
-        <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-40 justify-center items-center'
-            style={{ display: show ? "flex" : "none" }}>
+        <div className={`fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-30 justify-center items-center transition-all duration-300 ${show ? 'top-0' : ' top-[-1000px]'}`}>
             <div className='flex justify-center items-center h-full'>
                 <div className='p-5  w-[300px] bg-white rounded-md'>
                     <h1 className='font-bold'>Edit Foto</h1>

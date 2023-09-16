@@ -5,14 +5,11 @@ import LayoutColumn from "../layouts/LayoutColumn";
 function Kontak() {
   return (
     <LayoutColumn>
-      <section className=" kontak mt-10 h-[100vh]  relative ">
-        <div className=" hidden lg:flex justify-center pt-20 absolute top-[250px] right-[15px] lg:-left-[10px] lg:top-[25px]">
-          <h1 className="text-[50px]">Lest</h1>
-          <h1 className="text-[50px]">Have</h1>
-          <h1 className="text-[50px]">A</h1>
-          <h1 className="text-[50px]">Talk</h1>
+      <section className="py-[100px] ">
+        <div className="md:flex justify-center p-5 py-10">
+          <h1 className="text-[50px]">Lest Have A Talk</h1>
         </div>
-        <div className="h-full flex items-end ">
+        <div className="h-full items-end ">
           <div className="grid grid-cols-1 lg:grid-cols-3 ">
             <div className="w-full hidden lg:block">
               <iframe
@@ -26,13 +23,7 @@ function Kontak() {
                 className=" h-[450px] w-[650px]"
               />
             </div>
-            <div className=" flex justify-center pt-20 lg:hidden">
-              <h1 className="text-[50px]">Lest</h1>
-              <h1 className="text-[50px]">Have</h1>
-              <h1 className="text-[50px]">A</h1>
-              <h1 className="text-[50px]">Talk</h1>
-            </div>
-            <div className="bg-gray-300 h-full w-full">
+            <div className="bg-gray-300 h-full w-full p-5">
               <div className="flex justify-center items-center h-full">
                 <div className="w-[400px]">
                   <h1 className="text-[30px] mb-10">Meet us</h1>
@@ -95,7 +86,7 @@ function Kontak() {
               </div>
             </div>
 
-            <div className="bg-gray-200 h-full w-full">
+            <div className="bg-gray-200 h-full w-full p-5">
               <div className="flex justify-center items-center h-full">
                 <div className="w-[400px]">
                   <h1 className="text-[30px] mb-14">Pitch us</h1>

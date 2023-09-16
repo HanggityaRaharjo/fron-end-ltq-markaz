@@ -17,7 +17,7 @@ function TabelPesertaBaru() {
                 {/* Tabel SPP */}
                 <div className='mt-10 bg-white'>
                     <h1 className='font-bold text-2xl'>Tabel SPP</h1>
-                    <div className='mt-5 w-full bg-white shadow-lg'>
+                    <div className='mt-5 w-full bg-white shadow-lg overflow-auto'>
                         <table className='w-full mt-5'>
                             <thead>
                                 <tr className='bg-black text-white'>
@@ -44,7 +44,7 @@ function TabelPesertaBaru() {
                 {/* Tabel DPP */}
                 <div className=' mt-20'>
                     <h1 className='font-bold text-2xl'>Tabel DPP</h1>
-                    <div className='mt-5 w-full bg-white shadow-lg'>
+                    <div className='mt-5 w-full bg-white shadow-lg overflow-auto'>
                         <table className='w-full mt-5'>
                             <thead>
                                 <tr className='bg-black text-white'>
@@ -69,9 +69,9 @@ function TabelPesertaBaru() {
                 </div>
 
                 {/* Tabel ZISWAF */}
-                <div className='mt-20'>
+                <div className='mt-20  w-full bg-white shadow-lg overflow-auto'>
                     <h1 className='font-bold text-2xl'>Tabel ZISWAF</h1>
-                    <div className='mt-5 w-full bg-white shadow-lg'>
+                    <div className='mt-5 w-full bg-white shadow-lg overflow-auto'>
                         <table className='w-full mt-5'>
                             <thead>
                                 <tr className='bg-black text-white'>
@@ -95,7 +95,7 @@ function TabelPesertaBaru() {
                     </div>
                 </div>
 
-                <div className='mt-20 w-full bg-white shadow-lg'>
+                <div className='mt-20 w-full bg-white shadow-lg overflow-auto'>
                     <h1 className='font-bold text-2xl'>Tabel Kegiatan</h1>
                     <table className='w-full mt-5'>
                         <thead>

@@ -9,7 +9,7 @@ function PresensiGuru() {
                     <h1 className='font-bold text-2xl'>Presensi</h1>
                 </div>
 
-                <div className='mt-10 bg-white shadow-lg'>
+                <div className='mt-10 bg-white shadow-lg overflow-auto'>
                     <table className='w-full'>
                         <thead>
                             <tr className='bg-black text-white'>

@@ -25,6 +25,149 @@
   background: #16985980;
 }
 
-/* * {
+/* 
+* {
   border: 1px solid gray;
 } */
+
+/* top */
+.custom-shape-divider-top-1694182034 {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1694182034 svg {
+  position: relative;
+  display: block;
+  width: calc(300% + 1.3px);
+  height: 200px;
+}
+
+.custom-shape-divider-top-1694182034 .shape-fill {
+  fill: #f1fff8;
+}
+
+/* bottom */
+.custom-shape-divider-bottom-1694182133 {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1694182133 svg {
+  position: relative;
+  display: block;
+  width: calc(300% + 1.3px);
+  height: 300px;
+}
+
+.custom-shape-divider-bottom-1694182133 .shape-fill {
+  fill: #f1fff8;
+}
+
+
+
+.custom-shape-divider-bottom-1694190985 {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1694190985 svg {
+  position: relative;
+  display: block;
+  width: calc(280% + 1.3px);
+  height: 200px;
+}
+
+.custom-shape-divider-bottom-1694190985 .shape-fill {
+  fill: #f1fff8;
+  stroke: #169859;
+  stroke-width: 0.5px;
+}
+
+/* berita */
+
+.custom-shape-divider-top-1694191071 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1694191071 svg {
+  position: relative;
+  display: block;
+  width: calc(280% + 1.3px);
+  height: 200px;
+}
+
+.custom-shape-divider-top-1694191071 .shape-fill {
+  fill: #f1fff8;
+}
+
+
+.inberita-shape-divider-bottom-1694190687 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.inberita-shape-divider-bottom-1694190687 svg {
+  position: relative;
+  display: block;
+  width: calc(280% + 1.3px);
+  height: 200px;
+}
+
+@media screen and (max-width:1440) {
+  .inberita-shape-divider-bottom-1694190687 svg {
+    height: 400px;
+  }
+}
+
+.inberita-shape-divider-bottom-1694190687 .shape-fill {
+  fill: #FFFFFF;
+}
+
+/* end berita */
+
+/* ltq */
+.custom-shape-divider-top-1694200175 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1694200175 svg {
+  position: relative;
+  display: block;
+  width: calc(201% + 1.3px);
+  height: 100px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1694200175 .shape-fill {
+  fill: #f1fff8;
+}

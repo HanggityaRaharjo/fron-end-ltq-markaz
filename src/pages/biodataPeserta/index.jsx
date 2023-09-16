@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Layout from "../../layouts/Layout";
 import foto from "../../assets/founder/founder.jpg";
 
-function Profil() {
+function BiodataPeserta() {
   const [showModal, setShowModal] = useState(false)
   const [showEditFoto, setShowEditFoto] = useState(false)
+  const [isActive, setIsActive] = useState('biodata')
 
   const HandleEdit = () => {
     setShowModal(true)
@@ -17,85 +18,88 @@ function Profil() {
 
   return (
     <Layout>
-      <ModalBiodata
-        show={showModal}
-        close={setShowModal}
-      />
-      <ModalEditFoto
-        show={showEditFoto}
-        close={setShowEditFoto}
-      />
-      <section className='p-5 h-[100vh]'>
-        <div className='flex'>
-          <div className='w-1/2'>
-            <div className='bg-white p-2 shadow-md mr-2 rounded-md border'>
-              <div className='flex gap-10 justify-center items-center h-[200px]'>
-                <div className='h-full w-[200px] rounded-full bg-gray-500 overflow-hidden object-cover'>
-                  <img src={foto} alt="" className='object-cover h-full' />
+      <section className='font-poppins'>
+        <div className=" bg-white shadow-md rounded-md p-5">
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-2xl">Biodata</h1>
+            <hr className="border-black" />
+            <p className="bg-[#5FB68A80] px-5 py-2 rounded-md">Lengkapi biodata diri anda</p>
+          </div>
+          <div className="flex justify-end my-5">
+            <button className="flex items-center gap-2 p-2 bg-[#169859] rounded-md text-white active:scale-95 duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+              </svg>
+              Ubah biodata
+            </button>
+          </div>
+          <div className="mt-10 flex flex-col gap-2">
+            <div className="flex flex-col">
+              <label className="font-medium" >Nama Lengkap</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Aceng fikri</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Tempat Lahir</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Tanggal Lahir</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>12-21-1998</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Jenis Kelamin</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Laki-Laki</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Alamat</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>jln. Cipisung</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Kelurahan</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Andir</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Kota</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Provinsi</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Jawa Barat</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >No Wa</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08978654657</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >No alternatif</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08976656567</p>
+            </div>
+            <div className="flex flex-col">
+              <label className="font-medium" >Pekerjaan</label>
+              <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Karyawan swasta</p>
+            </div>
+          </div>
+        </div>
+
+        {/* <div className="mt-10 p-5 bg-white shadow-md rounded-md flex justify-center" >
+          <div className="grid grid-cols-2 gap-20">
+            <div className="flex gap-4 items-center pt-2">
+              <div className="w-full">
+                <div className="w-[285px] h-[190px] rounded-md overflow-hidden border">
+                  <img src={foto} alt="" className="h-full w-full object-cover" />
                 </div>
               </div>
-              <div className='flex justify-center mt-5'>
-                <h1 className='font-bold'>
-                  Ujang
-                </h1>
-              </div>
-              <table className='mt-5'>
-                <tr>
-                  <td className='p-2 w-[150px] font-bold'>Bagian</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>Guru</td>
-                </tr>
-                <tr>
-                  <td className='p-2 font-bold'>Program</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>Tallaqi</td>
-                </tr>
-              </table>
-              <div className='flex justify-end'>
-                <button
-                  onClick={() => HandleFoto()}
-                  className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                  Edit
-                </button>
+            </div>
+            <div className="flex gap-4 items-center pt-2">
+              <div className="w-full">
+                <div className="w-[195px] h-[190px] rounded-full overflow-hidden border">
+                  <img src={foto} alt="" className="h-full w-full object-cover" />
+                </div>
               </div>
             </div>
           </div>
-          <div className='w-1/2'>
-            <div className='bg-white p-2 shadow-lg rounded-md border'>
-              <table className=''>
-                <tr>
-                  <td className='p-2 w-[150px] font-bold'>Nama Lengkap</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>Ujang Enam</td>
-                </tr>
-                <tr>
-                  <td className='p-2 font-bold'>Email</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>Ujang@gmail.com</td>
-                </tr>
-                <tr>
-                  <td className='p-2 font-bold'>Phone</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>089767856466</td>
-                </tr>
-                <tr>
-                  <td className='p-2 font-bold'>Alamat</td>
-                  <td className='p-2'>:</td>
-                  <td className='p-2'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quaerat corporis possimus, ad velit eum!</td>
-                </tr>
-              </table>
-              <div className='flex justify-end'>
-                <button
-                  onClick={() => HandleEdit()}
-                  className='bg-[#169859] text-sm text-[#f3faf6] p-1 w-20 rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150'>
-                  Edit
-                </button>
-              </div>
-            </div>
+        </div> */}
 
-          </div>
-
-        </div>
       </section>
     </Layout >
   );
@@ -117,7 +121,7 @@ const ModalBiodata = ({ show, close }) => {
               <input
                 name='alamat'
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-gray-300  px-5 h-10 rounded-lg rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -128,7 +132,7 @@ const ModalBiodata = ({ show, close }) => {
               <input
                 name='alamat'
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-gray-300  px-5 h-10 rounded-lg rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -139,7 +143,7 @@ const ModalBiodata = ({ show, close }) => {
               <input
                 name='alamat'
                 type="text"
-                className=" w-full border border-[#169859]  px-5 h-10 rounded-lg rounded-tl-none"
+                className=" w-full border border-gray-300  px-5 h-10 rounded-lg rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -150,7 +154,7 @@ const ModalBiodata = ({ show, close }) => {
               <input
                 name='alamat'
                 type="area"
-                className=" w-full border border-[#169859]  px-5 h-20 rounded-lg rounded-tl-none"
+                className=" w-full border border-gray-300  px-5 h-20 rounded-lg rounded-tl-none"
                 placeholder="Type here.."
               />
             </div>
@@ -160,7 +164,7 @@ const ModalBiodata = ({ show, close }) => {
             <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
               <span>Submit</span>
             </button>
-            <button onClick={() => close()} className="border border-[#169859] text-[#169859] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+            <button onClick={() => close()} className="border border-gray-300 text-[#169859] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
             >
               <span>Cancel</span>
             </button>
@@ -285,7 +289,7 @@ const ModalEditFoto = ({ show, close }) => {
             <button type="submit" className="bg-[#169859] text-[#f3faf6] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
               <span>Submit</span>
             </button>
-            <button onClick={() => close()} className="border border-[#169859] text-[#169859] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+            <button onClick={() => close()} className="border border-gray-300 text-[#169859] p-2 w-full rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
             >
               <span>Cancel</span>
             </button>
@@ -297,4 +301,4 @@ const ModalEditFoto = ({ show, close }) => {
 }
 
 
-export default Profil;
+export default BiodataPeserta;
