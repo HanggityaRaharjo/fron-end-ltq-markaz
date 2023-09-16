@@ -1,6 +1,6 @@
 import LayoutColumn from "../../layouts/LayoutColumn";
 import yayasan from "../../assets/yayasan.jpg";
-import markaz from "../../assets/logo/MARKAZ.PNG";
+
 import foto1 from "../../assets/foto/foto1.png";
 import foto2 from "../../assets/foto/foto2.png";
 import foto3 from "../../assets/foto/foto3.png";
@@ -56,7 +56,11 @@ const LandingPage = () => {
               <div className="flex justify-center items-center">
                 <div className="md:w-3/4 px-5">
                   <div className="w-20 h-20 hidden md:block">
-                    <img src={markaz} alt="" className="h-full w-full " />
+                    <img
+                      src={"/image/MARKAZ.png"}
+                      alt=""
+                      className="h-full w-full "
+                    />
                   </div>
                   <h1 className="text-[40px] font-bold py-5">
                     Selamat Datang asd di MARKAZ ALQURAN
@@ -135,7 +139,7 @@ const LandingPage = () => {
             <div className="p-5 flex flex-col justify-center items-center ">
               <div className="h-[280px] w-[290px] scale-150 overflow-hidden ">
                 <img
-                  src={markaz}
+                  src={"/image/MARKAZ.png"}
                   alt=""
                   className="h-full w-full object-cover"
                 />
