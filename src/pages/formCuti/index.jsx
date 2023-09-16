@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout";
 function FormCuti() {
   return (
     <Layout>
-      <section className="mt-10 bg-white p-5 shadow-md">
+      <section className="mt-10 bg-white p-5 shadow">
         <div className="grid grid-cols-2 gap-2">
           <FormInput label={"Mulai cuti"} type={"date"} />
           <FormInput label={"Sampai dengan"} type={"date"} />

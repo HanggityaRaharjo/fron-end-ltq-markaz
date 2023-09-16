@@ -1,77 +1,35 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../../layouts/Layout";
-import DataTable from "react-data-table-component";
 import {
   Breadcrumbs,
   BreadcrumbsItem,
   BreadcrumbsActive,
 } from "../../../components/breadcrumbs";
-
 import { Link } from "react-router-dom";
-
-function Icon() {
-  return (
-    <button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-4 h-4 text-gray-500"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-        />
-      </svg>
-    </button>
-  );
-}
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function PengaturanKelas() {
   const [tableData, setTableData] = useState([]);
-  const DummyData = [
-    {
-      program: "Tartil (A)",
-      pengajar: "muhamad ahmad",
-      hari: "senin",
-      jam: "07.00-09.00",
-      action: <Icon />,
-    },
-    {
-      program: "Tahfidz (C)",
-      pengajar: "Bu dini",
-      hari: "senin",
-      jam: "08.00-09.00",
-      action: <Icon />,
-    },
-    {
-      program: "Bahasa arab (A)",
-      pengajar: "pak anis",
-      hari: "Rabu",
-      jam: "07.00-09.00",
-      action: <Icon />,
-    },
-    {
-      program: "Tahfidz (B)",
-      pengajar: "pak eko",
-      hari: "kamis",
-      jam: "07.00-09.00",
-      action: <Icon />,
-    },
 
-    {
-      program: "TartiL (B)",
-      pengajar: "Ahmad",
-      hari: "Rabu",
-      jam: "07.00-09.00",
-      action: <Icon />,
-    },
-  ];
+  const GetAllClass = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/kelas`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
+        },
+      })
+      .then(({ data }) => {
+        console.log(data);
+        setTableData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
   useEffect(() => {
-    setTableData(DummyData);
+    GetAllClass();
   }, []);
 
   return (
@@ -83,10 +41,10 @@ function PengaturanKelas() {
       </Breadcrumbs>
       <section>
         {/* Table */}
-        <div className="p-5 bg-white shadow-md rounded-md">
+        <div className="p-5 bg-white shadow rounded-md">
           <div className="flex justify-between items-center mb-5">
             <div className="flex gap-2">
-              <span>Menampilan</span>
+              <span>Menampilkan</span>
               <select name="" id="" className="border">
                 <option value="10">10</option>
                 <option value="10">25</option>
@@ -115,23 +73,28 @@ function PengaturanKelas() {
                 <th className=" p-2 w-10">No</th>
                 <th className=" p-2 w-10">Program</th>
                 <th className=" p-2">Pengajar</th>
-                <th className=" p-2 w-32">Hari</th>
-                <th className=" p-2">Jam</th>
+                <th className=" p-2 w-32">Kuota</th>
                 <th className=" p-2 w-56"></th>
               </tr>
             </thead>
             <tbody>
-              {tableData &&
+              {tableData.length != 0 ? (
                 tableData.map((item, index) => (
                   <TableData
                     key={index}
-                    program={item.program}
-                    pengajar={item.pengajar}
-                    hari={item.hari}
-                    jam={item.jam}
+                    nama_kelas={item.nama_kelas}
+                    pengajar={item.nama_pengajar}
+                    kuota={item.jumlah_peserta}
                     nomor={index + 1}
                   />
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6} className="text-center">
+                    Belum ada data
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -141,14 +104,16 @@ function PengaturanKelas() {
   );
 }
 
-const TableData = ({ program, pengajar, hari, jam, nomor }) => {
+const TableData = ({ nama_kelas, pengajar, kuota, nomor }) => {
   return (
     <tr className="text-sm text-gray-500 hover:bg-[#1698591e]">
       <td className="border-x border-b w-10 text-center">{nomor}</td>
-      <td className="border-x border-b font-semibold px-5 w-40 ">{program}</td>
+      <td className="border-x border-b font-semibold px-5 w-40 ">
+        {nama_kelas}
+      </td>
       <td className="border-x border-b font-semibold px-5">{pengajar}</td>
-      <td className="border-x border-b text-center">{hari}</td>
-      <td className="border-x border-b text-center  w-28">{jam}</td>
+      <td className="border-x border-b text-center">{kuota}</td>
+
       <td className="border-x border-b w-56">
         <div className="flex justify-center gap-5">
           <button className="text-blue-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">

@@ -6,7 +6,7 @@ function DaftarTalaqqi() {
   return (
     <>
       <LayoutTalaqqi>
-        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow-md">
+        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow">
           <div className="px-5">
             <Inputfile title={"Lampirkan Bukti Tranfer Pendaftaran"} />
 

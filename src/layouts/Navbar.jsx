@@ -1,7 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useAuth from "../store/AuthStore";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = ({ sidebarStatus, HandleSidebar }) => {
   const [dropdownShow, setDropdownShow] = useState(false);
+
+  const user = useAuth((state) => state);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    user.isAuth ? null : navigate("/login");
+  }, [user.isAuth]);
+
+  const HandleLogout = () => {
+    user.logout(Cookies.get("access_token"));
+    navigate("/login");
+  };
 
   return (
     <nav className="fixed top-0 w-full flex justify-center z-[999]">
@@ -66,7 +82,7 @@ const Navbar = ({ sidebarStatus, HandleSidebar }) => {
                       d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                     />
                   </svg>
-                  <span>Jhon Doe</span>
+                  <span>{user.name}</span>
 
                   <img
                     src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
@@ -75,7 +91,7 @@ const Navbar = ({ sidebarStatus, HandleSidebar }) => {
                   />
                 </button>
                 <div
-                  className="absolute top-[65px] right-0 rounded-md px-2 justify-around overflow-hidden bg-white shadow-md w-56 flex flex-col transition-all duration-150"
+                  className="absolute top-[65px] right-0 rounded-md px-2 justify-around overflow-hidden bg-white shadow w-56 flex flex-col transition-all duration-150"
                   style={{ maxHeight: dropdownShow ? "200px" : "0px" }}
                 >
                   <button className="text-gray-500 flex font-semibold my-1 py-2 px-4 hover:bg-[#effff7] w-full gap-2 items-center">
@@ -100,7 +116,10 @@ const Navbar = ({ sidebarStatus, HandleSidebar }) => {
                     </svg>
                     Profil Akun
                   </button>
-                  <button className="text-gray-500 flex font-semibold my-1 py-2 px-4 hover:bg-[#effff7] border-t-2 w-full gap-2 items-center">
+                  <button
+                    className="text-gray-500 flex font-semibold my-1 py-2 px-4 hover:bg-[#effff7] border-t-2 w-full gap-2 items-center"
+                    onClick={() => HandleLogout()}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

@@ -55,7 +55,7 @@ function PengaturanUser() {
       </Breadcrumbs>
       <section>
         {/* Table */}
-        <div className="p-5 bg-white shadow-md rounded-md">
+        <div className="p-5 bg-white shadow rounded-md">
           <div className="flex justify-between items-center mb-5">
             <div className="flex gap-2">
               <span>Menampilan</span>
@@ -66,6 +66,18 @@ function PengaturanUser() {
                 <option value="10">100</option>
               </select>
               <span>data</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>Filter :</span>
+
+              <select name="" id="" className="border w-56 p-2 rounded-md">
+                <option value="all">Semua Pengguna</option>
+                <option value="guru">Guru</option>
+                <option value="siswa">Siswa</option>
+                <option value="tata-usaha">Tata Usaha</option>
+                <option value="bendahara">Bendahara</option>
+                <option value="admin-cabang">Admin Cabang</option>
+              </select>
             </div>
             <div className="flex gap-5">
               <input

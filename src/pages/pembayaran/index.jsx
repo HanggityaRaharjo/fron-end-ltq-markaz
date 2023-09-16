@@ -3,34 +3,34 @@ import { useState } from "react";
 import Layout from "../../layouts/Layout";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
-const LoaderData = () => {
-  return (
-    <div className=" h-56 flex justify-center items-center">
-      <div className="animate-pulse text-2xl">Loading...</div>
-    </div>
-  );
-};
+import Cookies from "js-cookie";
+import useAuth from "../../store/AuthStore";
 
 function Pembayaran() {
   const [dataProgramPembayaran, setDataProgramPembayaran] = useState({});
   const [dataPembayaran, setDataPembayaran] = useState([]);
   const [userSelectBank, setUserSelectBank] = useState("");
   const [modalShow, setModalShow] = useState(false);
-
+  const user = useAuth((state) => state);
   let total = 0;
-
-  // console.log(userSelectBank);
-
   Object.keys(dataProgramPembayaran).length === 0
     ? "kosong"
     : (total = total + parseInt(dataProgramPembayaran.program_harga.harga));
 
+  function formatRupiah(angka) {
+    const formatter = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    });
+    return formatter.format(angka);
+  }
+
   const GetBankTransferData = () => {
     axios
-      .get("http://192.168.43.81:8000/api/pembayaran", {
+      .get(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/pembayaran`, {
         headers: {
-          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       })
       .then((response) => {
@@ -44,10 +44,12 @@ function Pembayaran() {
   const GetUserProgramData = () => {
     axios
       .get(
-        "http://192.168.43.81:8000/api/user-program/show/19d7cb21-3dfd-482e-8bb3-e776b600e407",
+        `${import.meta.env.VITE_BACK_END_END_POINT_URL}/user-program/get/${
+          user.uuid
+        }`,
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTY3Njk5NiwiZXhwIjo2MTY5MTY3NjkzNiwibmJmIjoxNjkxNjc2OTk2LCJqdGkiOiI0OW9qZ00wczlMcExCclBBIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ.3_pQESk6_0frceXjjHb4cAxqAlnzI7jXmn7NdtoN6rw`,
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
           },
         }
       )
@@ -64,24 +66,11 @@ function Pembayaran() {
   useEffect(() => {
     GetBankTransferData();
     GetUserProgramData();
-  }, []);
+  }, [user.uuid]);
 
   const HandlePembayaran = (id) => {
     setUserSelectBank(id);
     setModalShow(true);
-
-    // axios.post('http://192.168.43.81:8000/api/program-pembayaran', {
-
-    // }, {
-    //     headers: {
-    //         Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`
-    //     }
-    // })
-    //     .then(response => {
-    //         console.log(response);
-    //     }).catch(error => {
-    //         console.error('Error fetching data:', error);
-    //     });
     console.log("sampe sini");
   };
 
@@ -94,17 +83,17 @@ function Pembayaran() {
         total={total}
         bank={dataProgramPembayaran}
       />
-      <section className="min-h-screen font-poppins">
-        <div className="w-full mb-5 bg-white min-h-[100px] shadow-md rounded-md">
-          <div className="text-2xl font-bold p-5">Program</div>
+      <section className="min-h-screen font-poppins text-[#333333]">
+        <div className="w-full mb-5 bg-white min-h-[100px] shadow rounded-md">
+          <div className="text-2xl font-semibold p-5">Program</div>
           <hr />
           <div className="p-5">
             {Object.keys(dataProgramPembayaran).length === 0 ? (
               <LoaderData />
             ) : (
-              <div className="grid grid-cols-1">
+              <div className="grid grid-cols-1 gap-2 relative">
                 <div className="w-full flex">
-                  <p className="w-56 font-semibold mb-5">Nama Program</p>
+                  <p className="w-56 font-semibold">Nama Program</p>
                   <p>
                     :{" "}
                     {dataProgramPembayaran &&
@@ -112,46 +101,53 @@ function Pembayaran() {
                   </p>
                 </div>
                 <div className="w-full flex">
-                  <p className="w-56 font-semibold mb-5">Nama Peserta</p>
+                  <p className="w-56 font-semibold">Nama Peserta</p>
                   <p>
                     :{" "}
                     {dataProgramPembayaran && dataProgramPembayaran.users.name}
                   </p>
                 </div>
                 <div className="w-full flex">
-                  <p className="w-56 font-semibold mb-5">Email</p>
+                  <p className="w-56 font-semibold">Email</p>
                   <p>
                     :{" "}
                     {dataProgramPembayaran && dataProgramPembayaran.users.email}
                   </p>
                 </div>
                 <div className="w-full flex">
-                  <p className="w-56 font-semibold mb-5">Tanggal</p>
+                  <p className="w-56 font-semibold">Tanggal</p>
                   <p>
                     :{dataProgramPembayaran && dataProgramPembayaran.created_at}
                   </p>
                 </div>
 
-                <div className="flex  justify-end gap-5">
-                  <h1 className="font-bold">Total yang harus dibayar</h1>
-                  <span className="">Rp.{total}</span>
+                <div className="absolute right-0 bottom-0">
+                  <div className="flex  justify-end gap-5 ">
+                    <div className="bg-[#169859] p-2 rounded-md text-white text-end">
+                      <h1 className="font-bold">Total yang harus dibayar</h1>
+                      <span className="">{formatRupiah(total)}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </div>
         </div>
-
-        <h4 className="text-2xl font-bold mb-5">Opsi Pembayaran</h4>
+        <div className="bg-white w-fit h-fit p-2 rounded-md shadow mb-5">
+          <h4 className="text-2xl font-semibold ">Pilih Opsi Pembayaran</h4>
+        </div>
         <div className="grid grid-cols-3 gap-5">
           {dataPembayaran &&
             dataPembayaran.map((item) => (
               <button
                 onClick={() => HandlePembayaran(item.id)}
-                className=" h-[200px] flex justify-center items-center relative rounded-md bg-white shadow-md hover:scale-105 transition duration-150"
+                className=" h-[200px] flex justify-center items-center relative rounded-md bg-white shadow hover:scale-105 transition duration-150"
               >
                 <div className="flex justify-center items-center h-[100px] w-[150px] ">
                   <img
-                    src={`http://192.168.43.81:8000/storage/${item.type_bank}`}
+                    src={`${import.meta.env.VITE_BACK_END_END_POINT}/storage/${
+                      item.type_bank
+                    }`}
                     alt=""
                     className="h-full w-full"
                   />
@@ -167,29 +163,40 @@ function Pembayaran() {
   );
 }
 
+const LoaderData = () => {
+  return (
+    <div className=" h-56 flex justify-center items-center">
+      <div className="animate-pulse text-2xl">Loading...</div>
+    </div>
+  );
+};
+
 const ModalConfirmation = ({ show, changeModal, id, total, bank }) => {
   const navigate = useNavigate();
+  const user = useAuth((state) => state);
   console.log(total, id, "modal");
   const HandleNextPost = () => {
     axios
       .post(
-        "http://192.168.43.81:8000/api/program-pembayaran/create",
+        `${
+          import.meta.env.VITE_BACK_END_END_POINT_URL
+        }/program-pembayaran/create`,
         {
-          uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
+          uuid: user.uuid,
           pembayaran_id: id,
           total: total,
           bank: bank,
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
           },
         }
       )
       .then((data) => {
         console.log(data);
         changeModal(false);
-        navigate(`/transfer-pembayaran/${bank.user_id}`);
+        navigate(`/transfer-pembayaran/${user.uuid}`);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -201,9 +208,9 @@ const ModalConfirmation = ({ show, changeModal, id, total, bank }) => {
       className="fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center"
       style={{ display: show ? "flex" : "none" }}
     >
-      <div className="w-96 h-56 bg-white rounded-md flex flex-col justify-center items-center">
+      <div className="p-5 bg-white rounded-md flex flex-col justify-center items-center">
         <h2 className="text-3xl font-bold mb-5">Apakah anda yakin?</h2>
-        <div className="flex gap-5 items-center translate-y-5">
+        <div className="flex gap-5 items-center">
           <button
             type="submit"
             onClick={() => HandleNextPost()}

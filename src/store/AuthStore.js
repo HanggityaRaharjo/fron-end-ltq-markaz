@@ -3,31 +3,78 @@ import { create } from "zustand";
 import Cookies from "js-cookie";
 
 const useAuth = create((set) => ({
-  authToken: "",
+  isAuth: false,
+  isLoading: false,
+  isError: false,
+  user_cabang_id: "",
   uuid: "",
   email: "",
   name: "",
-  password: "",
-  isAuth: false,
+  cabang: {},
+  role: [],
+  checkCookieAvailable: () => {
+    let token = Cookies.get("access_token");
+    if (token) {
+      return true;
+    }
+    return false;
+  },
   setToken: (token) => {
     set({ authToken: token });
-    // Cookies.set("jwt_token", token, { experies: 1 });
-    // console.log("sampai sini, ini di store", token);
+  },
+  setCabang: (data) => {
+    set({ cabang: data });
   },
   HandleMe: (token) => {
+    set({ isError: false });
+    set({ isLoading: true });
     axios
-      .post("http://192.168.43.81:8000/api/me", null, {
+      .post(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/me`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then(({ data }) => {
-        // console.log("sampai axios di store");
-        set({ uuid: data.uuid, email: data.email, name: data.name });
+        set({
+          name: data.name,
+          email: data.email,
+          uuid: data.uuid,
+          isAuth: true,
+          role: data.role,
+        });
+        set({ isLoading: false });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        set({ isError: true, isLoading: false });
+      });
   },
-  logout: () => set({ uudi: "", email: "", username: "", password: "" }),
+  logout: (token) => {
+    axios
+      .post(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(({ data }) => {
+        Cookies.remove("access_token");
+        set({
+          name: "",
+          email: "",
+          uuid: "",
+          isAuth: false,
+          role: {},
+        });
+        set({ isAuth: false });
+      })
+      .catch((error) => {
+        Cookies.remove("access_token");
+        set({ isAuth: false });
+      });
+  },
+  changeUserCabangId: (id) => {
+    set({ user_cabang_id: id });
+  },
 }));
 
 export default useAuth;

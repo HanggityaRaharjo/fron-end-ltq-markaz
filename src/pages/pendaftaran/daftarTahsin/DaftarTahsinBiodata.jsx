@@ -6,7 +6,7 @@ function DaftarTahsinBiodata() {
   return (
     <>
       <LayoutDaftarTahsin>
-        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow-md">
+        <section className="p-5 mt-10  bg-white bg-opacity-60 backdrop-blur-md rounded-xl shadow">
           <div className="px-5">
             <div className="grid grid-cols-2 gap-10">
               <FormInput title={"No ID LTQ (5 Digit)"} />

@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../layouts/Layout";
 import { useState } from "react";
-import DataTable from "react-data-table-component";
 import {
   Breadcrumbs,
   BreadcrumbsActive,
   BreadcrumbsItem,
 } from "../../../components/breadcrumbs";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function PengaturanSoal() {
+  const [examData, setExamData] = useState([]);
+
+  const GetDataExamType = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/exam-type`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
+        },
+      })
+      .then(({ data }) => {
+        setExamData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+  useEffect(() => {
+    GetDataExamType();
+  }, []);
+
+  console.log(examData, "sampe sini");
+
   return (
     <Layout>
       <Breadcrumbs>
@@ -22,7 +45,7 @@ function PengaturanSoal() {
         <div>
           <div className="flex justify-between items-center mb-5">
             <div className="flex gap-2">
-              <span>Menampilan</span>
+              <span>Menampilan </span>
               <select name="" id="" className="border">
                 <option value="10">10</option>
                 <option value="10">25</option>
@@ -49,16 +72,25 @@ function PengaturanSoal() {
             <thead>
               <tr className="bg-[#2f3a4e] text-white text-sm">
                 <th className="border-b p-2 w-10">No</th>
-                <th className="border-b p-2 w-10">Code</th>
+                <th className="border-b p-2 w-56">Code</th>
                 <th className="border-b p-2">Tipe Soal</th>
-                <th className="border-b p-2 w-32">Jumlah</th>
-                <th className="border-b p-2">Tanggal</th>
+                <th className="border-b p-2 w-32">Jumlah Soal</th>
+
                 <th className="border-b p-2 w-56">Action</th>
               </tr>
             </thead>
             <tbody>
-              <DataPilihanGanda />
-              <DataEssay />
+              {examData &&
+                examData.map((item, index) => (
+                  <DataPilihanGanda
+                    key={item.id}
+                    number={index + 1}
+                    tipe_soal={item.type_exam}
+                    total={item.exampg.length}
+                    code={item.code}
+                    id={item.id}
+                  />
+                ))}
             </tbody>
           </table>
         </div>
@@ -68,17 +100,20 @@ function PengaturanSoal() {
   );
 }
 
-const DataPilihanGanda = () => {
+const DataPilihanGanda = ({ number, tipe_soal, total, code, id }) => {
   return (
     <tr className="text-sm text-gray-500 hover:bg-[#1698591e]">
-      <td className="border-b border-x w-10 text-center">1</td>
-      <td className="border-b border-x w-10 text-center">PG-01</td>
-      <td className="border-b border-x font-semibold px-5">Pilihan Ganda</td>
-      <td className="border-b border-x text-center">20</td>
-      <td className="border-b border-x">Tanggal</td>
+      <td className="border-b border-x w-10 text-center">{number}</td>
+      <td className="border-b border-x w-10 text-center">{code}</td>
+      <td className="border-b border-x font-semibold px-5">{tipe_soal}</td>
+      <td className="border-b border-x text-center">{total}</td>
+
       <td className="border-b border-x w-56">
         <div className="flex justify-center gap-5">
-          <button className="text-blue-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+          <Link
+            to={`/pengaturan-soal/${id}`}
+            className="text-blue-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -88,7 +123,7 @@ const DataPilihanGanda = () => {
               <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
               <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
             </svg>
-          </button>
+          </Link>
           <button className="text-red-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
             <svg
               xmlns="http://www.w3.org/2000/svg"

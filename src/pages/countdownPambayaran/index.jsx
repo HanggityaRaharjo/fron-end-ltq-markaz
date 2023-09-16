@@ -4,20 +4,36 @@ import bank from "../../assets/logo/BCA.png";
 import copy from "copy-to-clipboard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import useAuth from "../../store/AuthStore";
 
 function CountdownPembayaran() {
   const targetTime = new Date().getTime() + 1 * 30 * 60 * 1000;
   const [dataPembayaran, setDataPemayaran] = useState([]);
   const navigate = useNavigate();
+  const user = useAuth((state) => state);
 
-  console.log(dataPembayaran, "ini pembayaran");
+  function formatRupiah(angka) {
+    const formatter = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    });
+    return formatter.format(angka);
+  }
+
   useEffect(() => {
     axios
-      .get(`http://192.168.43.81:8000/api/program-pembayaran/show/`, {
-        headers: {
-          Aututhentication: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0`,
-        },
-      })
+      .get(
+        `${
+          import.meta.env.VITE_BACK_END_END_POINT_URL
+        }/program-pembayaran/show/${user.uuid}`,
+        {
+          headers: {
+            Aututhentication: `Bearer ${Cookies.get("access_token")}`,
+          },
+        }
+      )
       .then(({ data }) => {
         console.log(data, "halo");
         setDataPemayaran(data);
@@ -31,28 +47,30 @@ function CountdownPembayaran() {
 
     axios
       .post(
-        "http://192.168.43.81:8000/api/verifikasi-pembayaran/create",
+        `${
+          import.meta.env.VITE_BACK_END_END_POINT_URL
+        }/verifikasi-pembayaran/create`,
         {
-          uuid: "c7e4e49f-fa3e-4507-a523-81656c9a5aa1",
+          uuid: user.uuid,
           bukti_pembayaran: e.target["bukti_pembayaran"].files[0],
         },
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTI0NTY0NCwiZXhwIjo2MTY5MTI0NTU4NCwibmJmIjoxNjkxMjQ1NjQ0LCJqdGkiOiJzVTUyYU5hSnprUUZHMWVKIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6WyJhZG1pbmNhYmFuZyJdfQ._2usbQH10LtAhc9o3EhwDJdoFqcellQ2hGJYl9k8Lg0 `,
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
           },
         }
       )
       .then((response) => {
         console.log(response, "berhasil");
-        navigate("/status-pembayaran");
+        navigate("/home");
       });
   };
 
   return (
     <Layout>
-      <section className="min-h-screen bg-white flex justify-center items-center font-poppins">
-        <div className="h-auto w-[500px] rounded-md shadow-lg px-5 border">
+      <section className="min-h-screen flex justify-center items-center font-poppins">
+        <div className="h-auto w-[500px] bg-white rounded-md shadow-lg px-5 border">
           <div className="flex justify-center">
             <div className="text-center mt-2">
               <h1 className="font-bold text-[20px]">
@@ -85,23 +103,29 @@ function CountdownPembayaran() {
               <div className="mt-2">
                 <div className="flex justify-center">
                   <div className="h-[100px] w-[180px]">
-                    {/* <img src={`http://192.168.43.81:8000/storage/${dataPembayaran.pembayaran.type_bank}`} alt="" className='h-full w-full' /> */}
+                    <img
+                      src={`${
+                        import.meta.env.VITE_BACK_END_END_POINT
+                      }/storage/${dataPembayaran.pembayaran.type_bank}`}
+                      alt=""
+                      className="h-full w-full"
+                    />
                   </div>
                 </div>
                 <div className="flex justify-center">
                   <div className="text-center">
-                    <h1>Total pembayaran</h1>
-                    <div className="p-2 w-[300px] border border-gray-400">
-                      <p>{dataPembayaran.total}</p>
+                    <h4 className="font-semibold">Total pembayaran</h4>
+                    <div className="p-2 min-w-[300px] rounded-md bg-white shadow  border-gray-400">
+                      <p>{formatRupiah(dataPembayaran.total)}</p>
                       {/* {dataPembayaran.pembayaran.type_bank} */}
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-center mt-10">
                   <div className="text-center">
-                    <h1>Nomor Rekening</h1>
-                    <div className="p-1 w-[300px] border border-gray-400">
-                      <p>{dataPembayaran.norek}</p>
+                    <h4 className="font-semibold">Nomor Rekening</h4>
+                    <div className="p-2 min-w-[300px] rounded-md bg-white shadow  border-gray-400">
+                      <p>{dataPembayaran.pembayaran.norek}</p>
                     </div>
                   </div>
                 </div>
@@ -110,7 +134,7 @@ function CountdownPembayaran() {
           )}
 
           <form method="post" onSubmit={(e) => HandleSubmitPembayaran(e)}>
-            <div className="mt-5">
+            <div className="mt-5 flex flex-col items-center">
               <h1>Upload bukti pembayaran</h1>
               <input
                 type="file"
@@ -122,8 +146,7 @@ function CountdownPembayaran() {
             <div className="pt-10 mb-5">
               <button
                 type="submit"
-                onClick={() => HandleSubmitPembayaran()}
-                className="bg-[#169859] text-sm text-[#f3faf6] p-1 w-full rounded-full font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                className="bg-[#169859] text-[#f3faf6] p-2 w-full  rounded-md font-semibold hover:bg-opacity-70 transition duration-150  active:scale-95"
               >
                 <span>Kirim</span>
               </button>

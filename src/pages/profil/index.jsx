@@ -5,7 +5,7 @@ import profil from "../../assets/founder/founder.jpg";
 function Profil() {
   return (
     <Layout>
-      <section className="bg-white p-5 shadow-md">
+      <section className="bg-white p-5 shadow">
         <div className="flex justify-center mt-10">
           <div className="h-[200px] w-[200px] bg-slate-100 rounded-full relative overflow-hidden">
             <img

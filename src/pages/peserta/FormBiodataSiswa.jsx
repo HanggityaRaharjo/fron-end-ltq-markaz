@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layouts/Layout";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -9,21 +9,30 @@ import {
   BreadcrumbsItem,
   BreadcrumbsActive,
 } from "../../components/breadcrumbs";
+import Cookies from "js-cookie";
 
 const FormBiodataSiswa = () => {
   const user = useAuth((state) => state);
-
-  // State untuk menyimpan nilai opsi yang terpilih
   const [selectedOption, setSelectedOption] = useState("");
-
-  // Daftar opsi yang akan ditampilkan dalam dropdown
+  const [dataProvinsi, setDataProvinsi] = useState([]);
   const options = [
     { value: "option1", label: "Laki-Laki" },
     { value: "option2", label: "Perempuan" },
   ];
 
-  // Fungsi untuk menangani perubahan opsi terpilih
+  const GetAllProvince = () => {
+    axios
+      .get("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json")
+      .then(({ data }) => {
+        console.log(data);
+        setDataProvinsi(data);
+      });
+  };
+  useEffect(() => {
+    GetAllProvince();
+  }, []);
 
+  // Fungsi untuk menangani perubahan opsi terpilih
   const navigate = useNavigate();
   const HandleSubmit = (e) => {
     function ubahFormatTanggalNumerik(tanggal) {
@@ -31,19 +40,14 @@ const FormBiodataSiswa = () => {
       const tahun = tanggalArr[0];
       const bulan = tanggalArr[1];
       const tanggalBaru = tanggalArr[2];
-
       const hasil = `${tahun}-${bulan}-${tanggalBaru}`;
       return hasil;
     }
-
-    console.log();
-
     e.preventDefault();
-    // console.log(e.target[1].value);
-    console.log(e.target["tanggal_lahir"].value);
+
     axios
       .post(
-        "http://192.168.43.81:8000/api/biodata/create",
+        `${import.meta.env.VITE_BACK_END_END_POINT_URL}/biodata/create`,
         {
           uuid: "19d7cb21-3dfd-482e-8bb3-e776b600e407",
           full_name: e.target["full_name"].value,
@@ -53,8 +57,8 @@ const FormBiodataSiswa = () => {
             e.target["tanggal_lahir"].value
           ),
           alamat: e.target["alamat"].value,
-          // photo: e.target['photo'].value,
-          // photo_ktp: e.target['photo_ktp'].value,
+          photo: e.target["foto_diri"].files[0],
+          photo_ktp: e.target["ktp"].files[0],
           kelurahan: e.target["kelurahan"].value,
           kecamatan: e.target["kecamatan"].value,
           kabupaten_kota: e.target["kabupaten_kota"].value,
@@ -64,14 +68,16 @@ const FormBiodataSiswa = () => {
         },
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC40My44MTo4MDAwL2FwaS9sb2dpbiIsImlhdCI6MTY5MTMwNDEzOCwiZXhwIjo2MTY5MTMwNDA3OCwibmJmIjoxNjkxMzA0MTM4LCJqdGkiOiJ4ZUNLRlRzMmVWbWczRktVIiwic3ViIjoiOCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlcyI6W119.TSwD4KAZGb9hHB8Ch2bACJylqj5Dr3VxSBXGNM8NkMA`,
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
           },
         }
       )
       .then((response) => {
         console.log(response);
-        // navigate('/pilih-program')
-      });
+        navigate("/pilih-program");
+      })
+      .catch((error) => console.log(error.message));
   };
   return (
     <Layout>
@@ -79,7 +85,7 @@ const FormBiodataSiswa = () => {
         <BreadcrumbsItem>Pendaftaran</BreadcrumbsItem>
         <BreadcrumbsActive>Biodata</BreadcrumbsActive>
       </Breadcrumbs>
-      <section className="min-h-screen ">
+      <section className="min-h-screen font-poppins text-gray-500">
         <div className="">
           <form method="post" onSubmit={(e) => HandleSubmit(e)}>
             {/* Biodata */}
@@ -89,37 +95,35 @@ const FormBiodataSiswa = () => {
               </h3>
               <div className="grid grid-cols-1 gap-5">
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40">
-                    Nama Lengkap
-                  </label>
+                  <label className="font-medium">Nama Lengkap</label>
                   <input
                     name="full_name"
                     type="text"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
                     placeholder="Type here.."
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                    Usia
-                  </label>
+                  <label className="font-medium">Usia</label>
                   <input
                     name="usia"
                     type="number"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
                     placeholder="Type here.."
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                    jenis Kelamiin
+                  <label className="font-medium">
+                    jenis Kelamin
                     <span className="absolute pl-5">*</span>
                   </label>
                   <select
                     name="jenis_kelamin"
-                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
                   >
                     <option value="">Pilih opsi...</option>
                     <option value="laki-laki">Laki-laki</option>
@@ -128,13 +132,11 @@ const FormBiodataSiswa = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                    Tanggal Lahir
-                  </label>
+                  <label className="font-medium">Tanggal Lahir</label>
                   <input
                     name="tanggal_lahir"
                     type="date"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
                     placeholder="Type here.."
                   />
                 </div>
@@ -149,72 +151,73 @@ const FormBiodataSiswa = () => {
               </h3>
               <div className="grid grid-cols-1 gap-5">
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                    Alamat
-                  </label>
-                  <input
-                    name="alamat"
-                    type="area"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-20 rounded-md rounded-tl-none"
-                    placeholder="Type here.."
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                    kelurahan
-                    <span className="absolute pl-5">*</span>
-                  </label>
-                  <select
-                    name="kelurahan"
-                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
-                  >
-                    <option value="">Pilih opsi...</option>
-                    <option value="andir">andir</option>
-                    <option value="malakasari">malakasari</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                    Kecamatan
-                    <span className="absolute pl-5">*</span>
-                  </label>
-                  <select
-                    name="kecamatan"
-                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
-                  >
-                    <option value="">Pilih opsi...</option>
-                    <option value="baleendah">baleendah</option>
-                    <option value="adir">adir</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
-                    Kabupaten/Kota
-                    <span className="absolute pl-5">*</span>
-                  </label>
-                  <select
-                    name="kabupaten_kota"
-                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
-                  >
-                    <option value="">Pilih opsi...</option>
-                    <option value="bandung">bandung</option>
-                    <option value="bekasi">bekasi</option>
-                  </select>
-                </div>
-                <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-40 relative">
+                  <label className="font-medium">
                     provinsi
                     <span className="absolute pl-5">*</span>
                   </label>
                   <select
                     name="provinsi"
-                    className="h-10 w-full border border-[#169859]  px-5 rounded-md rounded-tl-none"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    style={{ height: "auto" }}
                   >
                     <option value="">Pilih opsi...</option>
-                    <option value="jawa barat">jawa barat</option>
-                    <option value="jawa timur">jawa timur</option>
+                    {dataProvinsi &&
+                      dataProvinsi.map((item) => (
+                        <option value={item.name}>{item.name}</option>
+                      ))}
                   </select>
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    Kabupaten/Kota
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kabupaten_kota"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kabupaten/Kota"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    Kecamatan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kecamatan"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kecamatan"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">
+                    kelurahan
+                    <span className="absolute pl-5">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    name="kelurahan"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Kelurahan"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="font-medium">Alamat</label>
+                  <input
+                    name="alamat"
+                    type="area"
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Type here.."
+                  />
                 </div>
               </div>
             </div>
@@ -227,36 +230,34 @@ const FormBiodataSiswa = () => {
               </h3>
               <div className="grid grid-cols-1 gap-5">
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                    No Wa
-                  </label>
+                  <label className="font-medium">No Wa</label>
                   <input
                     name="no_wa"
                     type="number"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
                     placeholder="Type here.."
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label className="bg-[#2f3a4e] text-[#f3faf6] px-2 rounded-t-lg  w-32">
-                    No Alternatif
-                  </label>
+                  <label className="font-medium">Nomor Alternatif</label>
                   <input
                     name="no_alternatif"
                     type="number"
-                    className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
-                    placeholder="Type here.."
+                    required
+                    className="w-full border-b-2 border-gray-300 focus:border-[#169859] h-10 outline-none"
+                    placeholder="Nomor Alternatif"
                   />
                 </div>
               </div>
             </div>
             {/* End No Telephone */}
 
-            {/* <div className="flex w-ful gap-2 mt-10">
-              <ImageUploaderSquare />
-              <ImageUploaderCircle name={photo} />
-            </div> */}
+            <div className="flex w-full border-l-4 border-[#169859] gap-2 mt-10 bg-white p-5 rounded-md rounded-l-none shadow">
+              <ImageUploaderCircle name="foto_diri" />
+              <ImageUploaderSquare name="ktp" />
+            </div>
 
             <div className="flex justify-end gap-5 mt-5">
               <button
@@ -310,6 +311,7 @@ const ImageUploaderCircle = ({ name }) => {
       <div className="w-1/2">
         <div className="flex justify-center">
           <div className="w-full">
+            <p className="text-center text-gray-500 font-semibold">Foto Diri</p>
             {imagePreview ? (
               <div className="flex justify-center">
                 <div className="w-[150px] h-[150px]">
@@ -344,11 +346,12 @@ const ImageUploaderCircle = ({ name }) => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859]  rounded-md cursor-pointer"
               >
                 <input
                   type="file"
-                  name="photo"
+                  required
+                  name={name}
                   onChange={handleFileChange}
                   accept="image/*"
                   className="border h-full w-full relative -z-10 hidden"
@@ -417,6 +420,7 @@ const ImageUploaderSquare = ({ name }) => {
       <div className="w-1/2">
         <div className="flex justify-center">
           <div className="w-full">
+            <p className="text-center text-gray-500 font-semibold">Foto KTP</p>
             {imagePreview ? (
               <div className="flex justify-center">
                 <div className="w-[290px] h-[150px]">
@@ -452,11 +456,12 @@ const ImageUploaderSquare = ({ name }) => {
                 onClick={(e) => {
                   e.target.firstChild.click();
                 }}
-                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] bg-opacity-60 rounded-md cursor-pointer"
+                className=" flex justify-center items-center w-[480] h-10 bg-[#169859] rounded-md cursor-pointer"
               >
                 <input
                   name={name}
                   type="file"
+                  required
                   onChange={handleFileChange}
                   accept="image/*"
                   className="border h-full w-full relative -z-10 hidden"

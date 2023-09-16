@@ -5,39 +5,75 @@ import {
   BreadcrumbsItem,
   BreadcrumbsActive,
 } from "../../../components/breadcrumbs";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function BuatKelas() {
   const [classroomData, setClassroomData] = useState([]);
   const [userData, setUserData] = useState([]);
-  const dummyData = [
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-    { name: "Jhon Doe" },
-    { name: "Peter" },
-    { name: "Simon" },
-  ];
+
+  const GetDataPeserta = () => {
+    axios
+      .get(
+        `${
+          import.meta.env.VITE_BACK_END_END_POINT_URL
+        }/admincabang/status/user/active`,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+        setUserData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
   useEffect(() => {
-    setUserData(dummyData);
+    GetDataPeserta();
   }, []);
+
+  console.log(classroomData, "sampe sini");
 
   const HandleSubmitKelas = (e) => {
     e.preventDefault();
-    console.log(e.target[1].value);
+    let dataClass = {
+      nama_kelas: e.target["nama_kelas"].value,
+      code: e.target["code"].value,
+      nama_pengajar: e.target["pengajar"].value,
+      user_id: 1,
+      jumlah_peserta: e.target["kuota"].value,
+      peserta: classroomData,
+    };
+
+    axios
+      .post(
+        `${import.meta.env.VITE_BACK_END_END_POINT_URL}/api/kelas/create`,
+        dataClass,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
-  console.log(classroomData);
+
+  const HandleDeleteUserFromClass = (userToDeleteFromClass) => {
+    const updatedData = classroomData.filter(
+      (item) => item.name !== userToDeleteFromClass
+    );
+    setClassroomData(updatedData);
+  };
 
   return (
     <Layout>
@@ -47,7 +83,7 @@ function BuatKelas() {
         <BreadcrumbsActive>Buat</BreadcrumbsActive>
       </Breadcrumbs>
       <section>
-        <div className="p-5 bg-white shadow-md rounded-md">
+        <div className="p-5 bg-white shadow rounded-md">
           <form action="" method="post" onSubmit={(e) => HandleSubmitKelas(e)}>
             <div className="grid grid-cols-4 gap-5 mb-5">
               <FormInput name="nama_kelas" title="Nama Kelas" />
@@ -78,21 +114,29 @@ function BuatKelas() {
             <div className="flex gap-5">
               <div className="w-1/2 h-96 border rounded-md rounded-t-none p-5 overflow-y-scroll">
                 {userData &&
-                  userData.map((item) => (
+                  userData.map((item, index) => (
                     <UserData
+                      key={index}
                       nama={item.name}
                       classData={classroomData}
                       HandlePush={setClassroomData}
+                      id={item.id}
                     />
                   ))}
               </div>
               {/* Class */}
               <div className="w-1/2 h-96 border rounded-md rounded-t-none p-5 overflow-y-scroll">
                 {classroomData &&
-                  classroomData.map((item) => (
-                    <div className="border-b hover:bg-[#1698591e] p-2 h-14 flex justify-between items-center">
+                  classroomData.map((item, index) => (
+                    <div
+                      key={index}
+                      className="border-b hover:bg-[#1698591e] p-2 h-14 flex justify-between items-center"
+                    >
                       {item.name}
-                      <button className="text-red-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
+                      <button
+                        className="text-red-500 p-2 rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                        onClick={() => HandleDeleteUserFromClass(item.name)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -129,18 +173,40 @@ function BuatKelas() {
   );
 }
 
-const UserData = ({ nama, classData, HandlePush }) => {
+const UserData = ({ nama, classData, HandlePush, id }) => {
+  let status = classData.some((item) => item.name === nama);
+
   const HandlePushToClass = () => {
-    console.log("sampe sini");
-    HandlePush([...classData, { name: nama }]);
+    let isNameExists = classData.some((item) => item.name === nama);
+    !isNameExists
+      ? HandlePush([...classData, { name: nama, user_id: id }])
+      : null;
   };
+
   return (
-    <div
-      className="border-b hover:bg-[#1698591e] p-3 h-14 flex items-center cursor-pointer"
-      onClick={() => HandlePushToClass()}
+    <button
+      className="border-b hover:bg-[#1698591e] p-3 h-14 flex items-center justify-between w-full"
+      onClick={HandlePushToClass}
     >
       {nama}
-    </div>
+
+      {status ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ) : null}
+    </button>
   );
 };
 
@@ -151,7 +217,7 @@ const FormInput = ({ name, title }) => {
         {title}
       </label>
       <input
-        name="full_name"
+        name={name}
         type="text"
         className=" w-full border border-[#2f3a4e]  px-5 h-10 rounded-md rounded-tl-none"
         placeholder="Type here.."
