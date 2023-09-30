@@ -80,6 +80,7 @@ import PengaturanAkunGuru from "./pages/guru/pengaturanAkun";
 import FormPengaturanAkunGuru from "./pages/guru/pengaturanAkun/formPengaturanAkun";
 import BarangMasuk from "./pages/tu/administrasi/spp/stockBarang/barangMasuk";
 import BarangKeluar from "./pages/tu/administrasi/spp/stockBarang/barangKeluar";
+import DashboardGuru from "./pages/guru/dashboard";
 
 
 const router = createBrowserRouter([
@@ -252,6 +253,10 @@ const router = createBrowserRouter([
   },
 
   // Guru
+  {
+    path: "/show/dashboard-guru",
+    element: <DashboardGuru />,
+  },
   {
     path: "/form/pendaftaran-guru",
     element: <PendaftaranGuru />,

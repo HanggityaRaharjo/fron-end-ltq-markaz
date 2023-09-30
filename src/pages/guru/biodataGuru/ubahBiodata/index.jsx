@@ -9,7 +9,7 @@ function UbahBiodataGuru() {
         <Layout>
             <section className='font-poppins p-5'>
                 <div className='flex flex-col gap-2 bg-white shadow-md p-5'>
-                    <h1 className='font-bold text-xl'>Pegaturan akun</h1>
+                    <h1 className='font-bold text-xl'>Ubah Biodata</h1>
                     <hr className='border-black' />
                     <p className="bg-[#5FB68A80] px-5 py-2 rounded-md">Lengkapi biodata diri anda</p>
                 </div>

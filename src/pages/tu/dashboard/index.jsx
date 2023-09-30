@@ -18,12 +18,7 @@ ChartJS.register(
 )
 
 function DashboardTu() {
-
-    const [isShow, setIsShow] = useState(false)
-
-    const HandleShow = () => {
-        setIsShow(true)
-    }
+    const [isShowDetail, setIsShowDetail] = useState(false)
 
 
     const data = {
@@ -65,8 +60,10 @@ function DashboardTu() {
     return (
         <Layout>
             <section className='p-5'>
-                <div className='w-full bg-white p-5 shadow-lg'>
-                    <Line data={data} options={options} style={{ width: '100%' }} className=''></Line>
+                <div className='grid grid-cols-1 lg:grid-cols-2  gap-5'>
+                    <div className=' h-[300px] w-full bg-white p-5 rounded-md shadow-md'>
+                        <Line data={data} options={options} style={{ width: '100%', height: '100%' }} className=''></Line>
+                    </div>
                 </div>
             </section>
         </Layout>

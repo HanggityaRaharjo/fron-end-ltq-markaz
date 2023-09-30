@@ -42,7 +42,7 @@ function TabelPesertaBaru() {
                 </div>
 
                 {/* Tabel DPP */}
-                <div className=' mt-20'>
+                <div className=' mt-20  w-full bg-white shadow-lg overflow-auto'>
                     <h1 className='font-bold text-2xl'>Tabel DPP</h1>
                     <div className='mt-5 w-full bg-white shadow-lg overflow-auto'>
                         <table className='w-full mt-5'>

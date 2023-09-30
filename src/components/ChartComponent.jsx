@@ -16,14 +16,16 @@ const ChartComponent = () => {
         "juni2023",
         "Jan 2024",
         "juni2024",
+        "juni2024",
+        "juni2024",
       ],
       datasets: [
         {
           label: "Sales",
-          data: [12, 19, 3, 5, 2, 3],
+          data: [12, 13, 3, 5, 2, 3, 5, 4],
           backgroundColor: "rgba(22, 152, 89,0.2)",
           borderColor: "rgba(22, 152, 89,1)",
-          borderWidth: 3,
+          borderWidth: 2,
         },
       ],
     };
