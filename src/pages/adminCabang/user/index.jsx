@@ -6,45 +6,45 @@ import {
   BreadcrumbsActive,
 } from "../../../components/breadcrumbs";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
+import useAuth from "../../../store/AuthStore";
 
 function PengaturanUser() {
   const [tableData, setTableData] = useState([]);
-  const DummyData = [
-    {
-      program: "Tartil (A)",
-      pengajar: "muhamad ahmad",
-      hari: "senin",
-      jam: "07.00-09.00",
-    },
-    {
-      program: "Tahfidz (C)",
-      pengajar: "Bu dini",
-      hari: "senin",
-      jam: "08.00-09.00",
-    },
-    {
-      program: "Bahasa arab (A)",
-      pengajar: "pak anis",
-      hari: "Rabu",
-      jam: "07.00-09.00",
-    },
-    {
-      program: "Tahfidz (B)",
-      pengajar: "pak eko",
-      hari: "kamis",
-      jam: "07.00-09.00",
-    },
 
-    {
-      program: "TartiL (B)",
-      pengajar: "Ahmad",
-      hari: "Rabu",
-      jam: "07.00-09.00",
-    },
-  ];
+  const user = useAuth((state) => state);
+  console.log(user.user_cabang_id);
+
+  const GetAllUserByCabang = async () => {
+    console.log("sampe sini");
+    if (!user.user_cabang_id) {
+      console.error("user_cabang_id is not available yet");
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACK_END_END_POINT_URL}/user/${
+          user.user_cabang_id
+        }`,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("access_token")}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+      setTableData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    setTableData(DummyData);
-  }, []);
+    GetAllUserByCabang();
+  }, [user.user_cabang_id]);
 
   return (
     <Layout>
@@ -56,8 +56,16 @@ function PengaturanUser() {
       <section>
         {/* Table */}
         <div className="p-5 bg-white shadow rounded-md">
-          <div className="flex justify-between items-center mb-5">
-            <div className="flex gap-2">
+          <div className="flex justify-start lg:justify-end">
+            <Link
+              to={"/tambah-user"}
+              className="bg-[#169859] text-[#f3faf6] text-sm p-2  min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150 mb-2"
+            >
+              <span>Buat Pengguna</span>
+            </Link>
+          </div>
+          <div className="flex flex-wrap justify-between gap-2 items-center mb-5">
+            <div className="flex gap-2 flex-wrap">
               <span>Menampilan</span>
               <select name="" id="" className="border">
                 <option value="10">10</option>
@@ -79,34 +87,37 @@ function PengaturanUser() {
                 <option value="admin-cabang">Admin Cabang</option>
               </select>
             </div>
-            <div className="flex gap-5">
+            <div className="flex gap-2">
               <input
                 type="text"
                 className=" border border-gray-300 p-1 rounded-md"
                 placeholder="search..."
               />
-              <Link
-                to={"/tambah-user"}
-                className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                <span>Buat Pengguna</span>
-              </Link>
             </div>
           </div>
-          <table className="w-full">
-            <thead>
-              <tr className="bg-[#2f3a4e] text-white text-sm">
-                <th className=" p-2 w-10">No</th>
-                <th className=" p-2">Nama</th>
-                <th className=" p-2 w-32">Peran</th>
+          <div className="overflow-y-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-[#2f3a4e] text-white text-sm">
+                  <th className=" p-2 w-10">No</th>
+                  <th className=" p-2">Nama</th>
+                  <th className=" p-2 w-32">Peran</th>
 
-                <th className=" p-2 w-56"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <TableData />
-            </tbody>
-          </table>
+                  <th className=" p-2 w-56"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableData &&
+                  tableData.map((item, index) => (
+                    <TableData
+                      key={item.id}
+                      number={index + 1}
+                      name={item.user.name}
+                    />
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
         {/* End Table */}
       </section>
@@ -114,11 +125,11 @@ function PengaturanUser() {
   );
 }
 
-const TableData = () => {
+const TableData = ({ name, number }) => {
   return (
     <tr className="text-sm text-gray-500 hover:bg-[#1698591e]">
-      <td className="border-x border-b w-10 text-center">1</td>
-      <td className="border-x border-b font-semibold px-5">Nama</td>
+      <td className="border-x border-b w-10 text-center">{number}</td>
+      <td className="border-x border-b font-semibold px-5">{name}</td>
       <td className="border-x border-b font-semibold px-5">Peserta</td>
       <td className="border-x border-b w-56">
         <div className="flex justify-center gap-5">

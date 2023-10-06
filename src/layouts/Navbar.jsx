@@ -6,9 +6,7 @@ import axios from "axios";
 
 const Navbar = ({ sidebarStatus, HandleSidebar }) => {
   const [dropdownShow, setDropdownShow] = useState(false);
-
   const user = useAuth((state) => state);
-
   const navigate = useNavigate();
   useEffect(() => {
     user.isAuth ? null : navigate("/login");
@@ -22,8 +20,9 @@ const Navbar = ({ sidebarStatus, HandleSidebar }) => {
   return (
     <nav className="fixed top-0 w-full flex justify-center z-[999]">
       <div
-        className="   w-full h-20  transition-all duration-150"
-        style={{ paddingLeft: sidebarStatus ? "224px" : "0px" }}
+        className={`w-full h-20  transition-all duration-150 ${
+          sidebarStatus ? "lg:pl-[224px]" : "pl-[0px]"
+        }`}
       >
         <div className="flex items-center h-full px-5  bg-white  shadow-lg  justify-between relative ">
           <button

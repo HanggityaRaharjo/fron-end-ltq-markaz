@@ -7,9 +7,14 @@ import { PesertaRoute } from "./route/PesertaRoute";
 import { AdminRoute } from "./route/AdminRoute";
 import { BendaharaRoute } from "./route/BendaharaRoute";
 import { GuruRoute } from "./route/GuruRoute";
+import { TataUsahaRoute } from "./route/TataUsahaRoute";
 
 const router = createBrowserRouter([
   ...AuthRoute.map((item) => ({
+    path: item.path,
+    element: item.element,
+  })),
+  ...TataUsahaRoute.map((item) => ({
     path: item.path,
     element: item.element,
   })),

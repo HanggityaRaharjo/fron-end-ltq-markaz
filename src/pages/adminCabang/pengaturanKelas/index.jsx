@@ -14,7 +14,7 @@ function PengaturanKelas() {
 
   const GetAllClass = () => {
     axios
-      .get(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/kelas`, {
+      .get(`${import.meta.env.VITE_BACK_END_END_POINT_URL}/superadmin/kelas/`, {
         headers: {
           Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
@@ -35,7 +35,7 @@ function PengaturanKelas() {
   return (
     <Layout>
       <Breadcrumbs>
-        <BreadcrumbsItem>Dashboard</BreadcrumbsItem>
+        <BreadcrumbsItem>Dashboard </BreadcrumbsItem>
         <BreadcrumbsItem>Pengaturan</BreadcrumbsItem>
         <BreadcrumbsActive>Kelas</BreadcrumbsActive>
       </Breadcrumbs>

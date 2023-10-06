@@ -28,13 +28,14 @@ const Layout = ({ children }) => {
         <>
           <Navbar sidebarStatus={sidebarShow} HandleSidebar={setSidebarShow} />
           <div className=" flex justify-center bg-[#e5eaf0] font-poppins">
-            <div className="w-full flex max-w-[1366px] px-5">
+            <div className="w-full flex px-5">
               <Sidebar sidebarStatus={sidebarShow} />
               <div className="w-full">
                 <main className="pt-20 min-h-screen text-[#1f2937]">
                   <div
-                    className="transition-all"
-                    style={{ paddingLeft: sidebarShow ? "224px" : "0px" }}
+                    className={`transition-all ${
+                      sidebarShow ? "pl-[0px]" : "pl-[224px]"
+                    } pl-0  ${sidebarShow ? "lg:pl-[224px]" : ""}`}
                   >
                     <div className="py-5">{children}</div>
                   </div>
