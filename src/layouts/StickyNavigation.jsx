@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ltq from "../assets/logo/LTQ.png"
+import { Link } from "react-router-dom";
 
 const StickyNavigation = () => {
   const [stickyNavStatus, setStickyNavStatus] = useState(false);
@@ -61,15 +63,19 @@ const StickyNavigation = () => {
         <div
           className="absolute bg-white bg-opacity-70 backdrop-blur-sm bottom-14 flex flex-col right-0 w-56 rounded-lg shadow-lg   overflow-hidden transition-all duration-150"
           style={{
-            maxHeight: stickyNavStatus ? "14rem" : "0rem",
+            maxHeight: stickyNavStatus ? "20rem" : "0rem",
             opacity: stickyNavStatus ? "1" : "0",
           }}
         >
-          <div className="p-2">Sticky Menu</div>
-          <div className="p-2">Sticky Menu</div>
-          <div className="p-2">Sticky Menu</div>
-          <div className="p-2">Sticky Menu</div>
-          <div className="p-2">Sticky Menu</div>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">LTQ</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">MDMQI</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">QSC</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">Kajian Tafsir</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">Mulazamah Akhwat</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">Santri Nusantara</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">Mukhoyyam</Link>
+          <Link to={''} className="p-2 hover:bg-gray-200 transition-all duration-200">Markaz Alquran Akhwat</Link>
+
         </div>
       </div>
     </div>

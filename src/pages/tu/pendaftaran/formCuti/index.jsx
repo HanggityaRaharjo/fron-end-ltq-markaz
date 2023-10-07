@@ -4,8 +4,8 @@ import Layout from '../../../../layouts/Layout'
 function FormCutiTu() {
     return (
         <Layout>
-            <section className=" p-5">
-                <div className='bg-white p-5 shadow-md rounded-md font-poppins text-gray-500'>
+            <section className="p-5">
+                <div className='bg-white p-5 shadow-md rounded-md font-poppins text-gray-500 border-l-2 border-[#169859]'>
                     <div className="flex flex-col gap-2">
                         <h1 className="font-bold text-2xl">Formulir Pengajuan Cuti </h1>
                         <hr className="border-black" />

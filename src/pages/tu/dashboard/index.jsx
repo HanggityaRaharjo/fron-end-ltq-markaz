@@ -9,6 +9,7 @@ import {
     LinearScale,
     PointElement
 } from 'chart.js'
+import ChartComponent from '../../../components/ChartComponent'
 
 ChartJS.register(
     LineElement,
@@ -62,7 +63,8 @@ function DashboardTu() {
             <section className='p-5'>
                 <div className='grid grid-cols-1 lg:grid-cols-2  gap-5'>
                     <div className=' h-[300px] w-full bg-white p-5 rounded-md shadow-md'>
-                        <Line data={data} options={options} style={{ width: '100%', height: '100%' }} className=''></Line>
+                        {/* <Line data={data} options={options} style={{ width: '100%', height: '100%' }} className=''></Line> */}
+                        <ChartComponent />
                     </div>
                 </div>
             </section>

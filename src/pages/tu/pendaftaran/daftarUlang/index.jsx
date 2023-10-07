@@ -7,62 +7,71 @@ function DaftarUlangTu() {
     return (
         <Layout>
             <section>
-                <div className='flex flex-col gap-2 bg-white shadow-md p-5 rounded-md'>
+                <div className='flex flex-col gap-2 bg-white  p-5 rounded-md'>
                     <h1 className='font-bold text-xl'>Pendaftaran TU</h1>
                     <hr className='border-black' />
                     <p className="bg-[#5FB68A80] px-5 py-2 rounded-md">Lengkapi form pendaftaran dengan lengkap</p>
                 </div>
-                <div className="flex flex-col gap-2 bg-white shadow-md rounded-md p-5 mt-10">
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Nama Lengkap</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                <div className="flex flex-col gap-10 rounded-md mt-10">
+                    <div className='bg-white p-5 shadow-md rounded-md border-l-2 border-[#169859]'>
+                        <h2 className='flex justify-end text-lg font-medium'>Biodata</h2>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Nama Lengkap</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tempat Lahir</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tanggal Lahir</label>
+                            <input type="date" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Jenis kelamin</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Tempat Lahir</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Tanggal Lahir</label>
-                        <input type="date" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Jenis kelamin</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Alamat</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Provinsi</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Kota</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Kecamatan</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Kelurahan</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >No Wa</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >No Alterntif</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium" >Pekerjaan</label>
-                        <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                    <div className='p-5 bg-white shadow-md rounded-md border-l-2 border-[#169859]'>
+                        <h2 className='flex justify-end text-lg font-medium'>Alamat Lengkap</h2>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Alamat</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Provinsi</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Kota</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Kecamatan</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Kelurahan</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >No Wa</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >No Alterntif</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Pekerjaan</label>
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
                     </div>
                 </div>
-                <InputFoto />
+                <div className='p-5 mt-10 bg-white rounded-md border-l-2 border-[#169859]'>
+                    <h2 className='flex justify-end text-lg font-medium'>Upload Foto</h2>
+                    <InputFoto />
+                </div>
 
                 <div className='mt-10 flex justify-end gap-5'>
                     <button className='bg-[#169859] text-white px-4 py-2 rounded-md active:scale-95 duration-300'>Kembali</button>
@@ -123,7 +132,7 @@ const InputFoto = () => {
         }
     };
     return (
-        <div className='mt-10 bg-white shadow-md rounded-md p-5'>
+        <div className=' rounded-md p-5'>
             <div className="flex items-center justify-center">
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="w-full">

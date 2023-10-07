@@ -35,19 +35,33 @@ function BarangMasuk() {
                 <TambahBarangMasuk show={tambahBarang} close={setTambahBarang} />
                 <EditBarangMasuk show={editBrangMasuk} close={setEditBarangMasuk} />
                 < div className=''>
-                    <div className=''>
+                    <div className='mb-5'>
                         <h1 className='font-bold text-xl'>Barang Masuk</h1>
                     </div>
-                    <div className='flex justify-end py-5'>
-                        <button
-                            onClick={() => HandleTambahBarangMasuk()}
-                            className="border bg-black text-white p-2 w-28 rounded-lg font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                        >
-                            <span>Tambah</span>
-                        </button>
-                    </div>
-                    <div className='bg-white'>
-                        <table className='w-full shadow-lg'>
+                    <div className='bg-white p-5 shadow-md rounded-md'>
+                        <div className='py-5 flex justify-between items-center'>
+                            <div className='flex gap-2'>
+                                <span className='font-semibold'>Data</span>
+                                <select className='border'>
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">20</option>
+                                    <option value="">25</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div className='flex gap-2'>
+                                    <button
+                                        onClick={() => HandleTambahBarangKeluar()}
+                                        className="border bg-black text-white p-2 w-28 rounded-lg font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
+                                    >
+                                        <span>Tambah</span>
+                                    </button>
+                                    <input type="text" className='border border-black px-2 outline-none' />
+                                </div>
+                            </div>
+                        </div>
+                        <table className='w-full bg-white'>
                             <thead>
                                 <tr className='bg-black text-white text-center'>
                                     <td className='p-2  w-[50px]'>No</td>
@@ -110,8 +124,7 @@ const TabelDataMasuk = ({ no, name, jumlah_barang, tanggal, deskripsi, edit }) =
 const TambahBarangMasuk = ({ show, close }) => {
 
     return (
-        <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center'
-            style={{ display: show ? "flex" : "none" }}>
+        <div className={`fixed z-[1000] left-0 top-[-1000px] h-screen w-screen bg-black bg-opacity-50 justify-center items-center transition-all duration-300 ${show ? 'top-[0px]' : ''}`}>
             <div className='flex justify-center items-center h-full'>
                 <div className='bg-white max-h-[500px] w-[500px]  rounded-md p-5'>
                     <div>
@@ -155,30 +168,28 @@ const TambahBarangMasuk = ({ show, close }) => {
 const EditBarangMasuk = ({ show, close }) => {
 
     return (
-        <div className='fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center'
-            style={{ display: show ? "flex" : "none" }}>
+        <div className={`fixed z-[1000] left-0 top-[-1000px] h-screen w-screen bg-black bg-opacity-50 justify-center items-center transition-all duration-300 ${show ? 'top-[0px]' : ''}`}>
             <div className='flex justify-center items-center h-full'>
                 <div className='bg-white max-h-[500px] w-[500px]  rounded-md p-5'>
                     <div>
-                        <h1 className='font-bold text-xl'>Tambah</h1>
-                        <hr />
+                        <h1 className='font-bold text-xl'>Edit</h1>
                     </div>
                     <div className='mt-5 flex flex-col gap-2'>
                         <div className="flex flex-col">
                             <label className="font-medium" >Nama Barang</label>
-                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none ' placeholder='scasc' />
                         </div>
                         <div className="flex flex-col">
                             <label className="font-medium" >Jumlah Barang</label>
-                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' placeholder='3' />
                         </div>
                         <div className="flex flex-col">
                             <label className="font-medium" >Tanggal Masuk</label>
-                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' placeholder='23-12-2021' />
                         </div>
                         <div className="flex flex-col">
                             <label className="font-medium" >Keterangan</label>
-                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                            <input type="text" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' placeholder='cascasc' />
                         </div>
                     </div>
                     <div className="flex gap-5 mt-5">

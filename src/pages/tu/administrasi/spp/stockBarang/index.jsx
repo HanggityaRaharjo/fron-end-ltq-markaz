@@ -35,20 +35,27 @@ function StockBarang() {
                         <h1 className='font-bold text-2xl'>Barang</h1>
                     </div>
                     {/* Tabel Barang */}
-                    <div>
+                    <div className='bg-white p-5 rounded-md shadow-md'>
                         <div className='mb-2'>
-                            <div className='flex justify-between'>
-                                <button
-                                    onClick={() => HandleTambah()}
-                                    className="border bg-black text-white p-2 w-28 rounded-lg font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                                >
-                                    <span>Tambah</span>
-                                </button>
-                                <input type="text" className='border h-10 px-2' />
+                            <div className='py-5 flex justify-between items-center'>
+                                <div className='flex gap-2'>
+                                    <span className='font-semibold'>Data</span>
+                                    <select className='border'>
+                                        <option value="">5</option>
+                                        <option value="">10</option>
+                                        <option value="">20</option>
+                                        <option value="">25</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <div>
+                                        <input type="text" className='border border-black px-2' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className='bg-white'>
-                            <table className='w-full shadow-lg'>
+                            <table className='w-full'>
                                 <thead>
                                     <tr className='bg-black text-white text-center'>
                                         <td className='p-2  w-[50px]'>No</td>

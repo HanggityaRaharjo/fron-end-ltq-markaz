@@ -81,9 +81,18 @@ import FormPengaturanAkunGuru from "./pages/guru/pengaturanAkun/formPengaturanAk
 import BarangMasuk from "./pages/tu/administrasi/spp/stockBarang/barangMasuk";
 import BarangKeluar from "./pages/tu/administrasi/spp/stockBarang/barangKeluar";
 import DashboardGuru from "./pages/guru/dashboard";
+import DasbboarPeserta from "./pages/dashboardPesserta";
+import Informasi from "./pages/Informasi";
+import JadwalKelas from "./pages/jadwalKelas";
+import Tugas from "./pages/tugas";
+import DetailTugas from "./pages/tugas/detailTugas";
 
 
 const router = createBrowserRouter([
+  {
+    path: "/informasi",
+    element: <Informasi />,
+  },
   {
     path: "/login",
     element: <Login />,
@@ -184,6 +193,10 @@ const router = createBrowserRouter([
   // peserta
 
   {
+    path: "/show/dashboard-peserta",
+    element: <DasbboarPeserta />,
+  },
+  {
     path: "/form/pengaturan-akun",
     element: <PengaturanAkun />,
   },
@@ -204,11 +217,23 @@ const router = createBrowserRouter([
     element: <KelasSiswa />,
   },
   {
+    path: "/show/Tugas",
+    element: <Tugas />,
+  },
+  {
+    path: "/form/detail-tugas",
+    element: <DetailTugas />,
+  },
+  {
+    path: "/show/jadwalkelas",
+    element: <JadwalKelas />,
+  },
+  {
     path: "/form/cuti",
     element: <FormCuti />,
   },
   {
-    path: "/peserta-baru",
+    path: "/form/peserta-baru",
     element: <FormBiodataSiswa />,
   },
   {
@@ -347,10 +372,6 @@ const router = createBrowserRouter([
   {
     path: "/show/spp-daftar-ulang",
     element: <TabelDaftarUlang />,
-  },
-  {
-    path: "/show/faktur",
-    element: <Faktur />,
   },
   {
     path: "/show/jumlah-tagihan",

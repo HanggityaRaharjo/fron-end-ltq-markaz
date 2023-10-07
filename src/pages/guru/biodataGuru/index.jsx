@@ -54,7 +54,7 @@ function BiodataGuru() {
                                     <tr>
                                         <td className="px-2 w-[100px] font-semibold">Role</td>
                                         <td className="px-2">:</td>
-                                        <td className="px-2">Pegawai</td>
+                                        <td className="px-2">Pengajar</td>
                                     </tr>
                                 </table>
                             </div>
@@ -71,53 +71,57 @@ function BiodataGuru() {
                     </Link>
                 </div>
 
-                <div className='bg-white p-5 shadow-lg rounded-b-md mt-5'>
-                    <div className="mt-10 flex flex-col gap-2">
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Nama Lengkap</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Aceng fikri</p>
+                <div className='mt-5'>
+                    <div className="flex flex-col gap-5">
+                        <div className='p-5 bg-white rounded-md shadow-md border-l-2 border-[#169859]'>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Nama Lengkap</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Aceng fikri</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Tempat Lahir</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Tanggal Lahir</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>12-21-1998</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Jenis Kelamin</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Laki-Laki</p>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Tempat Lahir</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+                        <div className='p-5 bg-white rounded-md shadow-md border-l-2 border-[#169859]'>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Alamat</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>jln. Cipisung</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Kelurahan</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Andir</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Kota</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Provinsi</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Jawa Barat</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >No Wa</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08978654657</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >No alternatif</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08976656567</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="font-medium" >Pekerjaan</label>
+                                <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Karyawan swasta</p>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Tanggal Lahir</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>12-21-1998</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Jenis Kelamin</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Laki-Laki</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Alamat</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>jln. Cipisung</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Kelurahan</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Andir</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Kota</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Bandung</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Provinsi</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Jawa Barat</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >No Wa</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08978654657</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >No alternatif</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>08976656567</p>
-                        </div>
-                        <div className="flex flex-col">
-                            <label className="font-medium" >Pekerjaan</label>
-                            <p className='py-2 border-b-2 border-gray-300  w-full outline-none'>Karyawan swasta</p>
-                        </div>
-                        <div className=''>
+                        <div className='p-5 bg-white rounded-md shadow-md border-l-2 border-[#169859]'>
                             <label className='font-medium'>Foto KTP</label>
                             <div className="w-full pt-2">
                                 <div className="w-[285px] h-[190px] rounded-md overflow-hidden border">

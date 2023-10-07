@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../../layouts/Layout'
 
+
 function NilaiRapot() {
+    const [showmodal, setShowModal] = useState(false);
+
+    const HandleEditNilai = () => {
+        setShowModal(true)
+    }
     return (
         <Layout>
+            <EditNilaiRapot show={showmodal} close={setShowModal} />
             <section className='p-5 font-poppins'>
                 <div className=' '>
                     <div>
@@ -29,7 +36,7 @@ function NilaiRapot() {
                                 <td className='p-2 text-center'>90</td>
                                 <td className='p-2 text-center'>
                                     <div className='flex justify-between'>
-                                        <button className='text-blue-500 active:scale-95 duration-300'>
+                                        <button onClick={() => HandleEditNilai()} className='text-blue-500 active:scale-95 duration-300'>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
@@ -48,6 +55,49 @@ function NilaiRapot() {
                 </div>
             </section>
         </Layout>
+    )
+}
+function EditNilaiRapot({ show, close }) {
+    return (
+        <div className={`fixed z-[1000] left-0 top-0 h-screen w-screen bg-black bg-opacity-50 justify-center items-center transition-all duration-300 ${show ? 'top-0' : 'top-[-1000px]'}`}>
+            <div className='flex justify-center items-center h-full w-full'>
+                <div className='p-5 w-[400px] max-h-[700px] bg-white rounded-lg'>
+                    <h1 className='font-bold text-2x1'>Edit Nilai</h1>
+                    <div className='flex flex-col gap-5'>
+                        <div className='my-5'>
+                            <p>Ujang Enam</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Talaqqi</label>
+                            <input type="number" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tartil</label>
+                            <input type="number" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-medium" >Tilawah</label>
+                            <input type="number" className='h-10 border-b-2 focus:border-[#169859]  w-full outline-none' />
+                        </div>
+
+                        <div className="flex gap-2 justify-end ">
+                            <button
+                                type="submit"
+                                // onClick={() => HandleNextPost()}
+                                className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px] active:scale-95 transition duration-150">
+                                Simpan
+                            </button>
+                            <button
+                                onClick={() => close(false)}
+                                className="bg-green-700 rounded-lg px-5 py-2 text-white min-w-[100px] active:scale-95 transition duration-150"
+                            >
+                                Batal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
