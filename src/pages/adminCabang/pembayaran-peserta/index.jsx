@@ -266,7 +266,7 @@ const TableData = ({
         <td className=" border-b font-semibold px-5">{program}</td>
         <td className=" border-b text-center">{bank}</td>
 
-        <td className=" border-b text-center">
+        <td className="border-b text-center">
           {status === "Unpaid" ? (
             <div className="flex justify-center">
               <div className="bg-[#fff8ee] min-w-[100px] rounded-full border justify-center flex items-center gap-2">

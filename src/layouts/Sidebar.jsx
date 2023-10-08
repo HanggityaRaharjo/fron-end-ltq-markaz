@@ -576,6 +576,7 @@ const MenuGuru = () => {
         Profile
       </div>
       <DropdownDivider name="Izin" />
+
       <div className=" text-gray-500 w-full py-2 px-4 rounded-md  font-semibold transition-all duration-150 flex items-center gap-2">
         Izin Cuti
       </div>
@@ -591,7 +592,7 @@ const MenuTataUsaha = () => {
   return (
     <div className="flex flex-col gap-2 items-start px-5">
       <DropdownDivider name="Tata Usaha" />
-      <DropdownDivider name="Kasir" />
+
       <Link
         to={"/tata-usaha/kasir/data-konsumen"}
         className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
@@ -609,6 +610,12 @@ const MenuTataUsaha = () => {
         className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
       >
         Pembayaran
+      </Link>
+      <Link
+        to={"/pembayaran/spp"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Pembayaran SPP
       </Link>
     </div>
   );

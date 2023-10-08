@@ -6,13 +6,6 @@ import {
   BreadcrumbsItem,
 } from "../../../../components/breadcrumbs";
 
-// import {
-//   Breadcrumbs,
-//   BreadcrumbsActive,
-//   BreadcrumbsItem,
-// } from "../../../components/breadcrumbs";
-// import Layout from "../../../layouts/Layout";
-
 const BarangDiBeli = () => {
   const [isShowModalAddCategory, setIsShowModalAddCategory] = useState(false);
   const [isShowModalUpdateCategory, setIsShowModalUpdateCategory] =
