@@ -86,6 +86,7 @@ import Informasi from "./pages/Informasi";
 import JadwalKelas from "./pages/jadwalKelas";
 import Tugas from "./pages/tugas";
 import DetailTugas from "./pages/tugas/detailTugas";
+import SeleksiPeserta from "./pages/panitiaPSB/seleksiPeserta";
 
 
 const router = createBrowserRouter([
@@ -450,6 +451,12 @@ const router = createBrowserRouter([
   {
     path: "/form/alur-kas",
     element: <FormAlurKas />,
+  },
+
+  // Panitia PSB
+  {
+    path: "/show/seleksi-peserta",
+    element: <SeleksiPeserta />,
   },
 ]);
 

@@ -66,7 +66,10 @@ const ChartComponent = () => {
     };
   }, []);
 
-  return <canvas ref={chartContainer} />;
+  return (
+    <canvas ref={chartContainer} />
+
+  )
 };
 
 export default ChartComponent;
