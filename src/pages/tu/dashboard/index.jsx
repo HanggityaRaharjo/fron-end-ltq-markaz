@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../../../layouts/Layout'
 
+
 import { Line } from 'react-chartjs-2'
 import {
     Chart as ChartJS,
@@ -11,6 +12,7 @@ import {
 } from 'chart.js'
 import ChartComponent from '../../../components/ChartComponent'
 import PieChart from '../../../components/ChartPie'
+import { Link } from 'react-router-dom'
 
 ChartJS.register(
     LineElement,
@@ -86,12 +88,14 @@ function DashboardTu() {
                         </div>
                     </div>
                     <div className=' w-full bg-white p-5 rounded-md shadow-md hover:shadow-green-200 hover:scale-105 transition-all duration-200'>
-                        <div className='flex flex-col items-center gap-5'>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-10 h-10">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                            </svg>
-                            <label>Daftar Siswa</label>
-                        </div>
+                        <Link to={'/show/daftar-siswa'}>
+                            <div className='flex flex-col items-center gap-5'>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-10 h-10">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+                                <label>Daftar Siswa</label>
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 p-5 gap-5'>

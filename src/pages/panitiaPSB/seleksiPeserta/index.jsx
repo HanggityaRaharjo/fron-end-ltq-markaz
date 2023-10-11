@@ -49,7 +49,14 @@ function SeleksiPeserta() {
                             <tr>
                                 <td colSpan={5} className={`border overflow-hidden `} style={{ height: isShowDetail ? 'auto' : 0, overflow: 'hidden', transition: 'height 0.2s' }}>
                                     < div className={`flex px-2 flex-col gap-2  overflow-hidden transition-all duration-200 ${isShowDetail ? 'h-[150px]' : 'h-[0px]'}`}>
-                                        ss
+                                        <div className='flex flex-col gap-5'>
+                                            <div>
+                                                <label className='font-medium'>Hasil Test Suara</label>
+                                            </div>
+                                            <div>
+                                                <label className='font-medium'>Hasil Test Soal</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

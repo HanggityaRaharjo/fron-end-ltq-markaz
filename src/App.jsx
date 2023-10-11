@@ -87,6 +87,8 @@ import JadwalKelas from "./pages/jadwalKelas";
 import Tugas from "./pages/tugas";
 import DetailTugas from "./pages/tugas/detailTugas";
 import SeleksiPeserta from "./pages/panitiaPSB/seleksiPeserta";
+import DaftarSiswa from "./pages/tu/daftarPeserta";
+import DetailSiswa from "./pages/tu/daftarPeserta/detailPeserta";
 
 
 const router = createBrowserRouter([
@@ -357,6 +359,14 @@ const router = createBrowserRouter([
   {
     path: "/form/pengaturan-akun-tu",
     element: <FormPengaturanAkunTu />,
+  },
+  {
+    path: "/show/daftar-siswa",
+    element: <DaftarSiswa />,
+  },
+  {
+    path: "/show/detail-siswa",
+    element: <DetailSiswa />,
   },
   {
     path: "/show/spp-peserta-baru",
