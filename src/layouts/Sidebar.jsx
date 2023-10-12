@@ -72,8 +72,8 @@ const Sidebar = ({ sidebarStatus }) => {
             <img src={logo} className="h-full " alt="" />
           </div>
         </Link>
-        {isTataUsaha ? <MenuTataUsaha /> : null}
         {isAdminCabang ? <MenuAdmin /> : null}
+        {isTataUsaha ? <MenuTataUsaha /> : null}
         {isBendahara ? <MenuBendahara /> : null}
         {isPeserta ? <MenuPeserta /> : null}
         {isGuru ? <MenuGuru /> : null}
