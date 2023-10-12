@@ -72,9 +72,9 @@ const Sidebar = ({ sidebarStatus }) => {
             <img src={logo} className="h-full " alt="" />
           </div>
         </Link>
+        {isTataUsaha ? <MenuTataUsaha /> : null}
         {isAdminCabang ? <MenuAdmin /> : null}
         {isBendahara ? <MenuBendahara /> : null}
-        {isTataUsaha ? <MenuTataUsaha /> : null}
         {isPeserta ? <MenuPeserta /> : null}
         {isGuru ? <MenuGuru /> : null}
         {isPeserta ? <MenuPeserta /> : null}
@@ -349,7 +349,7 @@ const SidebarDefault = ({ sidebarStatus, logo, isLoading }) => {
     </nav>
   );
 };
-const DropdownMenu = ({ name }) => {
+const DropdownMenu = ({ children, name }) => {
   const [dropdownShow, setDropdownShow] = useState(false);
   return (
     <div className=" w-full  rounded-md font-semibold ">
@@ -378,18 +378,7 @@ const DropdownMenu = ({ name }) => {
         className=" flex flex-col transition-all duration-150 gap-2 items-start pl-5 overflow-hidden"
         style={{ maxHeight: dropdownShow ? "200px" : "0px" }}
       >
-        <button className="py-2 px-4 text-sm text-gray-600 hover:bg-[#effff7] w-full rounded-md hover:text-[#169859] transition text-left duration-150">
-          submenu
-        </button>
-        <button className="py-2 px-4 text-sm text-gray-600 hover:bg-[#effff7] w-full rounded-md hover:text-[#169859] transition text-left duration-150">
-          submenu
-        </button>
-        <button className="py-2 px-4 text-sm text-gray-600 hover:bg-[#effff7] w-full rounded-md hover:text-[#169859] transition text-left duration-150">
-          submenu
-        </button>
-        <button className="py-2 px-4 text-sm text-gray-600 hover:bg-[#effff7] w-full rounded-md hover:text-[#169859] transition text-left duration-150">
-          submenu
-        </button>
+        {children}
       </div>
     </div>
   );
@@ -425,6 +414,15 @@ const MenuAdmin = () => {
           </g>
         </svg>
         Dashboard
+      </Link>
+
+      <DropdownDivider name="Pegawai" />
+
+      <Link
+        to={"/form/pendaftaran-tu"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Pendaftaran Pegawai Tata Usaha
       </Link>
 
       <DropdownDivider name="Pembayaran" />
@@ -594,29 +592,103 @@ const MenuTataUsaha = () => {
       <DropdownDivider name="Tata Usaha" />
 
       <Link
-        to={"/tata-usaha/kasir/data-konsumen"}
+        to={"/show/dashboard-tu"}
         className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
       >
-        Data Konsumen
+        Dashboard
       </Link>
+      {/* <Link
+        to={"/form/pendaftaran-tu"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Pendaftaran Pegawai Tata Usaha
+      </Link> */}
       <Link
-        to={"/tata-usaha/kasir/barang-di-beli"}
+        to={"/form/cuti-tu"}
         className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
       >
-        Barang Dibeli
+        Pengajuan Cuti
       </Link>
+
+      <DropdownMenu name={"Peserta Baru"}>
+        <Link
+          to={"/show/daftar-siswa"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Daftar Peserta
+        </Link>
+        <Link
+          to={"/pembayaran/spp"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Pembayaran SPP
+        </Link>
+      </DropdownMenu>
+
+      <DropdownMenu name="Daftar Ulang">
+        <Link
+          to={"/form/spp-daftar-ulang"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Pembayaran
+        </Link>
+
+        <Link
+          to={"/show/spp-daftar-ulang"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Tagihan
+        </Link>
+      </DropdownMenu>
+
       <Link
-        to={"/tata-usaha/kasir/pembayaran"}
+        to={"/e-faktur"}
         className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
       >
-        Pembayaran
+        E-Faktur
       </Link>
-      <Link
-        to={"/pembayaran/spp"}
-        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
-      >
-        Pembayaran SPP
-      </Link>
+
+      <DropdownMenu name={"Barang"}>
+        <Link
+          to={"/show/stock-barang"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Stock Barang
+        </Link>
+        <Link
+          to={"/show/barang-masuk"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Barang Masuk
+        </Link>
+        <Link
+          to={"/show/barang-keluar"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Barang Keluar
+        </Link>
+      </DropdownMenu>
+
+      <DropdownMenu name={"Kasir"}>
+        <Link
+          to={"/tata-usaha/kasir/data-konsumen"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Data Konsumen
+        </Link>
+        <Link
+          to={"/tata-usaha/kasir/barang-di-beli"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Barang Dibeli
+        </Link>
+        <Link
+          to={"/tata-usaha/kasir/pembayaran"}
+          className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+        >
+          Pembayaran
+        </Link>
+      </DropdownMenu>
     </div>
   );
 };
