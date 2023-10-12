@@ -8,6 +8,8 @@ import { AdminRoute } from "./route/AdminRoute";
 import { BendaharaRoute } from "./route/BendaharaRoute";
 import { GuruRoute } from "./route/GuruRoute";
 import { TataUsahaRoute } from "./route/TataUsahaRoute";
+import DashboardPsb from "./pages/panitiaPSB/dashboardPsb";
+import SeleksiPeserta from "./pages/panitiaPSB/seleksiPeserta";
 
 const router = createBrowserRouter([
   ...AuthRoute.map((item) => ({
@@ -45,6 +47,16 @@ const router = createBrowserRouter([
   {
     path: "/formcuti",
     element: <FormCuti />,
+  },
+
+  // Panitia PSB
+  {
+    path: "/dashboard-psb",
+    element: <DashboardPsb />,
+  },
+  {
+    path: "/seleksi-peserta",
+    element: <SeleksiPeserta />,
   },
 ]);
 
