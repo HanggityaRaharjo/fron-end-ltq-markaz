@@ -15,6 +15,7 @@ const Sidebar = ({ sidebarStatus }) => {
   const [isBendahara, setIsBendahara] = useState(false);
   const [isTataUsaha, setIsTataUsaha] = useState(false);
   const [isPanitiaPsb, setIsPanitiaPsb] = useState(false);
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
   const GetCabangByUser = () => {
     axios
@@ -393,6 +394,10 @@ const DropdownMenu = ({ name }) => {
       </div>
     </div>
   );
+};
+
+const MenuSuperAdmin = () => {
+  return <div>asd</div>;
 };
 
 const MenuAdmin = () => {

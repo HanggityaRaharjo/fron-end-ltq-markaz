@@ -16,30 +16,42 @@ const Home = () => {
   const [isBendahara, setIsBendahara] = useState(false);
   const [isPanitiaPsb, setIsPanitiaPsb] = useState(false);
 
+  const navigate = useNavigate();
+
   const RoleCheck = () => {
+    // if (user.role.length !== 0) {
+    //   user.role[0].admincabang == 1
+    //     ? setAdminCabanag(true)
+    //     : setAdminCabanag(false);
+    //   user.role[0].bendahara == 1
+    //     ? setIsBendahara(true)
+    //     : setIsBendahara(false);
+    //   user.role[0].guru == 1 ? setIsGuru(true) : setIsGuru(false);
+    //   user.role[0].peserta == 1 ? setIsPeserta(true) : setIsPeserta(false);
+    //   user.role[0].tatausaha == 1
+    //     ? setIsTataUsaha(true)
+    //     : setIsTataUsaha(false);
+    //   user.role[0].panitia_psb == 1
+    //     ? setIsPanitiaPsb(true)
+    //     : setIsPanitiaPsb(false);
+    // }
+    // let status = false;
+    // isAdminCabang ? (status = true) : (status = false);
+    // console.log(status);
     if (user.role.length !== 0) {
-      user.role[0].admincabang == 1
-        ? setAdminCabanag(true)
-        : setAdminCabanag(false);
-      user.role[0].bendahara == 1
-        ? setIsBendahara(true)
-        : setIsBendahara(false);
-      user.role[0].guru == 1 ? setIsGuru(true) : setIsGuru(false);
-      user.role[0].peserta == 1 ? setIsPeserta(true) : setIsPeserta(false);
-      user.role[0].tatausaha == 1
-        ? setIsTataUsaha(true)
-        : setIsTataUsaha(false);
-      user.role[0].panitia_psb == 1
-        ? setIsPanitiaPsb(true)
-        : setIsPanitiaPsb(false);
+      if (user.role[0].superadmin === 1) {
+        // navigate("/dashboard-cabang");
+        console.log("Ini didalam fungsi", user.role[0].superadmin);
+      } else {
+        return;
+      }
     }
+    console.log("ini", user.role.length !== 0);
   };
 
   const [isLoading, setIsLoading] = useState(true);
 
   const [bannerShow, setIsBannerShow] = useState("");
-
-  const navigate = useNavigate();
 
   const GetPesertaActive = () => {
     axios
@@ -127,6 +139,10 @@ const Home = () => {
     // GetDataCabang();
     GetPesertaActive();
   }, [user.uuid]);
+
+  useEffect(() => {
+    RoleCheck();
+  }, [user.role]);
 
   return (
     <Layout>

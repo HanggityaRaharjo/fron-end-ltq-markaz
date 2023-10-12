@@ -11,7 +11,7 @@ function DashboardCabang() {
           <h1 className="font-semibold text-4xl mb-5">Jumlah Pengguna</h1>
           <div className="grid grid-cols-4 gap-5 ">
             <Card
-              bg={"bg-[#FAF0D7]"}
+              bg={"bg-yellow-500"}
               label={"Peserta"}
               title={"320"}
               icons={
@@ -32,7 +32,7 @@ function DashboardCabang() {
               }
             />
             <Card
-              bg={"bg-[#8CC0DE]"}
+              bg={"bg-blue-500"}
               label={"Guru"}
               title={"50"}
               icons={
@@ -53,7 +53,7 @@ function DashboardCabang() {
               }
             />
             <Card
-              bg={"bg-[#FFD9C0]"}
+              bg={"bg-red-500"}
               label={"Guru"}
               title={"50"}
               icons={
@@ -74,7 +74,7 @@ function DashboardCabang() {
               }
             />
             <Card
-              bg={"bg-[#CCEEBC]"}
+              bg={"bg-green-500"}
               label={"Guru"}
               title={"50"}
               icons={
@@ -104,7 +104,7 @@ function DashboardCabang() {
 
           <div className="grid grid-cols-2 gap-5 ">
             <CardCLass
-              bg={"bg-[#8CC0DE]"}
+              bg={"bg-blue-500"}
               label={"Tahfidz"}
               title={"50"}
               icons={
@@ -125,7 +125,7 @@ function DashboardCabang() {
               }
             />
             <CardCLass
-              bg={"bg-[#CCEEBC]"}
+              bg={"bg-green-500"}
               label={"Talaqqi"}
               title={"32"}
               icons={
@@ -146,7 +146,7 @@ function DashboardCabang() {
               }
             />
             <CardCLass
-              bg={"bg-[#FAF0D7]"}
+              bg={"bg-red-500"}
               label={"Bahasa Arab"}
               title={"56"}
               icons={
@@ -167,7 +167,7 @@ function DashboardCabang() {
               }
             />
             <CardCLass
-              bg={"bg-[#FFD9C0]"}
+              bg={"bg-purple-500"}
               label={"Tartil"}
               title={"40"}
               icons={
@@ -196,7 +196,9 @@ function DashboardCabang() {
 
 function Card({ label, title, icons, bg }) {
   return (
-    <div className={`${bg} h-[200px] w-[200px] rounded-md shadow-lg`}>
+    <div
+      className={`${bg} h-[200px] w-[200px] rounded-md shadow-lg text-white`}
+    >
       <div className="flex justify-center p-5">
         <span className="flex items-center text-[20px] font-bold">{label}</span>
       </div>
@@ -214,7 +216,7 @@ function Card({ label, title, icons, bg }) {
 function CardCLass({ label, title, icons, bg }) {
   return (
     <div
-      className={`${bg} h-[200px] w-full rounded-md shadow-lg relative overflow-hidden`}
+      className={`${bg} h-[200px] w-full rounded-md shadow-lg relative overflow-hidden text-white`}
     >
       <div className="absolute -right-10 top-5 ">{icons}</div>
       <div className="flex justify-center p-5">

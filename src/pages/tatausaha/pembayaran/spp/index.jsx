@@ -127,17 +127,17 @@ const TableData = ({ number, data, currentImage, setCurrentImage }) => {
 
   return (
     <>
-      <tr className="border-b">
-        <td className="w-10 p-2 border-l flex justify-center">{number}</td>
-        <td className="p-2 border">{data.users.name}</td>
-        <td className="p-2 border text-center">
+      <tr>
+        <td className="w-10 p-2 flex justify-center">{number}</td>
+        <td className="p-2 ">{data.users.name}</td>
+        <td className="p-2  text-center">
           {data.users.user_program[0].program.program_name}
         </td>
-        <td className="p-2 border text-center">
+        <td className="p-2  text-center">
           Rp.{useFormatNumber(data.nominal)},-
         </td>
-        <td className="p-2 border text-center">{data.status}</td>
-        <td className="p-2 border w-56">
+        <td className="p-2  text-center">{data.status}</td>
+        <td className="p-2  w-56">
           <div className="flex justify-center gap-5">
             <button onClick={() => setIsShowDetail(!isShowDetail)}>
               <svg
@@ -179,7 +179,7 @@ const TableData = ({ number, data, currentImage, setCurrentImage }) => {
           </div>
         </td>
       </tr>
-      <tr className="border">
+      <tr className="border-b">
         <td colSpan={6}>
           <div
             className="overflow-hidden transition-all duration-300"
