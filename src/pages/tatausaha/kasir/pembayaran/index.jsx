@@ -6,20 +6,8 @@ import {
   BreadcrumbsItem,
 } from "../../../../components/breadcrumbs";
 
-// import {
-//   Breadcrumbs,
-//   BreadcrumbsActive,
-//   BreadcrumbsItem,
-// } from "../../../components/breadcrumbs";
-// import Layout from "../../../layouts/Layout";
-
 const KasirPembayaran = () => {
-  const [isShowModalAddCategory, setIsShowModalAddCategory] = useState(false);
-  const [isShowModalUpdateCategory, setIsShowModalUpdateCategory] =
-    useState(false);
-  const [currentDataUpdateCategory, setCurrentDataUpdateCategory] = useState({
-    key: "test",
-  });
+  const [currentTab, setCurrentTab] = useState("kasir");
 
   return (
     <Layout>
@@ -27,238 +15,192 @@ const KasirPembayaran = () => {
         <BreadcrumbsItem>Dashboard</BreadcrumbsItem>
         <BreadcrumbsItem>Tata Usaha</BreadcrumbsItem>
         <BreadcrumbsItem>Kasir</BreadcrumbsItem>
-        <BreadcrumbsActive>Data Konsumen</BreadcrumbsActive>
+        <BreadcrumbsActive>Pembayaran</BreadcrumbsActive>
       </Breadcrumbs>
-      <ModalAddCategory
-        isShowModalAddCategory={isShowModalAddCategory}
-        setIsShowModalAddCategory={setIsShowModalAddCategory}
-      />
-      <ModalUpdateCategory
-        isShowModalUpdateCategory={isShowModalUpdateCategory}
-        setIsShowModalUpdateCategory={setIsShowModalUpdateCategory}
-        currentDataUpdateCategory={currentDataUpdateCategory}
-      />
-      <section>
-        {/* Table */}
-        <div className="p-5 bg-white shadow rounded-md">
-          <div className="flex justify-between items-center mb-5">
-            <div className="flex gap-2">
-              <span>Menampilkan</span>
-              <select name="" id="" className="border">
-                <option value="10">10</option>
-                <option value="10">25</option>
-                <option value="10">50</option>
-                <option value="10">100</option>
-              </select>
-              <span>data</span>
-            </div>
-            <div className="flex gap-5">
-              <input
-                type="text"
-                className=" border border-gray-300 p-1 rounded-md"
-                placeholder="search..."
-              />
-              <button
-                onClick={() => setIsShowModalAddCategory(true)}
-                className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                <span>Tambah Kategori</span>
-              </button>
-            </div>
-          </div>
-          <table className="w-full">
-            <thead>
-              <tr rowSpan={2} className="bg-[#2f3a4e] text-white text-sm">
-                <th rowSpan={2} className="p-2 w-10">
-                  No
-                </th>
-                <th rowSpan={2} className="p-2">
-                  Tanggal
-                </th>
-                <th rowSpan={2} className="p-2">
-                  Kategori
-                </th>
-                <th rowSpan={2} className="p-2">
-                  Keterangan
-                </th>
-                <th colSpan={2} className="p-2">
-                  Jenis
-                </th>
-                <th rowSpan={2} className="p-2">
-                  Opsi
-                </th>
-              </tr>
-              <tr className="bg-[#2f3a4e] text-white text-sm">
-                <th className="text-center">Pemasukan</th>
-                <th className="text-center">Pengeluaran</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b">
-                <td className="w-10 p-2 border flex justify-center">1</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="w-64">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                      onClick={() => {
-                        setIsShowModalUpdateCategory(true);
-                        setCurrentDataUpdateCategory({ key: "test" });
-                      }}
-                    >
-                      Update
-                    </button>
-                    <button className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                      Hapus
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr className="border-b">
-                <td className="w-10 p-2 border flex justify-center">1</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="p-2 border">ASD</td>
-                <td className="w-64">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                      onClick={() => {
-                        setIsShowModalUpdateCategory(true);
-                        setCurrentDataUpdateCategory({ key: "test2" });
-                      }}
-                    >
-                      Update
-                    </button>
-                    <button className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                      Hapus
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {/* End Table */}
-      </section>
+      <div className="flex gap-5 mb-5">
+        <button
+          onClick={() => setCurrentTab("kasir")}
+          className={`${
+            currentTab === "kasir" ? "bg-black" : "bg-gray-500"
+          } text-white px-5 py-2 rounded-md`}
+        >
+          Kasir
+        </button>
+        <button
+          onClick={() => setCurrentTab("list-pembayaran")}
+          className={`${
+            currentTab === "list-pembayaran" ? "bg-black" : "bg-gray-500"
+          } text-white px-5 py-2 rounded-md`}
+        >
+          List Pembayaran
+        </button>
+      </div>
+
+      {currentTab === "kasir" ? <KasirSection /> : null}
+      {currentTab === "list-pembayaran" ? <ListPembayaran /> : null}
     </Layout>
   );
 };
 
-const ModalUpdateCategory = ({
-  isShowModalUpdateCategory,
-  setIsShowModalUpdateCategory,
-  currentDataUpdateCategory,
-}) => {
+const KasirSection = () => {
   return (
-    <div
-      className={`w-screen h-screen fixed flex justify-center items-center bg-black z-[999] left-0 top-0 bg-opacity-50 ${
-        isShowModalUpdateCategory ? null : "hidden"
-      }`}
-    >
-      <div className="w-[500px] bg-white rounded-md p-5 shadow-md relative">
-        <div className="flex justify-between items-center mb-5">
-          <h4 className="text-2xl font-semibold ">
-            Update {currentDataUpdateCategory.key}
-          </h4>
-          <div className="flex justify-center items-center">
-            <button onClick={() => setIsShowModalUpdateCategory(false)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
+    <section className="bg-white min-h-[300px] text-sm rounded-md shadow-md p-5">
+      <div className="flex gap-5 mb-5">
+        <div className="w-4/12">
+          <table className="w-full">
+            <tr>
+              <td className=" text-right w-32">No Transaksi :</td>
+              <td className="">
+                <input
+                  type="text"
+                  className="p-2 w-full border rounded-md border-black"
                 />
-              </svg>
-            </button>
+              </td>
+            </tr>
+            <tr>
+              <td className=" text-right w-32">Tanggal :</td>
+              <td className="">
+                <input
+                  type="date"
+                  className="p-2 w-full border rounded-md border-black"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className=" text-right w-32">Pelanggan :</td>
+              <td className="">
+                <input
+                  type="text"
+                  className="p-2 w-full border rounded-md border-black"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div className="w-8/12">
+          <div className="border w-full h-full bg-white shadow-md rounded-md flex justify-end items-end p-2 relative">
+            <p className="absolute text-lg top-2 left-2 font-semibold">Total</p>
+            <p className="text-5xl font-bold">115.000,00</p>
           </div>
         </div>
-        <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="">Nama Kategori</label>
-          <input
-            type="text"
-            className="border p-2 rounded-md"
-            defaultValue={currentDataUpdateCategory.key}
-          />
-        </div>
-        <div className="flex justify-end gap-5">
-          <button
-            onClick={() => setIsShowModalUpdateCategory(false)}
-            className="border border-[#169859] text-[#169859] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-          >
-            <span>Tutup</span>
-          </button>
-          <button className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-            <span>Simpan</span>
-          </button>
-        </div>
       </div>
-    </div>
+
+      <div className="flex justify-center px-20">
+        <table className="w-full">
+          <tr>
+            <td className="w-20 p-2">Jumlah :</td>
+            <td className="w-20 p-2">
+              <input
+                type="text"
+                className="border border-black p-2 rounded-md"
+              />
+            </td>
+            <td className="w-24 p-2">Kode Item :</td>
+            <td className=" p-2">
+              <input
+                type="text"
+                className="border border-black p-2 rounded-md w-full"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div className="w-full h-56 overflow-scroll mb-5">
+        <table className="w-full">
+          <thead className="sticky top-0">
+            <tr>
+              <th className="w-10 p-2 bg-black text-white">No</th>
+              <th className="p-2 bg-black text-white">Kode Item</th>
+              <th className="p-2 bg-black text-white">Keterangan</th>
+              <th className="p-2 bg-black text-white">Jumlah</th>
+              <th className="p-2 bg-black text-white">Satuan</th>
+              <th className="p-2 bg-black text-white">Harga</th>
+              <th className="p-2 bg-black text-white">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-black">
+              <td className="w-10 border-l border-black text-center">1</td>
+              <td className="w-32 border-x border-black text-center ">CA202</td>
+              <td className="w-96 border-r border-black">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+                nobis.
+              </td>
+              <td className="text-center border-r border-black w-20">2,00</td>
+              <td className="w-16 border-r border-black text-center">PCS</td>
+              <td className="text-center border-r border-black">20.000</td>
+              <td className="text-center border-r border-black">40.000</td>
+            </tr>
+            <tr className="border-b border-black">
+              <td className="w-10 border-l border-black text-center">1</td>
+              <td className="w-32 border-x border-black text-center ">CA202</td>
+              <td className="w-96 border-r border-black">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+                nobis.
+              </td>
+              <td className="text-center border-r border-black w-20">2,00</td>
+              <td className="w-16 border-r border-black text-center">PCS</td>
+              <td className="text-center border-r border-black">20.000</td>
+              <td className="text-center border-r border-black">40.000</td>
+            </tr>
+            <tr className="border-b border-black">
+              <td className="w-10 border-l border-black text-center">1</td>
+              <td className="w-32 border-x border-black text-center ">CA202</td>
+              <td className="w-96 border-r border-black">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+                nobis.
+              </td>
+              <td className="text-center border-r border-black w-20">2,00</td>
+              <td className="w-16 border-r border-black text-center">PCS</td>
+              <td className="text-center border-r border-black">20.000</td>
+              <td className="text-center border-r border-black">40.000</td>
+            </tr>
+            <tr className="border-b border-black">
+              <td className="w-10 border-l border-black text-center">1</td>
+              <td className="w-32 border-x border-black text-center ">CA202</td>
+              <td className="w-96 border-r border-black">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+                nobis.
+              </td>
+              <td className="text-center border-r border-black w-20">2,00</td>
+              <td className="w-16 border-r border-black text-center">PCS</td>
+              <td className="text-center border-r border-black">20.000</td>
+              <td className="text-center border-r border-black">40.000</td>
+            </tr>
+            <tr className="border-b border-black">
+              <td className="w-10 border-l border-black text-center">1</td>
+              <td className="w-32 border-x border-black text-center ">CA202</td>
+              <td className="w-96 border-r border-black">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi,
+                nobis.
+              </td>
+              <td className="text-center border-r border-black w-20">2,00</td>
+              <td className="w-16 border-r border-black text-center">PCS</td>
+              <td className="text-center border-r border-black">20.000</td>
+              <td className="text-center border-r border-black">40.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex gap-5">
+        <button className="p-2 bg-black text-white rounded-md px-5 py-2">
+          Print Out
+        </button>
+        <button className="p-2 bg-black text-white rounded-md px-5 py-2">
+          Simpan
+        </button>
+      </div>
+    </section>
   );
 };
 
-const ModalAddCategory = ({
-  isShowModalAddCategory,
-  setIsShowModalAddCategory,
-}) => {
+const ListPembayaran = () => {
   return (
-    <div
-      className={`w-screen h-screen fixed flex justify-center items-center bg-black z-[999] left-0 top-0 bg-opacity-50 ${
-        isShowModalAddCategory ? null : "hidden"
-      }`}
-    >
-      <div className="w-[500px] bg-white rounded-md p-5 shadow-md relative">
-        <div className="flex justify-between items-center mb-5">
-          <h4 className="text-2xl font-semibold ">Tambah Kategori</h4>
-          <div className="flex justify-center items-center">
-            <button onClick={() => setIsShowModalAddCategory(false)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="">Nama Kategori</label>
-          <input type="text" className="border p-2 rounded-md" />
-        </div>
-        <div className="flex justify-end gap-5">
-          <button
-            onClick={() => setIsShowModalAddCategory(false)}
-            className="border border-[#169859] text-[#169859] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-          >
-            <span>Tutup</span>
-          </button>
-          <button className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-            <span>Simpan</span>
-          </button>
-        </div>
-      </div>
-    </div>
+    <section>
+      <p>List Pembayaran</p>
+    </section>
   );
 };
 
