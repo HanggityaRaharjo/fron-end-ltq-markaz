@@ -2,70 +2,80 @@ import React, { useState } from 'react'
 import Layout from '../../../layouts/Layout'
 
 function SeleksiPeserta() {
-    const [isShowDetail, setIsShowDetail] = useState(false)
-
-    const HandleDetail = () => {
-        setIsShowDetail(true)
-    }
+    const participants = [
+        {
+            nama: 'Peserta 1',
+            rekamanSuara: 'Baik',
+            pengerjaanSoal: '85',
+            hasilAkhir: 'Lolos',
+        },
+        {
+            nama: 'Peserta 2',
+            rekamanSuara: 'Cukup',
+            pengerjaanSoal: '60',
+            hasilAkhir: 'Tidak Lolos',
+        },
+        // Tambahkan data peserta lainnya sesuai kebutuhan
+    ];
 
     return (
         <Layout>
-            <div className='p-5 flex flex-col gap-5'>
-                <div className="flex flex-col gap-2 bg-white p-5 shadow-md rounded-md">
-                    <h1 className="font-bold text-2xl">Seleksi Peserta</h1>
-                    <hr className="border-black" />
+            <section className='P-5'>
+                <h1 className="text-2xl font-semibold mb-4">Seleksi Peserta</h1>
+                <div className="p-5 bg-white shadow-lg">
+                    <div className='bg-white mt-5'>
+                        <div className='py-5 flex justify-between items-center'>
+                            <div className='flex gap-2'>
+                                <span className='font-semibold'>Data</span>
+                                <select className='border'>
+                                    <option value="">5</option>
+                                    <option value="">10</option>
+                                    <option value="">20</option>
+                                    <option value="">25</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div>
+                                    <input type="text" className='border border-black px-2' />
+                                </div>
+                            </div>
+                        </div>
+                        <ParticipantTable participants={participants} />
+                    </div>
                 </div>
-                <div className='p-5 bg-white shadow-md rounded-md'>
-                    <table className='w-full'>
-                        <thead>
-                            <tr className='bg-black text-white text-center'>
-                                <td className='px-4 py-2'>Id</td>
-                                <td className='px-4 py-2'>Nama Peserta</td>
-                                <td className='px-4 py-2'>Program</td>
-                                <td className='px-4 py-2'>Hasil Test</td>
-                                <td className='px-4 py-2'>action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className='text-center'>
-                                <td className='px-4 py-2 border'>D03892</td>
-                                <td className='px-4 py-2 border text-left'>Asep kurnia</td>
-                                <td className='px-4 py-2 border'>Tilawah</td>
-                                <td className='px-4 py-2 border'>
-                                    <div>
-                                        <button onClick={() => setIsShowDetail(!isShowDetail)} className='p-2 bg-blue-200 rounded-md font-medium'>Detail</button>
-                                    </div>
-                                </td>
-                                <td className='px-4 py-2 border'>
-                                    <div className='w-full'>
-                                        <select name="" id="" className='w-full outline-none'>
-                                            <option value="">Pilih</option>
-                                            <option value="">Lulus</option>
-                                            <option value="">Tidak Lulus</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan={5} className={`border overflow-hidden `} style={{ height: isShowDetail ? 'auto' : 0, overflow: 'hidden', transition: 'height 0.2s' }}>
-                                    < div className={`flex px-2 flex-col gap-2  overflow-hidden transition-all duration-200 ${isShowDetail ? 'h-[150px]' : 'h-[0px]'}`}>
-                                        <div className='flex flex-col gap-5'>
-                                            <div>
-                                                <label className='font-medium'>Hasil Test Suara</label>
-                                            </div>
-                                            <div>
-                                                <label className='font-medium'>Hasil Test Soal</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </Layout >
+            </section>
+        </Layout>
     )
-}
+};
+
+const ParticipantTable = ({ participants }) => {
+    return (
+        <table className="table-auto w-full">
+            <thead>
+                <tr className='bg-black text-white'>
+                    <th className="px-4 py-2">Nama Peserta</th>
+                    <th className="px-2 py-2">Hasil Rekaman Suara</th>
+                    <th className="px-4 py-2">Pengerjaan Soal</th>
+                    <th className="px-4 py-2">Hasil Akhir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {participants.map((participant, index) => (
+                    <tr key={index}>
+                        <td className="border px-4 py-2">{participant.nama}</td>
+                        <td className="border px-4 py-2">{participant.rekamanSuara}</td>
+                        <td className="border px-4 py-2">{participant.pengerjaanSoal}</td>
+                        <td className="border px-4 py-2">
+                            <select name="" id="" className='w-full'>
+                                <option value="">Lolos</option>
+                                <option value="">Tidak Lolos</option>
+                            </select>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+};
 
 export default SeleksiPeserta

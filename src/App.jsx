@@ -89,6 +89,7 @@ import DetailTugas from "./pages/tugas/detailTugas";
 import SeleksiPeserta from "./pages/panitiaPSB/seleksiPeserta";
 import DaftarSiswa from "./pages/tu/daftarPeserta";
 import DetailSiswa from "./pages/tu/daftarPeserta/detailPeserta";
+import DashboardPsb from "./pages/panitiaPSB/dashboardPsb";
 
 
 const router = createBrowserRouter([
@@ -345,7 +346,7 @@ const router = createBrowserRouter([
     element: <FormCutiTu />,
   },
   {
-    path: "/show/biodata-pegawai",
+    path: " ",
     element: <BiodataPegawai />,
   },
   {
@@ -377,12 +378,12 @@ const router = createBrowserRouter([
     element: <SppPesertaBaru />,
   },
   {
-    path: "/form/spp-daftar-ulang",
-    element: <SppDaftarUlang />,
-  },
-  {
     path: "/show/spp-daftar-ulang",
     element: <TabelDaftarUlang />,
+  },
+  {
+    path: "/form/spp-daftar-ulang",
+    element: <SppDaftarUlang />,
   },
   {
     path: "/show/jumlah-tagihan",
@@ -467,6 +468,10 @@ const router = createBrowserRouter([
   {
     path: "/show/seleksi-peserta",
     element: <SeleksiPeserta />,
+  },
+  {
+    path: "/dashboard-psb",
+    element: <DashboardPsb />,
   },
 ]);
 
