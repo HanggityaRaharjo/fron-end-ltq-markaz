@@ -26,6 +26,7 @@ import DetailSiswa from "../pages/tu/daftarPeserta/detailPeserta";
 
 import TabelPesertaBaru from "../pages/tu/administrasi/spp/pembayaranSpp/pesertabaru";
 import EFaktur from "../pages/tatausaha/e-faktur";
+import LaporanKeuangan from "../pages/tatausaha/laporan-keuangan";
 
 export const TataUsahaRoute = [
   {
@@ -48,9 +49,11 @@ export const TataUsahaRoute = [
     path: "/e-faktur",
     element: <EFaktur />,
   },
-
+  {
+    path: "/laporan-keuangan",
+    element: <LaporanKeuangan />,
+  },
   // Yang arul TU
-
   {
     path: "/show/dashboard-tu",
     element: <DashboardTu />,

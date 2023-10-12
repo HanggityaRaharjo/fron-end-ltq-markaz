@@ -8,7 +8,7 @@ import {
 import Layout from "../../../layouts/Layout";
 import useFormatNumber from "../../../utils/useFormatNumber";
 
-const EFaktur = () => {
+const LaporanKeuangan = () => {
   const [currentTab, setCurrentTab] = useState("jumlah-tagihan");
 
   const [isShowModalAddCategory, setIsShowModalAddCategory] = useState(false);
@@ -21,10 +21,9 @@ const EFaktur = () => {
   return (
     <Layout>
       <Breadcrumbs>
-        <BreadcrumbsItem>Dashboard</BreadcrumbsItem>
-        <BreadcrumbsItem>Tata Usaha</BreadcrumbsItem>
-        <BreadcrumbsItem>Kasir</BreadcrumbsItem>
-        <BreadcrumbsActive>Data Konsumen</BreadcrumbsActive>
+        <BreadcrumbsActive>
+          <p className="font-bold text-gray-800">Laporan Keuangan</p>
+        </BreadcrumbsActive>
       </Breadcrumbs>
       <ModalAddCategory
         isShowModalAddCategory={isShowModalAddCategory}
@@ -35,26 +34,7 @@ const EFaktur = () => {
         setIsShowModalUpdateCategory={setIsShowModalUpdateCategory}
         currentDataUpdateCategory={currentDataUpdateCategory}
       />
-      <div className="flex gap-5 mb-5">
-        <button
-          onClick={() => setCurrentTab("jumlah-tagihan")}
-          className="bg-black text-white rounded-md px-5 py-2"
-        >
-          Jumlah Tagihan
-        </button>
-        <button
-          onClick={() => setCurrentTab("jumlah-dibayar")}
-          className="bg-gray-500 hover:bg-black transition duration-150 text-white rounded-md px-5 py-2"
-        >
-          Jumlah Dibayar
-        </button>
-        <button
-          onClick={() => setCurrentTab("kekurangan")}
-          className="bg-gray-500 hover:bg-black transition duration-150 text-white rounded-md px-5 py-2"
-        >
-          Kekurangan
-        </button>
-      </div>
+
       <section>
         {/* Table */}
         <div className="p-5 bg-white shadow rounded-md">
@@ -75,44 +55,98 @@ const EFaktur = () => {
                 className=" border border-gray-300 p-1 rounded-md"
                 placeholder="search..."
               />
-              <button
-                onClick={() => setIsShowModalAddCategory(true)}
-                className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-              >
-                <span>Tambah Kategori</span>
-              </button>
             </div>
           </div>
           <table className="w-full">
             <thead>
               <tr className="bg-[#2f3a4e] text-white text-sm">
                 <th className="p-2 w-10">No</th>
-                <th className="p-2">Nama Peserta</th>
-                <th className="p-2">Jumlah</th>
-                <th className="p-2">Keterangan</th>
-                <th className="p-2">Opsi</th>
+                <th className="p-2">Program</th>
+                <th className="p-2">Tanggal Aktif</th>
+                <th className="p-2">Jatuh Tempo</th>
+                <th className="p-2">Total Siswa</th>
+                <th className="p-2">
+                  <div className="flex gap-2 justify-center font-normal">
+                    <div className="flex gap-2 items-center">
+                      <div className="w-4 h-4 bg-green-600"></div>
+                      <p>Sudah bayar</p>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <div className="w-4 h-4 bg-blue-500"></div>
+                      <p>Kadaluarsa</p>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <div className="w-4 h-4 bg-red-500"></div>
+                      <p>Belum Bayar</p>
+                    </div>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b">
                 <td className="w-10 p-2  flex justify-center">1</td>
-                <td className="p-2 ">Dadan Firmansyah</td>
+                <td className="p-2 font-semibold">
+                  Tahfidz <span className="font-bold">Batch 30</span>
+                </td>
                 <td className="p-2 ">Rp.{useFormatNumber(500000)},-</td>
-                <td className="p-2 ">SPP</td>
-                <td className="w-64">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150"
-                      onClick={() => {
-                        setIsShowModalUpdateCategory(true);
-                        setCurrentDataUpdateCategory({ key: "test" });
-                      }}
-                    >
-                      Dokumen
-                    </button>
-                    <button className="bg-[#169859] text-[#f3faf6] p-2 min-w-[7rem] rounded-md font-semibold flex justify-center items-center gap-2 active:scale-95 transition duration-150">
-                      Hapus
-                    </button>
+                <td className="p-2 ">20 Februari 2023</td>
+                <td className="p-2 ">10</td>
+                <td className="w-96 text-white">
+                  <div className="flex  justify-center w-full  rounded-full overflow-hidden">
+                    <div className="bg-green-600 h-8 overflow-hidden flex justify-center items-center w-[20%]">
+                      20%
+                    </div>
+                    <div className="bg-blue-500 h-8 overflow-hidden flex justify-center items-center w-[80%]">
+                      80%
+                    </div>
+                    <div className="bg-red-500 h-8 overflow-hidden flex justify-center items-center w-[20%]">
+                      20%
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="w-10 p-2  flex justify-center">2</td>
+                <td className="p-2 font-semibold">
+                  Tahfidz <span className="font-bold">Batch 31</span>
+                </td>
+                <td className="p-2 ">Rp.{useFormatNumber(500000)},-</td>
+                <td className="p-2 ">20 Februari 2023</td>
+                <td className="p-2 ">10</td>
+                <td className="w-96 text-white">
+                  <div className="flex  justify-center w-full  rounded-full overflow-hidden">
+                    <div className="bg-green-600 h-8 overflow-hidden flex justify-center items-center w-[60%]">
+                      60%
+                    </div>
+                    <div className="bg-blue-500 h-8 overflow-hidden flex justify-center items-center w-[30%]">
+                      30%
+                    </div>
+                    <div className="bg-red-500 h-8 overflow-hidden flex justify-center items-center w-[10%]">
+                      10%
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr className="border-b">
+                <td className="w-10 p-2  flex justify-center">3</td>
+                <td className="p-2 font-semibold">
+                  Tahfidz <span className="font-bold">Batch 32</span>
+                </td>
+                <td className="p-2 ">Rp.{useFormatNumber(500000)},-</td>
+                <td className="p-2 ">20 Februari 2023</td>
+                <td className="p-2 ">10</td>
+                <td className="w-96 text-white">
+                  <div className="flex  justify-center w-full  rounded-full overflow-hidden">
+                    <div className="bg-green-600 h-8 overflow-hidden flex justify-center items-center w-[50%]">
+                      50%
+                    </div>
+                    <div className="bg-blue-500 h-8 overflow-hidden flex justify-center items-center w-[35%]">
+                      35%
+                    </div>
+                    <div className="bg-red-500 h-8 overflow-hidden flex justify-center items-center w-[15%]">
+                      15%
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -236,4 +270,4 @@ const ModalAddCategory = ({
   );
 };
 
-export default EFaktur;
+export default LaporanKeuangan;

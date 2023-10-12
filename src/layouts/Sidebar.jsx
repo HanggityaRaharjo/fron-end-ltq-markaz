@@ -597,20 +597,8 @@ const MenuTataUsaha = () => {
       >
         Dashboard
       </Link>
-      {/* <Link
-        to={"/form/pendaftaran-tu"}
-        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
-      >
-        Pendaftaran Pegawai Tata Usaha
-      </Link> */}
-      <Link
-        to={"/form/cuti-tu"}
-        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
-      >
-        Pengajuan Cuti
-      </Link>
 
-      <DropdownMenu name={"Peserta Baru"}>
+      <DropdownMenu name={"Peserta"}>
         <Link
           to={"/show/daftar-siswa"}
           className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
@@ -640,6 +628,18 @@ const MenuTataUsaha = () => {
           Tagihan
         </Link>
       </DropdownMenu>
+      {/* <Link
+        to={"/form/pendaftaran-tu"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Pendaftaran Pegawai Tata Usaha
+      </Link> */}
+      <Link
+        to={"/form/cuti-tu"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Pengajuan Cuti
+      </Link>
 
       <Link
         to={"/e-faktur"}
@@ -668,6 +668,13 @@ const MenuTataUsaha = () => {
           Barang Keluar
         </Link>
       </DropdownMenu>
+
+      <Link
+        to={"/laporan-keuangan"}
+        className=" text-gray-500 w-full py-2 px-4 text-sm rounded-md  font-semibold transition-all duration-150 flex items-center gap-2"
+      >
+        Laporan Keuangan
+      </Link>
 
       <DropdownMenu name={"Kasir"}>
         <Link
